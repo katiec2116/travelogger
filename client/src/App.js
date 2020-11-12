@@ -1,11 +1,10 @@
+import React from "react";
 import Initial from "./pages/Initial"
-import Signup from "./components/Signup"
+import Signup from "./pages/Signup"
 import Login from "./pages/Login"
 import Explore from "./pages/Explore"
 // import MyTrips from "./pages/MyTrips"
 import AddTrip from "./pages/AddTrip"
-
-
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import 'bulma/css/bulma.css'
 

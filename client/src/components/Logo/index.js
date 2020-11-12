@@ -1,3 +1,4 @@
+import React from "react";
 import Travelogger from './travelogger.png';
 
 function Logo() {
