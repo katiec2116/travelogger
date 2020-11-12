@@ -1,22 +1,23 @@
-const User = require("../models/user");
+const db = require("../models");
 
 // Defining methods for the booksController
 module.exports = {
   findAll: function(req, res) {
-    User
+    db.User
       .find(req.query)
       .sort({ date: -1 })
       .then(user => res.json(user))
       .catch(err => res.status(422).json(err));
   },
   findById: function(req, res) {
-    User
+    db.User
       .findById(req.params.id)
       .then(user => res.json(user))
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    User
+    console.log(req.body)
+    db.User
       .create(req.body)
       .then(user => res.json(user))
       .catch(err => res.status(422).json(err));

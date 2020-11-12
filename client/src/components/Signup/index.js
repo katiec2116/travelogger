@@ -1,24 +1,24 @@
 import React from "react";
 import { useState } from "react"
-import axios from "axios";
+import API from "../../utils/API";
 
 function Signup() {
 
-    const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const onSubmit = e => {
         e.preventDefault();
-
         const userData = {
-            email, username, password
+            username, password
         };
-        axios.post("/api/users", userData)
+        
+        // console.log(userData)
+        API.createUser(userData)
         .then(res => {
             console.log(res)
         }).catch(err =>{
-            console.log(err);
+            // console.log(err.response);
         })
     };
 
@@ -28,19 +28,6 @@ function Signup() {
         <div>
             <div className="box mt-4">
                 <div className="content">
-                    <div className="field">
-                        <label className="label">Email</label>
-                        <div className="control has-icons-left has-icons-right">
-                            <input className="input" type="email"
-                            onChange={e => {
-                                setEmail(e.target.value);
-                                console.log(email)
-                            }} />
-                            <span className="icon is-small is-left">
-                                <i className="fas fa-envelope"></i>
-                            </span>
-                        </div>
-                    </div>
                     <div className="field">
                         <label className="label">Username</label>
                         <div className="control has-icons-left has-icons-right">
@@ -67,7 +54,7 @@ function Signup() {
                     </div>
                     <div className="field is-grouped">
                         <div className="control">
-                        <a className="button is-link" href="/explore" type="submit" onSubmit={onSubmit}>Signup</a>
+                        <button className="button is-link" type="submit" onClick={onSubmit} href="/explore">Signup</button>
                         </div>
                         <div className="control">
                             <a className="button is-link is-light" href="/">Cancel</a>
