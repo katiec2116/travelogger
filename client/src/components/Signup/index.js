@@ -13,12 +13,11 @@ function Signup() {
             username, password
         };
         
-        // console.log(userData)
         API.createUser(userData)
         .then(res => {
             console.log(res)
         }).catch(err =>{
-            // console.log(err.response);
+            console.log(err.response);
         })
     };
 
