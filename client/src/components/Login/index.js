@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import axios from "axios"
+import API from "../../utils/API"
 
 function Login() {
 
@@ -8,17 +8,12 @@ function Login() {
 
     const onSubmit = e => {
         e.preventDefault();
-
-        const userData = {
-            username, password
-        };
-        console.log(userData)
-
-        axios.post("/api/users", userData)
+        console.log(username)
+        API.getUser(username)
         .then(res => {
-            console.log(res)
+            console.log(res.data)
         }).catch(err =>{
-            console.log(err);
+            console.log(err.response);
         })
     };
 
@@ -28,33 +23,27 @@ function Login() {
                 <div className="content">
                     <div className="field">
                         <label className="label">Username</label>
-                        <div className="control has-icons-left has-icons-right">
+                        <div className="control">
                             <input className="input" type="text" 
                             onChange={e => {
                                 setUsername(e.target.value);
                                 console.log(username)
                             }}/>
-                            <span className="icon is-small is-left">
-                                <i className="fas fa-user"></i>
-                            </span>
                         </div>
                     </div>
                     <div className="field">
                         <label className="label">Password</label>
-                        <div className="control has-icons-left has-icons-right">
+                        <div className="control">
                             <input className="input" type="password" 
                             onChange={e => {
                                 setPassword(e.target.value);
                                 console.log(password)
                             }}/>
-                            <span className="icon is-small is-left">
-                                <i className="fas fa-envelope"></i>
-                            </span>
                         </div>
                     </div>
                     <div className="field is-grouped">
                         <div className="control">
-                            <a className="button is-link" href="/explore" onSubmit={onSubmit} >Login</a>
+                            <button className="button is-link" onClick={onSubmit} href="/explore">Login</button>
                         </div>
                         <div className="control">
                             <a className="button is-link is-light" href="/">Cancel</a>

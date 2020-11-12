@@ -29,26 +29,20 @@ function Signup() {
                 <div className="content">
                     <div className="field">
                         <label className="label">Username</label>
-                        <div className="control has-icons-left has-icons-right">
+                        <div className="control">
                             <input className="input" type="text"
                             onChange={e => {
                                 setUsername(e.target.value);
                                 console.log(username)}} />
-                            <span className="icon is-small is-left">
-                                <i className="fas fa-user"></i>
-                            </span>
                         </div>
                     </div>
                     <div className="field">
                         <label className="label">Password</label>
-                        <div className="control has-icons-left has-icons-right">
+                        <div className="control">
                             <input className="input" type="password" 
                             onChange={e => {
                                 setPassword(e.target.value);
                                 console.log(password)}} />
-                            <span className="icon is-small is-left">
-                                <i className="fas fa-envelope"></i>
-                            </span>
                         </div>
                     </div>
                     <div className="field is-grouped">
