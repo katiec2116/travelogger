@@ -1,6 +1,7 @@
 
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+const passportLocalMongoose = require('passport-local-mongoose');
 
 const userSchema = new Schema(
     {
@@ -11,15 +12,8 @@ const userSchema = new Schema(
     { timestamps: true },
 )
 
-const tripSchema = new Schema(
-    {
-        user_id: {type: Schema.Types.ObjectId, ref: 'User'},
-        trips: {type: Schema.Types.ObjectId, ref: 'User'}
-    }
-)
+userSchema.plugin(passportLocalMongoose);
 
-const Trip = mongoose.model('Trip', tripSchema);
 const User = mongoose.model('User', userSchema);
 
-module.exports = Trip;
 module.exports = User;
