@@ -12,6 +12,11 @@ function Login() {
         API.getUser(username)
         .then(res => {
             console.log(res.data)
+            if (res.data.length === 1){
+                window.location.replace("/explore")}
+            else {
+                alert("You dont have an account yet!")
+            }
         }).catch(err =>{
             console.log(err.response);
         })
@@ -43,7 +48,7 @@ function Login() {
                     </div>
                     <div className="field is-grouped">
                         <div className="control">
-                            <button className="button is-link" onClick={onSubmit} href="/explore">Login</button>
+                            <button className="button is-link" onClick={onSubmit} >Login</button>
                         </div>
                         <div className="control">
                             <a className="button is-link is-light" href="/">Cancel</a>

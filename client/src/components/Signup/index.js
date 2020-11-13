@@ -15,7 +15,9 @@ function Signup() {
         
         API.createUser(userData)
         .then(res => {
-            console.log(res)
+            if(!res.data.errors){
+                window.location.replace('/explore')
+            }
         }).catch(err =>{
             console.log(err.response);
         })
@@ -47,7 +49,7 @@ function Signup() {
                     </div>
                     <div className="field is-grouped">
                         <div className="control">
-                        <button className="button is-link" type="submit" onClick={onSubmit} href="/explore">Signup</button>
+                        <button className="button is-link" type="submit" onClick={onSubmit}>Signup</button>
                         </div>
                         <div className="control">
                             <a className="button is-link is-light" href="/">Cancel</a>

@@ -9,7 +9,7 @@ module.exports = {
       .then(user => res.json(user))
       .catch(err => res.status(422).json(err));
   },
-  findByUsername: function(req, res) {
+  findById: function(req, res) {
     db.User
       .find({username : req.params.username})
       .then(user => res.json(user))
