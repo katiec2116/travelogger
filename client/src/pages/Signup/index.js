@@ -1,14 +1,16 @@
 import React from "react";
 import Logo from "../../components/Logo";
-import Login from "../../components/Login";
-function LoginPage() {
+import Signup from "../../components/Signup";
+
+
+function SignupPage() {
     return (
         <div>
             <div className="column is-4 is-offset-4">
                 <div><Logo /></div>
-                <Login />
+                <Signup />
             </div>
         </div>
 
 )}
-export default LoginPage;
+export default SignupPage

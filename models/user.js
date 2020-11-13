@@ -3,9 +3,8 @@ const Schema = mongoose.Schema
 
 const userSchema = new Schema(
     {
-        _id: Schema.Types.ObjectId,
-        userName: { type: String, required: true },
-        passWord: { type: [String], required: true },
+        username: { type: String, required: true, unique: true },
+        password: { type: String, required: true },
         trips: [{ type:Schema.Types.ObjectId, ref: 'Trips' }]
     },
     { timestamps: true },
@@ -18,8 +17,8 @@ const tripSchema = new Schema(
     }
 )
 
-const Trip = mongoose.model('trips', tripSchema);
-const User = mongoose.model('users', userSchema);
+const Trip = mongoose.model('Trip', tripSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = Trip;
 module.exports = User;

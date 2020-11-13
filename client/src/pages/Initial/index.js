@@ -1,3 +1,4 @@
+import React from "react";
 import Logo from "../../components/Logo";
 import LoginSignupBox from "../../components/LoginSignupBox"
 
