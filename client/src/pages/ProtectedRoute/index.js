@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react'
-// import Card from "../../components/Card"
+import Explore from "../Explore"
 import { UserContext } from "../../utils/UserContext";
 
 /* This is a very simple component.. it probably doesn't need to be a smart component at this point but you never know what's goingto happen in the future */
@@ -34,12 +34,7 @@ function ProtectedRoute() {
 
 	return (
 		<div className="container">
-			<div className="alert alert-success" role="alert">
-				Success, You are logged in
-				</div>
-			<div>
-				<p>You are logged in.</p>
-			</div>
+            <Explore/>
 		</div>
 	)
 

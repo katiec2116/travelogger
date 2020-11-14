@@ -1,5 +1,5 @@
 import React from "react";
-import Nav from "../../components/Nav2"
+import Nav from "../../components/Nav"
 import AddForm from "../../components/AddForm"
 
 function AddTrip() {
