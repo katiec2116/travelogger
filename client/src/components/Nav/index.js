@@ -1,32 +1,64 @@
-import React from "react";
 import logo from './logo2.png';
+import React, { useEffect, useState, useContext } from "react";
+import { Link } from "react-router-dom";
+// import "./style.css";
+// import Login from "../LoginForm";
+import AuthButton from "../AuthButton";
+import { UserContext } from "../../utils/UserContext";
+//I want to add some basic inline styling here, even though we are bringing in styles
+const buttonStyle = {
+  marginRight: 10
+};
 
 function Nav() {
+
+  const [user, dispatch] = useContext(UserContext);
+
+  const [open, setOpen] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
+
+  const updateWidth = () => {
+    if (open && width > 991) {
+      setOpen(false);
+    }
+    setWidth(window.innerWidth)
+  };
+
+  // const toggleNav = () => {
+  //   setOpen(!open);
+  // };
+
+  useEffect(() => {
+
+    window.addEventListener("resize", updateWidth);
+
+    return () => {
+      window.removeEventListener("resize", updateWidth);
+    }
+  }, [])
+
+
+
     return (
 
         <nav className="navbar is-dark" role="navigation" aria-label="main navigation">
             <div className="navbar-brand ml-2">
                 <img src={logo} style={{ width: "100px" }} alt="logo" />
-                <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
             </div>
 
-            <div id="navbarBasicExample" className="navbar-menu is-pulled-right">
+
                 <div className="navbar-start is-pulled-right">
-                    <a className="navbar-item" href="/explore">
+                    <Link className="navbar-item" to="/explore">
                         Explore
-                        </a>
+                        </Link>
 
-                    <a className="navbar-item" href="/mytrips">
+                    <Link className="navbar-item" to="/mytrips">
                         My Trips
-                        </a>
+                        </Link>
 
-                    <a className="navbar-item" href="/addtrip">
+                    <Link className="navbar-item" to="/addtrip">
                         Add a Trip
-                        </a>
+                        </Link>
 
                     <div className="navbar-item has-dropdown is-hoverable">
                         <a className="navbar-link">
@@ -45,12 +77,12 @@ function Nav() {
                                 Report an issue
                                     </a>
                         </div>
-                    </div>
+
                 </div>
                 <div class="navbar-item">
-                        <a class="button is-primary" href="/">
+                        <Link class="button is-primary" to="/">
                             Logout
-                        </a>
+                        </Link>
                 </div>
             </div>
         </nav>

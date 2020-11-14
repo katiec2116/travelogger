@@ -14,7 +14,6 @@ const PORT = process.env.PORT || 3001;
 /* === Call Express as app === */
 const app = express();
 
-
 /* === Middleware === */
 app.use(logger('dev'));
 app.use(express.urlencoded({ extended: true }));
@@ -29,12 +28,16 @@ app.use(require('express-session')({
 }));
 app.use(passport.initialize());
 app.use(flash());
+/* === End of middleware ===*/
+
 
 /* Serve up static assets (usually on heroku) */
 if (process.env.NODE_ENV === "production") {
   app.use(passport.session()); app.use(express.static(path.join(__dirname, './client/build')));
 
 };
+
+/* === Routing === */
 
 app.use(routes);
 
@@ -51,18 +54,10 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+/* === Mongoose Connection === */
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/travelogger', { useNewUrlParser: true, useUnifiedTopology: true });
 
-mongoose.connect(
-  process.env.MONGODB_URI ||
-  "mongodb://localhost/travelogger",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false
-  });
-
-  /* === Error Handling === */
+/* === Error Handling === */
 
 /* Development error handler will print stacktrace */
 if (app.get('env') === 'development') {
@@ -84,6 +79,7 @@ app.use(function (err, req, res, next) {
   });
 });
 
+/* === Telling Express to Listen === */
 app.listen(PORT, function () {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });

@@ -1,65 +1,58 @@
-import React, {useState} from "react";
-import API from "../../utils/API"
+import React, { useEffect, useState } from 'react';
+import LoginForm from "../LoginForm";
+import Auth from "../../utils/Auth";
+import { useLocation, useHistory } from "react-router";
+//Uses the Auth methods to actually login with the LoginForm Component.
 
 function Login() {
+    let location = useLocation();
+    let history = useHistory();
+    const [redirectToReferrer, setRedirectToReferrer] = useState(false);
 
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    useEffect(() => {
 
-    const onSubmit = e => {
-        e.preventDefault();
-        console.log(username)
-        API.getUser(username)
-        .then(res => {
-            console.log(res.data)
-            if (res.data.length === 1){
-                window.location.replace("/explore")}
-            else {
-                alert("You dont have an account yet!")
-            }
-        }).catch(err =>{
-            console.log(err.response);
+        const { from } = location.state || { from: { pathname: '/protected' } }
+        if (redirectToReferrer) {
+            history.push(from)
+        }
+
+    }, [redirectToReferrer, history, location.state])
+
+
+    /* We need to POST to the API the users info,
+        This will get passed down as a prop to the LoginForm */
+    const login = (data) => {
+        console.log('Logging in ' + JSON.stringify(data));
+        fetch('api/users/login', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json'
+            },
         })
-    };
+            .then((response) => {
+                if (response.status === 200) { //All good
+                    Auth.authenticate(() => { //Update the boolean and take off the cuffs
+                        setRedirectToReferrer(true)
+                        console.log(`Response in login ${JSON.stringify(response)}`);
+
+                    });
+                }
+            })
+            .catch((err) => {// No beuno, kick them
+                console.log('Error logging in.', err);
+            });
+    }
 
     return (
-        <div>
-            <div className="box mt-6">
-                <div className="content">
-                    <div className="field">
-                        <label className="label">Username</label>
-                        <div className="control">
-                            <input className="input" type="text" 
-                            onChange={e => {
-                                setUsername(e.target.value);
-                                console.log(username)
-                            }}/>
-                        </div>
-                    </div>
-                    <div className="field">
-                        <label className="label">Password</label>
-                        <div className="control">
-                            <input className="input" type="password" 
-                            onChange={e => {
-                                setPassword(e.target.value);
-                                console.log(password)
-                            }}/>
-                        </div>
-                    </div>
-                    <div className="field is-grouped">
-                        <div className="control">
-                            <button className="button is-link" onClick={onSubmit} >Login</button>
-                        </div>
-                        <div className="control">
-                            <a className="button is-link is-light" href="/">Cancel</a>
-                        </div>
-                    </div>
-                </div>
+
+        <div className="box">
+            <div className="content">
+                <LoginForm onLogin={login} />
             </div>
         </div>
-
-
-    );
+    )
 }
 
 export default Login;
