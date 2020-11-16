@@ -4,6 +4,7 @@ import API from "../../utils/API"
 import { UserContext } from "../../utils/UserContext"
 
 
+
 class AddTrip extends React.Component {
 
     state = {
@@ -14,11 +15,14 @@ class AddTrip extends React.Component {
             long: "",
             images:[]
         }
-    
+
 
      onSubmit = e => {
         e.preventDefault();
-        console.log(this.state)
+        const id = localStorage.getItem('user')
+        console.log(id)
+        console.log("this.state " +this.state)
+        API.addTrip(this.state, id)
        ;
     };
 

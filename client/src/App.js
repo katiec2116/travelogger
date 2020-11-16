@@ -17,12 +17,10 @@ import 'bulma/css/bulma.css'
 import ProtectedRoute from "./pages/ProtectedRoute";
 import './App.css';
 import { UserProvider } from "./utils/UserContext";
-import { LocationProvider } from "./utils/LocationContext";
 
 //Now we have all the stuff we need .. let's render some components with the Router
 const AuthExample = () => (
 	<UserProvider>
-		<LocationProvider>
 		<Router>
 			<div>
 				<div>
@@ -38,7 +36,6 @@ const AuthExample = () => (
 				</div>
 			</div>
 		</Router>
-		</LocationProvider>
 	</UserProvider>
 )
 

@@ -10,21 +10,20 @@ router.route("/register")
   .post(usersController.register);
 
 router.route("/login")
-
-//Added this to redirect to the login 
-.post(passport.authenticate('local', { failureRedirect: '/login' }),usersController.login);
+  .post(passport.authenticate('local', { failureRedirect: '/login' }),usersController.login);
 //Changed to post route to match the request
 
 router.route("/logout")
-      .post(usersController.logout);
-
+  .post(usersController.logout);
 
 // Matches with "/api/users/:id"
 router.route("/user")
-      .get(usersController.getUser);
-/* Testing Endpoint */
-router
-  .route("/ping")
-  .get(usersController.test);
+  .get(usersController.getUser);
+
+router.route("/:id")
+  .put(usersController.addTrip);
+
+  // router.route("/all")
+  // .put(usersController.getAllTrips);
 
 module.exports = router;

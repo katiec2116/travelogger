@@ -68,9 +68,11 @@ module.exports = {
 		});
 	},
 
-	test: function (req, res, next) {
-		console.log(`Ping Dinger ${req.statusCode}`);
-		res.status(200).send("Dong!");
+	addTrip: function (req, res) {
+		console.log("req.id "+ req.body)
+		User
+		.findByIdAndUpdate({_id:req.params.id} ,{  $push: { trips: req.body }})
+		.then(results => console.log("results "+results))
 	}
 
 };
