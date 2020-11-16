@@ -1,5 +1,4 @@
 import React, { useRef } from 'react'
-// import Card from "../Card"
 
 // class RegisterForm extends React.Component {
 function RegisterForm({ onRegister }) {
