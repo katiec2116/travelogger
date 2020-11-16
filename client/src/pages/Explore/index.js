@@ -1,9 +1,7 @@
 import React from "react";
-import Nav from "../../components/Nav"
 function Explore() {
     return (
         <div>
-            <Nav />
             <div className="columns">
                 <div className="column is-9 py-6">
                     Map goes here

@@ -1,41 +1,42 @@
 import logo from './logo2.png';
 import React, { useEffect, useState, useContext } from "react";
-import { Link } from "react-router-dom";
-// import "./style.css";
-// import Login from "../LoginForm";
-import AuthButton from "../AuthButton";
-import { UserContext } from "../../utils/UserContext";
+import { Link , useHistory} from "react-router-dom";
+import { UserContext } from '../../utils/UserContext';
+// import AuthButton from '../AuthButton';
 //I want to add some basic inline styling here, even though we are bringing in styles
-const buttonStyle = {
-  marginRight: 10
-};
+// const buttonStyle = {
+    // marginRight: 10
+// };
 
 function Nav() {
 
-  const [user, dispatch] = useContext(UserContext);
+    const history = useHistory();
 
-  const [open, setOpen] = useState(false);
-  const [width, setWidth] = useState(window.innerWidth);
+    const [user, setUser] = useContext(UserContext)
+    console.log(user)
 
-  const updateWidth = () => {
-    if (open && width > 991) {
-      setOpen(false);
-    }
-    setWidth(window.innerWidth)
-  };
+    const [open, setOpen] = useState(false);
+    const [width, setWidth] = useState(window.innerWidth);
 
-  // const toggleNav = () => {
-  //   setOpen(!open);
-  // };
+    const updateWidth = () => {
+        if (open && width > 991) {
+            setOpen(false);
+        }
+        setWidth(window.innerWidth)
+    };
 
-  useEffect(() => {
+    // const toggleNav = () => {
+    //   setOpen(!open);
+    // };
 
-    window.addEventListener("resize", updateWidth);
+    useEffect(() => {
 
-    return () => {
-      window.removeEventListener("resize", updateWidth);
-    }
-  }, [])
+        window.addEventListener("resize", updateWidth);
+
+        return () => {
+            window.removeEventListener("resize", updateWidth);
+        }
+    }, [])
 
 
 
@@ -47,42 +48,23 @@ function Nav() {
             </div>
 
 
-                <div className="navbar-start is-pulled-right">
-                    <Link className="navbar-item" to="/explore">
-                        Explore
+            <div className="navbar-start is-pulled-right">
+                <Link className="navbar-item" to={`/explore/${user}` }>
+                    Explore
                         </Link>
 
-                    <Link className="navbar-item" to="/mytrips">
-                        My Trips
+                <Link className="navbar-item" to= {`/mytrips/${user}` }>
+                    My Trips
                         </Link>
 
-                    <Link className="navbar-item" to="/addtrip">
-                        Add a Trip
+                <Link className="navbar-item" to={`/addtrip/${user}` }onClick={()=>history.push('/addtrip')}>
+                    Add a Trip
                         </Link>
 
-                    <div className="navbar-item has-dropdown is-hoverable">
-                        <a className="navbar-link">
-                            More
-                         </a>
-
-                        <div className="navbar-dropdown">
-                            <a className="navbar-item">
-                                About
-                                </a>
-                            <a className="navbar-item">
-                                Contact
-                                </a>
-                            <hr className="navbar-divider" />
-                            <a className="navbar-item">
-                                Report an issue
-                                    </a>
-                        </div>
-
-                </div>
-                <div class="navbar-item">
-                        <Link class="button is-primary" to="/">
-                            Logout
-                        </Link>
+                <div className="navbar-item">
+                    <a className="button is-primary" href="/login">
+                        Logout
+                        </a>
                 </div>
             </div>
         </nav>
