@@ -1,33 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlane, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
-import API from "../../utils/API";
+
 
 const plane = <FontAwesomeIcon icon={faPlane} />
 const calendar = <FontAwesomeIcon icon={faCalendarAlt} />
-function AddForm() {
-
-    const [formData, setFormData] = useState(
-        {
-            location: "",
-            date: "",
-            notes: "",
-            latLong:"",
-            images:[]
-        }
-    )
-
-    const onSubmit = e => {
-        e.preventDefault();
-        console.log(formData)
-       ;
-    };
-
-    const mapQuest = (location) => {
-        API.location(location)
-        .then(res => setFormData({...formData, latLong:(res.data.results[0].locations[0].displayLatLng)}))
-
-    }
+function AddForm(props) {
 
 
     return (
@@ -38,11 +16,8 @@ function AddForm() {
                     <div className="field">
                         <label className="label">Where to?</label>
                         <div className="control has-icons-left">
-                            <input className="input" type="text"
-                                onChange={e => {
-                                    setFormData({ ...formData, location: e.target.value });
-                                    console.log( e.target.value)
-                                    mapQuest(e.target.value)}} />
+                            <input className="input" type="text" name="location"
+                                onChange={props.handleLocation} />
                             <span className="icon is-small is-left">
                                 {plane}
                             </span>
@@ -52,11 +27,9 @@ function AddForm() {
                     <div className="field">
                         <label className="label">When?</label>
                         <div className="control has-icons-left">
-                            <input className="input" type="date"
-                                onChange={e => {
-                                    setFormData({ ...formData, date: e.target.value });
-                                    console.log(formData.date)
-                                }} />
+                            <input className="input" type="date" name="date"
+                                onChange={props.handleInputChange}
+                                />
                                 <span className="icon is-small is-left">
                                 {calendar}
                             </span>
@@ -66,24 +39,17 @@ function AddForm() {
                     <div className="field">
                         <label className="label">Notes:</label>
                         <div className="control">
-                            <textarea className="textarea" type="text"
-                                onChange={e => {
-                                    setFormData({ ...formData, notes: e.target.value });
-                                    console.log(formData.notes)
-                                }} >
+                            <textarea className="textarea" type="text" name="notes"
+                                onChange={props.handleInputChange}
+                                >
                             </textarea>
                         </div>
                     </div>
                     <div id="file-js-example" className="file is-info my-4">
                         <label className="file-label">
                             <input className="file-input" type="file" name="images"
-                            onChange={e => {
-                                const oldImages = [formData.images];
-                                oldImages.push(e.target.value);
-                                console.log(oldImages)
-                                setFormData({ ...formData, images: e.target.value });
-                                // console.log(formData.images)
-                            }} />
+                                onChange={props.handleImages}
+                            />
                                 <span className="file-cta">
                                     <span className="file-label">
                                         Upload Images
@@ -94,7 +60,7 @@ function AddForm() {
 
                         <div className="field is-grouped">
                             <div className="control">
-                                <button className="button" onClick={onSubmit}>Add</button>
+                                <button className="button" onClick={props.onSubmit}>Add</button>
                             </div>
                             <div className="control">
                                 <button className="button is-light">Cancel</button>

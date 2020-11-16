@@ -3,11 +3,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { Link , useHistory} from "react-router-dom";
 import { UserContext } from '../../utils/UserContext';
 import AuthButton from "../AuthButton";
-// import AuthButton from '../AuthButton';
-//I want to add some basic inline styling here, even though we are bringing in styles
-// const buttonStyle = {
-    // marginRight: 10
-// };
+
 const buttonStyle = {
     marginRight: 10
   };
@@ -29,14 +25,9 @@ function Nav() {
         setWidth(window.innerWidth)
     };
 
-    // const toggleNav = () => {
-    //   setOpen(!open);
-    // };
-
     useEffect(() => {
 
         window.addEventListener("resize", updateWidth);
-
         return () => {
             window.removeEventListener("resize", updateWidth);
         }
