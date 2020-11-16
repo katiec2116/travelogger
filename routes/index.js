@@ -1,25 +1,13 @@
 const path = require("path");
 const router = require("express").Router();
-const userController = require("../controllers/userController");
+const apiRoutes = require("./api");
 
-
-// Matches with "/api/users/""
-router.route("/api/users")
-  .get(userController.findAll)
-  .post(userController.create);
-
-
-router.route("/api/users/:username")
-  .get(userController.findById)
-  // .delete(userController.remove);
-
+// API Routes
+router.use("/api", apiRoutes);
 
 // If no API routes are hit, send the React app
-router.use(function(req, res) {
-  res.sendFile(path.join(__dirname, "../client/public/index.html"));
-});
-
-
-
+router.use((req, res) =>
+  res.sendFile(path.join(__dirname, "../client/build/index.html"))
+);
 
 module.exports = router;

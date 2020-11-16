@@ -1,17 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 function AddForm() {
 
+    const [formData, setFormData] = useState(
+    {
+        location: "",
+        date: "",
+        notes: ""
+    }
+    )
+
+    const onSubmit = e => {
+        e.preventDefault();
+        console.log(formData)
+    };
 
 
     return (
-            <div className="column is-5 ml-5">
+        <div className="column is-5 ml-5">
             <div className="box mt-6">
                 <div className="content">
 
                     <div className="field">
                         <label className="label">Where to?</label>
                         <div className="control has-icons-left has-icons-right">
-                            <input className="input" type="text"/>
+                            <input className="input" type="text" 
+                            onChange={e => {
+                                setFormData({...formData, location: e.target.value});
+                                console.log(formData.location)}} />
                             <span className="icon is-small is-left">
                                 <i className="fas fa-plane"></i>
                             </span>
@@ -21,7 +36,10 @@ function AddForm() {
                     <div className="field">
                         <label className="label">When?</label>
                         <div className="control has-icons-left">
-                            <input className="input" type="date"/>
+                            <input className="input" type="date" 
+                            onChange={e => {
+                                setFormData({...formData, date: e.target.value});
+                                console.log(formData.date)}}/>
                             <span className="icon is-small is-left">
                                 <i className="fas fa-clock"></i>
                             </span>
@@ -31,13 +49,16 @@ function AddForm() {
                     <div className="field">
                         <label className="label">Notes:</label>
                         <div className="control">
-                            <textarea className="textarea" type="text" >
+                            <textarea className="textarea" type="text"
+                            onChange={e => {
+                                setFormData({...formData, notes: e.target.value});
+                                console.log(formData.notes)}} >
                             </textarea>
                         </div>
                     </div>
                     <div className="field is-grouped">
                         <div className="control">
-                            <button className="button">Add</button>
+                            <button className="button" onClick={onSubmit}>Add</button>
                         </div>
                         <div className="control">
                             <button className="button is-light">Cancel</button>

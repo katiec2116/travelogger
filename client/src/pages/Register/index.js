@@ -1,6 +1,6 @@
 import React from "react";
 import Logo from "../../components/Logo";
-import Initial from "../../components/Initial"
+import Register from "../../components/Register"
 import NavInitial from "../../components/NavInitial"
 
 function inital() {
@@ -10,7 +10,7 @@ function inital() {
       <div className="columns">
         <div className="column is-4 is-offset-4 has-text-centered">
         <Logo />
-        <Initial />
+        <Register />
       </div>
       </div>
       </div>

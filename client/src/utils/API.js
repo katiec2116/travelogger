@@ -2,18 +2,26 @@ import axios from "axios";
 
 export default {
 
-  createUser: function(userData) {
-    return axios.post("/api/users", userData);
-  },
-  getUsers: function() {
-    return axios.get("/api/users");
-  },
+  register: function(username, password) {
+    return axios({
+      mthod: "POST",
+      data: {username: username,
+        password: password
+      },
+      withCredential: true,
+      url: "/api/users/signup"
+  }).then((res) => console.log(res));
+}
 
-  getUser: function(username) {
-    return axios.get("/api/users/" + username);
-  },
+  // getUsers: function() {
+  //   return axios.get("/api/users");
+  // },
 
-  deleteUser: function(username) {
-    return axios.delete("/api/user/" + username);
-  },
+  // getUser: function(username) {
+  //   return axios.post("/api/users/login", username);
+  // },
+
+  // deleteUser: function(username) {
+  //   return axios.delete("/api/user/" + username);
+  // },
 };
