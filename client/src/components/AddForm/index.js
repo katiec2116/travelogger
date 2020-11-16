@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlane, faStickyNote, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
+import { faPlane, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
+import API from "../../utils/API";
 
 const plane = <FontAwesomeIcon icon={faPlane} />
-const note = <FontAwesomeIcon icon={faStickyNote} />
 const calendar = <FontAwesomeIcon icon={faCalendarAlt} />
 function AddForm() {
 
@@ -22,6 +22,8 @@ function AddForm() {
        ;
     };
 
+    
+
 
     return (
         <div className="column is-5 ml-5">
@@ -34,8 +36,8 @@ function AddForm() {
                             <input className="input" type="text"
                                 onChange={e => {
                                     setFormData({ ...formData, location: e.target.value });
-                                    console.log(formData.location)
-                                }} />
+                                    console.log(e.target.value)
+                                   }} />
                             <span className="icon is-small is-left">
                                 {plane}
                             </span>
@@ -58,16 +60,13 @@ function AddForm() {
 
                     <div className="field">
                         <label className="label">Notes:</label>
-                        <div className="control  has-icons-left">
+                        <div className="control">
                             <textarea className="textarea" type="text"
                                 onChange={e => {
                                     setFormData({ ...formData, notes: e.target.value });
                                     console.log(formData.notes)
                                 }} >
                             </textarea>
-                            <span className="icon is-small is-left">
-                                {note}
-                            </span>
                         </div>
                     </div>
                     <div id="file-js-example" className="file is-info my-4">
