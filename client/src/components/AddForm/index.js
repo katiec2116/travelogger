@@ -5,7 +5,8 @@ function AddForm() {
         {
             location: "",
             date: "",
-            notes: ""
+            notes: "",
+            images:[]
         }
     )
 
@@ -59,16 +60,24 @@ function AddForm() {
                             </textarea>
                         </div>
                     </div>
-                    <div className="file mb-3 is-link">
+                    <div id="file-js-example" className="file is-info is-small my-4">
                         <label className="file-label">
-                            <input className="file-input" type="file" name="resume"/>
+                            <input className="file-input" type="file" name="images"
+                            onChange={e => {
+                                const oldImages = [formData.images];
+                                oldImages.push(e.target.value);
+                                console.log(oldImages)
+                                setFormData({ ...formData, images: e.target.value });
+                                // console.log(formData.images)
+                            }} />
                                 <span className="file-cta">
                                     <span className="file-label">
                                         Choose a file…
-                                        </span>
+                                    </span>
                                 </span>
                         </label>
-                    </div>
+                        </div>
+
                         <div className="field is-grouped">
                             <div className="control">
                                 <button className="button" onClick={onSubmit}>Add</button>
