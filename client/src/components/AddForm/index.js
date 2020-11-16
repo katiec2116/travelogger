@@ -12,6 +12,7 @@ function AddForm() {
             location: "",
             date: "",
             notes: "",
+            latLong:"",
             images:[]
         }
     )
@@ -22,7 +23,11 @@ function AddForm() {
        ;
     };
 
-    
+    const mapQuest = (location) => {
+        API.location(location)
+        .then(res => setFormData({...formData, latLong:(res.data.results[0].locations[0].displayLatLng)}))
+
+    }
 
 
     return (
@@ -36,8 +41,8 @@ function AddForm() {
                             <input className="input" type="text"
                                 onChange={e => {
                                     setFormData({ ...formData, location: e.target.value });
-                                    console.log(e.target.value)
-                                   }} />
+                                    console.log( e.target.value)
+                                    mapQuest(e.target.value)}} />
                             <span className="icon is-small is-left">
                                 {plane}
                             </span>
