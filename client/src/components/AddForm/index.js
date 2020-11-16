@@ -1,4 +1,10 @@
 import React, { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlane, faStickyNote, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
+
+const plane = <FontAwesomeIcon icon={faPlane} />
+const note = <FontAwesomeIcon icon={faStickyNote} />
+const calendar = <FontAwesomeIcon icon={faCalendarAlt} />
 function AddForm() {
 
     const [formData, setFormData] = useState(
@@ -13,6 +19,7 @@ function AddForm() {
     const onSubmit = e => {
         e.preventDefault();
         console.log(formData)
+       ;
     };
 
 
@@ -23,14 +30,14 @@ function AddForm() {
 
                     <div className="field">
                         <label className="label">Where to?</label>
-                        <div className="control has-icons-left has-icons-right">
+                        <div className="control has-icons-left">
                             <input className="input" type="text"
                                 onChange={e => {
                                     setFormData({ ...formData, location: e.target.value });
                                     console.log(formData.location)
                                 }} />
                             <span className="icon is-small is-left">
-                                <i className="fas fa-plane"></i>
+                                {plane}
                             </span>
                         </div>
                     </div>
@@ -43,24 +50,27 @@ function AddForm() {
                                     setFormData({ ...formData, date: e.target.value });
                                     console.log(formData.date)
                                 }} />
-                            <span className="icon is-small is-left">
-                                <i className="fas fa-clock"></i>
+                                <span className="icon is-small is-left">
+                                {calendar}
                             </span>
                         </div>
                     </div>
 
                     <div className="field">
                         <label className="label">Notes:</label>
-                        <div className="control">
+                        <div className="control  has-icons-left">
                             <textarea className="textarea" type="text"
                                 onChange={e => {
                                     setFormData({ ...formData, notes: e.target.value });
                                     console.log(formData.notes)
                                 }} >
                             </textarea>
+                            <span className="icon is-small is-left">
+                                {note}
+                            </span>
                         </div>
                     </div>
-                    <div id="file-js-example" className="file is-info is-small my-4">
+                    <div id="file-js-example" className="file is-info my-4">
                         <label className="file-label">
                             <input className="file-input" type="file" name="images"
                             onChange={e => {
@@ -72,7 +82,7 @@ function AddForm() {
                             }} />
                                 <span className="file-cta">
                                     <span className="file-label">
-                                        Choose a file…
+                                        Upload Images
                                     </span>
                                 </span>
                         </label>
