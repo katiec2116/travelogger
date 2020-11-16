@@ -9,8 +9,9 @@ import Auth from "./utils/Auth";
 import Login from "./pages/Login";
 import Initial from "./pages/Initial"
 import Register from "./pages/Register";
-import AddTrip from "./pages/AddTrip"
-import Nav from "./components/Nav"
+import Explore from "./pages/Explore";
+import AddTrip from "./pages/AddTrip";
+import Nav from "./components/Nav";
 import 'bulma/css/bulma.css'
 // import { Container } from "./components/Grid";
 import ProtectedRoute from "./pages/ProtectedRoute";
@@ -28,6 +29,7 @@ const AuthExample = () => (
 					<Route exact path="/" component=   {Initial} />
 						<Route path="/login" component={Login} />
 						<Route path="/register" component={Register} />
+						<Route  path ="/explore/:id" component ={Explore} />
             			<Route  path ="/addtrip/:id" component ={AddTrip} />
 						<PrivateRoute path="/protected" component={ProtectedRoute} />
 					</Switch>
