@@ -11,11 +11,29 @@ module.exports = {
 				.then(userData => {
 					console.log(userData);
 					const { _id, username } = userData;
-					return res.status(200).json({
+					return (res.status(200).json({
 						id: _id,
 						username,
 						authenticated: true
-					})
+					}), res.send(userData))
+				})
+		} else {
+			return res.status(401).json({
+				error: 'User is not authenticated',
+				authenticated: false
+			});
+		}
+	},
+	getTrips: function (req, res) {
+
+		const { user } = req.session.passport
+
+		if (user) {
+			User.findOne({ username: user })
+				.then(userData => {
+					console.log(userData);
+					const { _id, username } = userData;
+					return res.send(userData)
 				})
 		} else {
 			return res.status(401).json({

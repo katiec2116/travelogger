@@ -20,6 +20,9 @@ router.route("/logout")
 router.route("/user")
   .get(usersController.getUser);
 
+router.route("/trips")
+.get(usersController.getTrips);
+
 router.route("/:id")
   .put(usersController.addTrip);
 
