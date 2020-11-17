@@ -1,12 +1,13 @@
 import React, { useEffect, useContext } from 'react'
-import Explore from "../Explore"
 import { UserContext } from "../../utils/UserContext";
 
 
 function MyTrips() {
 
     const [user, dispatch] = useContext(UserContext)
-	console.log(user)
+    console.log(user)
+    
+    let trips;
 
 	useEffect(() => {
 		fetch('api/users/trips', {
@@ -19,7 +20,8 @@ function MyTrips() {
 			})
 			.then(data => {
                 console.log("this is data");
-				console.log(data.trips);
+                console.log(data.trips);
+                trips = data.trips;
 	
                 return console.log("done");
 			})
