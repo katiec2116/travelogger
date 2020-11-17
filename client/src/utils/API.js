@@ -1,4 +1,6 @@
 import axios from "axios";
+// const yelp = require('yelp-fusion');
+// const client = yelp.client('YOUR_API_KEY');
 
 export default {
 
@@ -24,6 +26,21 @@ addTrip: function (trips, id) {
 
 location: function(location){
     return axios.get(`http://www.mapquestapi.com/geocoding/v1/address?key=	JG30h6celAzQfuBmyuO2k0g4rAjh7BZc&location=${location}`);
+  },
+
+  getYelp: function(lat,long){
+    return axios({
+      method: "GET",
+      url: "https://api.yelp.com/v3/businesses/search", 
+      headers: {
+          Authorization: 'Bearer fyRq-3sgxzlZ6w3T3w7kf41-O0OV49NoQDtQpqwSNhzk-jhRfUt7981mIsbBptOahMSDeGaJV7TIh6udxJDu6o2Jb3j4W8SsMTJEaF0mFPfwkCLI2TwFV5GVukZrX3Yx'
+      },
+      params: {
+          latitude: lat,
+          longitude:long,
+          categories: 'breakfast_brunch',
+        }
+    }).then((res) => console.log(res));
   },
 
   getMyTrips: function(id){

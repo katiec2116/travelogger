@@ -2,6 +2,7 @@ import React from 'react'
 import AddForm from "../../components/AddForm"
 import API from "../../utils/API"
 import Map from "../../components/Map"
+import Yelp from "../../components/Yelp"
 
 class AddTrip extends React.Component {
 
@@ -60,11 +61,17 @@ class AddTrip extends React.Component {
         return (
             <div>
                 <div className="columns">
-                    <AddForm
-                        onSubmit={this.onSubmit}
-                        handleInputChange={this.handleInputChange}
-                        handleLocation={this.handleLocation}
-                        handleImages={this.handleImages} />
+                    <div className="column is-two-fifths">
+                        <AddForm
+                            onSubmit={this.onSubmit}
+                            handleInputChange={this.handleInputChange}
+                            handleLocation={this.handleLocation}
+                            handleImages={this.handleImages} />
+                    </div>
+                    <div className="column is-three-fifth">
+                        <Map />
+                        <Yelp data={this.state} />
+                    </div>
                 </div>
             </div>
         );

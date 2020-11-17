@@ -1,11 +1,39 @@
-import React from 'react'
+import React from 'react';
+import axios from "axios";
 
-function Yelp() {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+class Yelp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            long: -81,
+            lat: 27
+        };
+    }
 
-export default Yelp
+    componentDidMount() {
+        axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?latitude=${this.state.lat}&longitude=${this.state.long}`, {
+            headers: {
+                Authorization: `Bearer fyRq-3sgxzlZ6w3T3w7kf41-O0OV49NoQDtQpqwSNhzk-jhRfUt7981mIsbBptOahMSDeGaJV7TIh6udxJDu6o2Jb3j4W8SsMTJEaF0mFPfwkCLI2TwFV5GVukZrX3Yx`
+            },
+            params: {
+                categories: 'restaurant',
+            }
+        })
+            .then((res) => {
+                console.log(res)
+            })
+            .catch((err) => {
+                console.log('error')
+            })
+        }
+
+        render(){
+            return (
+                <div>
+
+                </div>
+            )
+        }
+    }
+
+    export default Yelp

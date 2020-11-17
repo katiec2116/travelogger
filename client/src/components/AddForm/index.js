@@ -9,7 +9,6 @@ function AddForm(props) {
 
 
     return (
-        <div className="column is-5 ml-5">
             <div className="box mt-6">
                 <div className="content">
 
@@ -36,7 +35,7 @@ function AddForm(props) {
                         </div>
                     </div>
                     <label className="label">Already Been?</label>
-                    <div className="select">
+                    <div className="select mb-3">
                         <select name="been" onChange={props.handleInputChange}>
                             <option value='no'>No</option>
                             <option value='yes'>Yes</option>
@@ -75,9 +74,6 @@ function AddForm(props) {
                     </div>
                 </div>
             </div>
-        </div>
-
-
     );
 }
 
