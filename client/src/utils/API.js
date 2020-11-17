@@ -4,24 +4,26 @@ export default {
 
   register: function(username, password) {
     return axios({
-      mthod: "POST",
+      method: "POST",
       data: {username: username,
         password: password
       },
       withCredential: true,
       url: "/api/users/signup"
   }).then((res) => console.log(res));
-}
+},
 
-  // getUsers: function() {
-  //   return axios.get("/api/users");
-  // },
+addTrip: function (trips, id) {
+  return axios({
+      method: "PUT",
+      data: trips,
+      withCredential:true,
+      url:"/api/users/" + id
+    }).then((res) => console.log(res));
+  },
 
-  // getUser: function(username) {
-  //   return axios.post("/api/users/login", username);
-  // },
+location: function(location){
+    return axios.get(`http://www.mapquestapi.com/geocoding/v1/address?key=	JG30h6celAzQfuBmyuO2k0g4rAjh7BZc&location=${location}`);
+  },
 
-  // deleteUser: function(username) {
-  //   return axios.delete("/api/user/" + username);
-  // },
 };

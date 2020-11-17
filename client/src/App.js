@@ -20,7 +20,7 @@ import { UserProvider } from "./utils/UserContext";
 
 //Now we have all the stuff we need .. let's render some components with the Router
 const AuthExample = () => (
-	<UserProvider >
+	<UserProvider>
 		<Router>
 			<div>
 				<div>

@@ -1,5 +1,9 @@
 import React, { useRef } from 'react'
-// import Card from "../Card"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser, faUnlock } from '@fortawesome/free-solid-svg-icons'
+
+const user = <FontAwesomeIcon icon={faUser} />
+const lock = <FontAwesomeIcon icon={faUnlock} />
 
 function LoginForm({ onLogin }) {
 
@@ -9,7 +13,7 @@ function LoginForm({ onLogin }) {
 
 	return (
 		<div>
-            <h1>Login with your Username and Password</h1>
+			<h3>Login</h3>
 			<form
 				ref={formRef}
 				onSubmit={(e) => {
@@ -20,12 +24,23 @@ function LoginForm({ onLogin }) {
 					});
 				}}
 			>
-				<div className="form-group">
-					<input className="form-control" ref={userNameRef} type='text' name="username" placeholder='Enter Username' /><br />
-					<input className="form-control" ref={passwordRef} type='password' name="password" placeholder='Password' /><br />
-					<button className="btn btn-success" type='submit'>
-						Submit
+				<div className="field">
+					<div className="control has-icons-left has-icons-right">
+						<input className="input mb-3" ref={userNameRef} type='text' name="username" placeholder='Enter Username' />
+						<span className="icon is-small is-left">
+							{user}
+						</span>
+						<br />
+					</div>
+					<div className="control has-icons-left has-icons-right">
+						<input className="input mb-3" ref={passwordRef} type='password' name="password" placeholder='Password' />
+						<span className="icon is-small is-left">
+							{lock}
+						</span><br />
+						<button className="button is-success" type='submit'>
+							Submit
 						</button>
+					</div>
 				</div>
 			</form>
 		</div>
