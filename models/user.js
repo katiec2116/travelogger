@@ -18,6 +18,9 @@ const User = new Schema(
               date: {
                 type: String,
               },
+              been: {
+                type: String
+              },
               lat: {
                 type: Number
               },
@@ -27,9 +30,11 @@ const User = new Schema(
               notes: {
                 type: String
               },
-              images: [{
-                type: String
-              }]
+              images: [
+                  {
+                type: String,
+              }
+            ]
             }
           ]
     },

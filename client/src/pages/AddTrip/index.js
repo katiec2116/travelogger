@@ -1,29 +1,26 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import AddForm from "../../components/AddForm"
 import API from "../../utils/API"
-import { UserContext } from "../../utils/UserContext"
-
-
+import Map from "../../components/Map"
 
 class AddTrip extends React.Component {
 
     state = {
-            location: "",
-            date: "",
-            notes: "",
-            lat: "",
-            long: "",
-            images:[]
-        }
+        location: "",
+        date: "",
+        been:"",
+        notes: "",
+        lat: "",
+        long: "",
+        images: []
+    }
 
-
-     onSubmit = e => {
+    onSubmit = e => {
         e.preventDefault();
         const id = localStorage.getItem('user')
         console.log(id)
-        console.log("this.state " +this.state)
-        API.addTrip(this.state, id)
-       ;
+        console.log("this.state " + this.state)
+        API.addTrip(this.state, id);
     };
 
     handleInputChange = e => {
@@ -41,39 +38,37 @@ class AddTrip extends React.Component {
         this.setState({ ...this.state, images: images });
         console.log(e.target.value)
         console.log(this.state)
-        }
+    }
 
     handleLocation = e => {
         this.mapQuest(e.target.value);
         console.log(e.target.value)
-        
+
     };
 
-    mapQuest = (location) =>{
+    mapQuest = (location) => {
         API.location(location)
-        .then(res => this.setState(
-            {...this.state, lat:(res.data.results[0].locations[0].latLng.lat), 
-            long:(res.data.results[0].locations[0].latLng.lng), location:location
-            }))
-            .then(
-                console.log(this.state))
+            .then(res => this.setState(
+                {
+                    ...this.state, lat: (res.data.results[0].locations[0].latLng.lat),
+                    long: (res.data.results[0].locations[0].latLng.lng), location: location
+                }))
     }
 
 
-    render(){
-    return (
-        <div>
-            <div className="columns">
-                <AddForm 
-                onSubmit={this.onSubmit} 
-                handleInputChange={this.handleInputChange} 
-                handleLocation={this.handleLocation} 
-                handleImages={this.handleImages}/>
+    render() {
+        return (
+            <div>
+                <div className="columns">
+                    <AddForm
+                        onSubmit={this.onSubmit}
+                        handleInputChange={this.handleInputChange}
+                        handleLocation={this.handleLocation}
+                        handleImages={this.handleImages} />
+                </div>
             </div>
-        </div>
-
-    );
-
-}}
+        );
+    }
+}
 
 export default AddTrip;
