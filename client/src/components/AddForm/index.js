@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlane, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 
@@ -29,19 +29,26 @@ function AddForm(props) {
                         <div className="control has-icons-left">
                             <input className="input" type="date" name="date"
                                 onChange={props.handleInputChange}
-                                />
-                                <span className="icon is-small is-left">
+                            />
+                            <span className="icon is-small is-left">
                                 {calendar}
                             </span>
                         </div>
                     </div>
+                    <label className="label">Already Been?</label>
+                    <div className="select">
+                        <select name="been" onChange={props.handleInputChange}>
+                            <option value='no'>No</option>
+                            <option value='yes'>Yes</option>
+                        </select>
+                        </div>
 
                     <div className="field">
                         <label className="label">Notes:</label>
                         <div className="control">
                             <textarea className="textarea" type="text" name="notes"
                                 onChange={props.handleInputChange}
-                                >
+                            >
                             </textarea>
                         </div>
                     </div>
@@ -50,25 +57,25 @@ function AddForm(props) {
                             <input className="file-input" type="file" name="images"
                                 onChange={props.handleImages}
                             />
-                                <span className="file-cta">
-                                    <span className="file-label">
-                                        Upload Images
+                            <span className="file-cta">
+                                <span className="file-label">
+                                    Upload Images
                                     </span>
-                                </span>
+                            </span>
                         </label>
-                        </div>
+                    </div>
 
-                        <div className="field is-grouped">
-                            <div className="control">
-                                <button className="button" onClick={props.onSubmit}>Add</button>
-                            </div>
-                            <div className="control">
-                                <button className="button is-light">Cancel</button>
-                            </div>
+                    <div className="field is-grouped">
+                        <div className="control">
+                            <button className="button" onClick={props.onSubmit}>Add</button>
+                        </div>
+                        <div className="control">
+                            <button className="button is-light">Cancel</button>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
 
     );

@@ -3,7 +3,6 @@ const passport = require('passport');
 
 module.exports = {
 	getUser: function (req, res) {
-
 		const { user } = req.session.passport
 
 		if (user) {
@@ -73,6 +72,10 @@ module.exports = {
 		User
 		.findByIdAndUpdate({_id:req.params.id} ,{  $push: { trips: req.body }})
 		.then(results => console.log("results "+results))
-	}
+	},
 
+	getMyTrips: function (req, res) {
+			User.findById({ _id: req.params.id })
+			.then(results => res.json(results))
+	}
 };
