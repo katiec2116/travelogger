@@ -36,24 +36,27 @@ class AddTrip extends React.Component {
         });
     };
     handleImages = e => {
-        this.mapQuest(e.target.value);
-        const oldImages = [this.state.images];
-        const newImages = oldImages.push(e.target.value);
-        this.setState({ ...this.state, images: [newImages] });
+        const images = this.state.images;
+        images.push(e.target.value);
+        this.setState({ ...this.state, images: images });
+        console.log(e.target.value)
+        console.log(this.state)
         }
 
     handleLocation = e => {
         this.mapQuest(e.target.value);
+        console.log(e.target.value)
         
     };
 
     mapQuest = (location) =>{
         API.location(location)
         .then(res => this.setState(
-            {...this.state, lat:(res.data.results[0].locations[0].displayLatLng.lat), 
-            long:(res.data.results[0].locations[0].displayLatLng.lng), location:location
+            {...this.state, lat:(res.data.results[0].locations[0].latLng.lat), 
+            long:(res.data.results[0].locations[0].latLng.lng), location:location
             }))
-console.log(this.state)
+            .then(
+                console.log(this.state))
     }
 
 

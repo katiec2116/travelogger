@@ -7,7 +7,32 @@ const User = new Schema(
     {
         username: { type: String,  unique: true },
         password: String,
-        trips: [{ type:Schema.Types.ObjectId, ref: 'Trips' }]
+
+        trips: [
+            {
+              type: {
+                type: String,
+              },
+              location: {
+                type: String,
+              },
+              date: {
+                type: String,
+              },
+              lat: {
+                type: Number
+              },
+              long: {
+                type: Number
+              },
+              notes: {
+                type: String
+              },
+              images: [{
+                type: String
+              }]
+            }
+          ]
     },
     { timestamps: true },
 )
