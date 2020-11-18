@@ -21,6 +21,9 @@ router.route("/logout")
 router.route("/user")
   .get(usersController.getUser);
 
+router.route("/getalltrips")
+.get(usersController.getAllTrips);
+
 router.route("/:id")
   .put(usersController.addTrip)
   .get(usersController.getMyTrips);

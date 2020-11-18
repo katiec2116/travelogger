@@ -77,5 +77,10 @@ module.exports = {
 	getMyTrips: function (req, res) {
 			User.findById({ _id: req.params.id })
 			.then(results => res.json(results))
-	}
+	},
+
+	getAllTrips: function (req, res) {
+		User.find().limit(10).sort({_id: 1})
+		.then(results => res.send(results))
+}
 };
