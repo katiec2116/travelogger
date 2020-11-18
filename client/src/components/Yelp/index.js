@@ -31,11 +31,11 @@ class Yelp extends React.Component {
     }
 
 
-    componentDidUpdate(prevProps) {
+    async componentDidUpdate(prevProps) {
         console.log(prevProps)
         // Typical usage (don't forget to compare props):
         if (this.props.data !== prevProps.data) {
-            this.setState({ lat: this.props.data.lat, long: this.props.data.long });
+            await this.setState({ lat: this.props.data.lat, long: this.props.data.long });
             this.componentDidMount();
         }
     }
