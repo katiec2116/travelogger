@@ -1,13 +1,13 @@
 import logo from './logo1.png';
 import './nav.css'
 import React, { useEffect, useState, useContext } from "react";
-import { Link , useHistory} from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { UserContext } from '../../utils/UserContext';
 import AuthButton from "../AuthButton";
 
 const buttonStyle = {
     marginRight: 10
-  };
+};
 
 function Nav() {
 
@@ -37,51 +37,53 @@ function Nav() {
     if (!user) {
         return (
             <nav className="navbar" role="navigation" aria-label="main navigation">
-              <div className="navbar-brand ml-2">
-                  <Link to="/"><img src={logo} style={{ width: "100px" }} alt="logo" />
-                  </Link>
-              </div>
-              <div className="navbar-end">
-                  <div className="navbar-item">
-                          <Link style={buttonStyle}className="button is-light" to="/register">Signup</Link>
-                          <AuthButton />
-                  </div>
-                  </div>
-        </nav>
+                <div className="navbar-brand ml-2">
+                    <Link to="/"><img src={logo} style={{ width: "100px" }} alt="logo" />
+                    </Link>
+                </div>
+                <div className="navbar-end">
+                    <div className="navbar-item">
+                        <Link style={buttonStyle} className="button is-light" to="/register">Signup</Link>
+                        <AuthButton />
+                    </div>
+                </div>
+            </nav>
         )
     }
-    else{
-    return (
+    else {
+        return (
 
-        <nav className="navbar is-dark" role="navigation" aria-label="main navigation">
-            <div className="navbar-brand ml-2">
-                <Link to="/"><img src={logo} style={{ width: "100px" }} alt="logo" />
-                  </Link>
-            </div>
-
-
-            <div className="navbar-start is-pulled-right">
-                <Link className="navbar-item" to={`/explore/${user}` }>
-                    Explore
-                        </Link>
-
-                <Link className="navbar-item" to= {`/mytrips/${user}` }>
-                    My Trips
-                        </Link>
-
-                <Link className="navbar-item" to={`/addtrip/${user}` }onClick={()=>history.push('/addtrip')}>
-                    Add a Trip
-                        </Link>
-
-                <div className="navbar-item">
-                    <a className="button is-primary" href="/login">
-                        Logout
-                        </a>
+            <nav className="navbar is-dark" role="navigation" aria-label="main navigation">
+                <div className="navbar-brand ml-2">
+                    <Link to="/"><img src={logo} style={{ width: "100px" }} alt="logo" />
+                    </Link>
                 </div>
-            </div>
-        </nav>
 
-    )
-}}
+
+                <div className="navbar-start is-pulled-right">
+                    <Link className="navbar-item" to={`/explore/${user}`}>
+                        Explore
+                        </Link>
+
+                    <Link className="navbar-item" to={`/mytrips/${user}`}>
+                        My Trips
+                        </Link>
+
+                    <Link className="navbar-item" to={`/addtrip/${user}`} onClick={() => history.push('/addtrip')}>
+                        Add a Trip
+                        </Link>
+                    <div className="navbar-end">
+                        <div className="navbar-item">
+                            <a className="button is-primary" href="/login">
+                                Logout
+                        </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+        )
+    }
+}
 
 export default Nav

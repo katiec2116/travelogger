@@ -52,9 +52,7 @@ class ExploreMap extends React.Component {
         return (
             
             <div className="mt-6">
-                <div className='sidebarStyle'>
-                    <div>Longitude: {this.state.long} | Latitude: {this.state.lat} | Zoom: {this.state.zoom}</div>
-                </div>
+     
                 <div ref={el => this.mapContainer = el} className='mapContainer' />
             </div>
         )
