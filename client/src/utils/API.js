@@ -2,8 +2,8 @@ import axios from "axios";
 
 export default {
 
-  register: function(username, password) {
-    return axios({
+register: function(username, password) {
+  return axios({
       method: "POST",
       data: {username: username,
         password: password
@@ -23,17 +23,19 @@ addTrip: function (trips, id) {
   },
 
 location: function(location){
-    return axios.get(`http://www.mapquestapi.com/geocoding/v1/address?key=	JG30h6celAzQfuBmyuO2k0g4rAjh7BZc&location=${location}`);
+  return axios.get(`http://www.mapquestapi.com/geocoding/v1/address?key=	JG30h6celAzQfuBmyuO2k0g4rAjh7BZc&location=${location}`);
   },
 
-
-  getMyTrips: function(id){
-    return axios({
+getMyTrips: function(id){
+  return axios({
       method: "GET",
       withCredential:true,
       url:"/api/users/" + id
     });
   },
 
+  getUsers: function(){
+    return axios.get("/api/users/getusers");
+    },
 
 };

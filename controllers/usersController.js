@@ -80,7 +80,12 @@ module.exports = {
 	},
 
 	getAllTrips: function (req, res) {
-		User.find().limit(10).sort({_id: 1})
+		User.find().limit(10).sort({_id:1})
 		.then(results => res.send(results))
-}
+},
+
+	getUsers: function (req, res) {
+	User.find()
+	.then(results => res.send(results))
+},
 };
