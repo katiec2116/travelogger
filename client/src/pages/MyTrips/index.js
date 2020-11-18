@@ -1,13 +1,12 @@
 import React from 'react'
 import API from "../../utils/API"
-import Map from "../../components/Map"
 
 class MyTrips extends React.Component {
 
     state = {
         myTrips: []
     }
-
+    
     componentDidMount() {
         const id = localStorage.getItem('user')
         console.log("hi")
@@ -15,7 +14,6 @@ class MyTrips extends React.Component {
             .then(results => this.setState({ myTrips: results.data.trips }))
             .catch(err => console.log(err))
     }
-
 
 
     render() {

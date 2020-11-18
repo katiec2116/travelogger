@@ -26,6 +26,7 @@ location: function(location){
     return axios.get(`http://www.mapquestapi.com/geocoding/v1/address?key=	JG30h6celAzQfuBmyuO2k0g4rAjh7BZc&location=${location}`);
   },
 
+
   getMyTrips: function(id){
     return axios({
       method: "GET",
