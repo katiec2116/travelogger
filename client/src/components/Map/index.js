@@ -21,6 +21,9 @@ class Map extends React.Component {
             center: [this.state.long,this.state.lat],
             zoom: this.state.zoom
         });
+        this.marker = new mapboxgl.Marker()
+            .setLngLat([this.state.long,this.state.lat])
+            .addTo(this.map)
     }
 
 
