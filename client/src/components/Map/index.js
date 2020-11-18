@@ -1,9 +1,6 @@
 import React from 'react';
 import mapboxgl , { Marker } from 'mapbox-gl';
-// import './style.css';
-mapboxgl.accessToken = 'pk.eyJ1Ijoia2F0aWVjMjExNiIsImEiOiJja2Zpc28xN24waTNmMzFwbTRkMnJyb2xvIn0.DDksIwI6MKkDeLG_jFpUoQ';
-
-
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX;
 
 
 class Map extends React.Component {

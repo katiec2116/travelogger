@@ -13,7 +13,6 @@ function Nav() {
     const history = useHistory();
 
     const [user, setUser] = useContext(UserContext)
-    console.log(user)
 
     const [open, setOpen] = useState(false);
     const [width, setWidth] = useState(window.innerWidth);

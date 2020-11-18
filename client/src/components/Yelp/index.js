@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from "axios";
+const yelp_key = process.env.REACT_APP_YELP
 
 class Yelp extends React.Component {
     constructor(props) {
@@ -14,7 +15,7 @@ class Yelp extends React.Component {
     componentDidMount() {
         axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?latitude=${this.state.lat}&longitude=${this.state.long}`, {
             headers: {
-                Authorization: `Bearer fyRq-3sgxzlZ6w3T3w7kf41-O0OV49NoQDtQpqwSNhzk-jhRfUt7981mIsbBptOahMSDeGaJV7TIh6udxJDu6o2Jb3j4W8SsMTJEaF0mFPfwkCLI2TwFV5GVukZrX3Yx`
+                Authorization: yelp_key
             },
             params: {
                 categories: 'restaurant',
