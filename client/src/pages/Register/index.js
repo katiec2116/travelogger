@@ -4,14 +4,19 @@ import Register from "../../components/Register"
 
 function inital() {
     return (
-      <div>
-      <div className="columns">
-        <div className="column is-4 is-offset-4 has-text-centered">
-        <Logo />
-        <Register />
+      <section className="hero">
+      <div class="hero-body mt-6">
+        <div className="columns">
+          <div className="column is-6 is-offset-3 has-text-centered">
+            <div class="welcome is-rounded has-text-centered mt-6">
+              <Logo />
+              <div className="logoTitle pb-6">Travelogger</div>
+              <Register />
+            </div>
+          </div>
+        </div>
       </div>
-      </div>
-      </div>
+    </section>
     );
   }
   

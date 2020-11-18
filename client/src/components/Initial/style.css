@@ -1,0 +1,12 @@
+.logoTitle{
+    font-family: 'Pacifico', cursive;
+    font-size: 4em;
+    color:black;
+    margin-top:-35px;
+}
+
+.blurb{
+    font-family: 'Open Sans', sans-serif;
+    font-size:180%;
+    letter-spacing: 3px;;
+}

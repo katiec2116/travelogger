@@ -1,4 +1,5 @@
-import logo from './logo2.png';
+import logo from './logo1.png';
+import './nav.css'
 import React, { useEffect, useState, useContext } from "react";
 import { Link , useHistory} from "react-router-dom";
 import { UserContext } from '../../utils/UserContext';
@@ -35,14 +36,16 @@ function Nav() {
 
     if (!user) {
         return (
-            <nav className="navbar is-dark" role="navigation" aria-label="main navigation">
+            <nav className="navbar" role="navigation" aria-label="main navigation">
               <div className="navbar-brand ml-2">
                   <Link to="/"><img src={logo} style={{ width: "100px" }} alt="logo" />
                   </Link>
               </div>
-                  <div className="navbar-item ">
-                          <Link style={buttonStyle}className="button is-link" to="/register">Signup</Link>
+              <div className="navbar-end">
+                  <div className="navbar-item">
+                          <Link style={buttonStyle}className="button is-light" to="/register">Signup</Link>
                           <AuthButton />
+                  </div>
                   </div>
         </nav>
         )

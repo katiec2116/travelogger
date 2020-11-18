@@ -47,7 +47,7 @@ function Login() {
 
     return (
 
-        <div className="box">
+        <div style={{width:"60%", marginLeft:"auto", marginRight:"auto"}}>
             <div className="content">
                 <LoginForm onLogin={login} />
             </div>

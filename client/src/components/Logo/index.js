@@ -1,9 +1,9 @@
 import React from "react";
-import Travelogger from './travelogger.png';
+import Travelogger from './logo1.png';
 
 function Logo() {
   return (
-    <img className="mt-6" src={Travelogger} alt="logo" style={{height:"250px"}} />
+    <img className=" " src={Travelogger} alt="logo" style={{height:"250px"}} />
   );
 }
 

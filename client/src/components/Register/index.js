@@ -50,7 +50,7 @@ function Register() {
 	}
 
 	return (
-		<div className="box">
+		<div style={{width:"60%", marginLeft:"auto", marginRight:"auto"}}>
 			<div className="content">
 				<RegisterForm onRegister={register} />
 			</div>
