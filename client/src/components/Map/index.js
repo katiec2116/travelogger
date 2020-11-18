@@ -1,5 +1,5 @@
 import React from 'react';
-import mapboxgl , { Marker } from 'mapbox-gl';
+import mapboxgl from 'mapbox-gl';
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX;
 
 
@@ -7,8 +7,8 @@ class Map extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            long: props.data.long,
-            lat: props.data.lat,
+            long: props.long,
+            lat: props.lat,
             zoom: 0
         };
     }
@@ -29,12 +29,15 @@ class Map extends React.Component {
 
    async componentDidUpdate(prevProps) {
         // Typical usage (don't forget to compare props):
-        if (this.props.data !== prevProps.data) {
-          await this.setState({ lat:this.props.data.lat, long:this.props.data.long, zoom:7});
-        //   console.log(this.state)
+        if (this.props.lat !== prevProps.lat) {
+          await this.setState({ lat:this.props.lat, zoom:7});
           this.componentDidMount();
         }
+        if (this.props.long !== prevProps.long) {
+            await this.setState({ long:this.props.long, zoom:7});
+            this.componentDidMount();
       }
+    }
 
     
 
