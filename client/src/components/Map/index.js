@@ -9,29 +9,30 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoia2F0aWVjMjExNiIsImEiOiJja2Zpc28xN24waTNmMzFwb
 class Map extends React.Component {
     constructor(props) {
         super(props);
-        console.log(props)
         this.state = {
-            long: -81,
-            lat: 27,
-            zoom: 2
+            long: props.data.long,
+            lat: props.data.lat,
+            zoom: 0
         };
     }
 
     componentDidMount() {
+        console.log(this.state)
          this.map = new mapboxgl.Map({
             container: this.mapContainer,
             style: 'mapbox://styles/mapbox/streets-v11',
-            center: [this.state.lat,this.state.long],
-            zoom: 2
+            center: [this.state.long,this.state.lat],
+            zoom: this.state.zoom
         });
     }
 
 
-    componentDidUpdate(prevProps) {
+   async componentDidUpdate(prevProps) {
         // Typical usage (don't forget to compare props):
         if (this.props.data !== prevProps.data) {
-          this.setState({...this.state, lat:this.props.data.lat, long:this.props.data.long});
-          console.log("this.state" , this.state.lat, this.state.long)
+          await this.setState({ lat:this.props.data.lat, long:this.props.data.long, zoom:7});
+        //   console.log(this.state)
+          this.componentDidMount();
         }
       }
 
