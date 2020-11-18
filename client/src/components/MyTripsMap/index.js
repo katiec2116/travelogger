@@ -1,5 +1,6 @@
 import React from 'react';
 import mapboxgl from 'mapbox-gl';
+import API from "../../utils/API"
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX;
 
 
@@ -7,42 +8,43 @@ class Map extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            trips:[],
             long: props.long,
             lat: props.lat,
             zoom: 0
         };
     }
 
-    componentDidMount() {
-        console.log(this.state)
+     componentDidMount() {
          this.map = new mapboxgl.Map({
             container: this.mapContainer,
             style: 'mapbox://styles/mapbox/streets-v11',
             center: [this.state.long,this.state.lat],
             zoom: this.state.zoom
         });
-        this.marker = new mapboxgl.Marker()
-            .setLngLat([this.state.long,this.state.lat])
-            .addTo(this.map)
     }
 
+   async componentDidUpdate() {
+    const id = localStorage.getItem('user');
+    if (!this.state.trips.length){
+   await  API.getMyTrips(id)
+        .then(results => 
+            this.setState({ ...this.state, trips: results.data.trips })).then(console.log(this.state))
+        .catch(err => console.log(err))
+    }
 
-   async componentDidUpdate(prevProps) {
-        // Typical usage (don't forget to compare props):
-        if (this.props.lat !== prevProps.lat) {
-          await this.setState({ lat:this.props.lat, zoom:7});
-          this.componentDidMount();
-        }
-        if (this.props.long !== prevProps.long) {
-            await this.setState({ long:this.props.long, zoom:7});
-            this.componentDidMount();
-      }
+    this.props.all.map(trip => (
+        // console.log(trip.lat , trip.long)))
+        this.marker = new mapboxgl.Marker()
+        .setLngLat([trip.long, trip.lat])
+        .addTo(this.map)))
     }
 
     
 
     render() {
         return (
+            
             <div className="mt-6">
                 <div className='sidebarStyle'>
                     <div>Longitude: {this.state.long} | Latitude: {this.state.lat} | Zoom: {this.state.zoom}</div>
