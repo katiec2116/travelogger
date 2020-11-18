@@ -1,12 +1,13 @@
 import React from "react";
 import API from "../../utils/API"
+import ExploreMap from "../../components/ExploreMap"
 
 
 let trips = [];
 class Explore extends React.Component {
 
     state = {
-        trips: []
+        users: []
     }
 
     
@@ -34,25 +35,32 @@ class Explore extends React.Component {
 			});
 
 	}
+     
+    // componentDidMount() {
+    //     API.getUsers()
+    //         .then(results => this.setState({ users: results.data.trips }))
+    //         .catch(err => console.log(err))
+    // }
 
-    render(){
+
+    render() {
         return (
-            <div className="container">
-            <div className="columns">
-                <div className="column is-9 py-6">
-                    Map goes here
-                </div>
-                <div className="column is-3 py-6">
-                <aside className="menu" style={{border: '1px solid black'}}>
-                    <ul className="menu-list">
-                        {this.state.trips.map(trip => (
-                            <li key={trip._id}>{trip.username} added: <span>{trip.trips.date}</span>  to their trips!</li>
-                        ))}
-                    </ul>
-                </aside>
-                </div>
-            </div>
-        </div>
+            <div>
+                <div className="columns">
+                  <div className="column is-9 py-6">
+                      <ExploreMap long={-81} lat={27} all={this.state.users} />
+                  </div>
+                  <div className="column is-3 py-6">
+                      <aside className="menu" style={{border: '1px solid black'}}>
+                          <ul className="menu-list">
+                              {this.state.trips.map(trip => (
+                              <li key={trip._id}>{trip.username} added: <span>{trip.trips.date}</span>  to their trips!</li>
+                              ))}
+                          </ul>
+                      </aside>
+                    </div>
+              </div>
+          </div>
         );
     }
 }

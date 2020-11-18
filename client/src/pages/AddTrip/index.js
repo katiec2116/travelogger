@@ -3,9 +3,8 @@ import AddForm from "../../components/AddForm"
 import API from "../../utils/API"
 import Yelp from "../../components/Yelp"
 import Map from "../../components/Map"
-import mapboxgl from 'mapbox-gl';
 import './style.css';
-mapboxgl.accessToken = 'pk.eyJ1Ijoia2F0aWVjMjExNiIsImEiOiJja2Zpc28xN24waTNmMzFwbTRkMnJyb2xvIn0.DDksIwI6MKkDeLG_jFpUoQ';
+
 
 
 class AddTrip extends React.Component {
@@ -21,7 +20,7 @@ class AddTrip extends React.Component {
     }
 
     onSubmit = e => {
-        e.preventDefault();
+        // e.preventDefault();
         const id = localStorage.getItem('user')
         console.log(id)
         console.log("this.state " + this.state)
@@ -48,9 +47,13 @@ class AddTrip extends React.Component {
 
     handleLocation = e => {
         this.mapQuest(e.target.value);
+        this.setState({
+            ...this.state, location: e.target.value
+        });
         console.log(e.target.value)
 
     };
+    
 
 
     mapQuest = (location) => {
@@ -75,7 +78,7 @@ class AddTrip extends React.Component {
                         handleImages={this.handleImages}/>
                     </div>
                     <div className="column is-three-fifths">
-                        <Map data={this.state}/>
+                        <Map lat={this.state.lat} long={this.state.long}/>
                         <Yelp data={this.state} />
                     </div>
                 </div>
