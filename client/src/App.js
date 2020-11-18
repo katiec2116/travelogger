@@ -33,7 +33,7 @@ const AuthExample = () => (
 						<Route  path ="/explore/:id" component ={Explore} />
 						<Route  path ="/mytrips/:id" component ={MyTrips} />
             			<Route  path ="/addtrip/:id" component ={AddTrip} />
-						<PrivateRoute path="/protected" component={ProtectedRoute} />
+						<PrivateRoute path="/explore" component={ProtectedRoute} />
 					</Switch>
 				</div>
 			</div>
