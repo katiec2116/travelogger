@@ -6,6 +6,7 @@ import Map from "../../components/Map"
 import './style.css';
 
 
+
 class AddTrip extends React.Component {
 
     state = {
