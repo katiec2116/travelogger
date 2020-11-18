@@ -46,7 +46,7 @@ class Yelp extends React.Component {
             <div>
 
                     {!this.state.restaurants.length ? (
-                        <h1 className="subtitle has-text-centered mb-6 pb-6">Aw man no restaurants in the area!</h1>
+                        <h1 className="subtitle has-text-centered my-4 pb-6">No restaurants in the area! <p> &#128546;</p></h1>
                     ) : (
                             <div>
                                 {this.state.restaurants.map(place => (
