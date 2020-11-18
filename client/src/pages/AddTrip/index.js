@@ -76,7 +76,7 @@ class AddTrip extends React.Component {
                     </div>
                     <div className="column is-three-fifths">
                         <Map data={this.state}/>
-                        {/* <Yelp data={this.state} /> */}
+                        <Yelp data={this.state} />
                     </div>
                 </div>
             </div>
