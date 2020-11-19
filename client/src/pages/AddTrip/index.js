@@ -10,6 +10,7 @@ import './style.css';
 class AddTrip extends React.Component {
 
     state = {
+        user: localStorage.getItem('user'),
         location: "",
         date: "",
         been:"",
@@ -20,11 +21,10 @@ class AddTrip extends React.Component {
     }
 
     onSubmit = e => {
-        // e.preventDefault();
-        const id = localStorage.getItem('user')
-        console.log(id)
-        console.log("this.state " + this.state)
-        API.addTrip(this.state, id);
+        e.preventDefault();
+        console.log("this.state " + this.state.location, this.state.location, this.state.lat, this.state.long, this.state.notes)
+        API.addTrip(this.state)
+        .then(res => console.log(res))
     };
 
     handleInputChange = e => {

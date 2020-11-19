@@ -4,7 +4,7 @@ const passport = require('passport');
 const usersController = require("../../controllers/usersController");
 // Matches with "/api/users"
 router.route("/")
-  .get(usersController.getUser);
+  .get(usersController.getUsers);
 
 /* Authentication Routes */
 router.route("/register")
@@ -21,17 +21,6 @@ router.route("/logout")
 router.route("/user")
   .get(usersController.getUser);
 
-router.route("/getalltrips")
-.get(usersController.getAllTrips);
 
-router.route("/:id")
-  .put(usersController.addTrip)
-  .get(usersController.getMyTrips);
-  
-router.route("/:id/:tripid")
-  .put(usersController.deleteTrip)
-
-  router.route("/getusers")
-  .get(usersController.getUsers);  
 
 module.exports = router;

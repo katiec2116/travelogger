@@ -26,11 +26,11 @@ class Map extends React.Component {
     }
 
     async componentDidUpdate() {
-        const id = localStorage.getItem('user');
+        const user = localStorage.getItem('user');
         if (!this.state.trips.length) {
-            await API.getMyTrips(id)
+            await API.getMyTrips(user)
                 .then(results =>
-                    this.setState({ ...this.state, trips: results.data.trips })).then(console.log(this.state))
+                    this.setState({ ...this.state, trips: results.data })).then(console.log(this.state))
                 .catch(err => console.log(err))
         }
 

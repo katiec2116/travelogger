@@ -15,7 +15,6 @@ import MyTrips from "./pages/MyTrips"
 import Nav from "./components/Nav";
 import NoMatch from "./pages/NoMatch"
 import 'bulma/css/bulma.css'
-// import { Container } from "./components/Grid";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import './App.css';
 import { UserProvider } from "./utils/UserContext";
