@@ -33,7 +33,8 @@ function RegisterForm({ onRegister }) {
 					</span>
 					<br />
 					<div className="control has-icons-left has-icons-right">
-					<input className="input mb-3" ref={passwordRef} type='password' name="password" placeholder='Password' />
+					<input className="input mb-3" ref={passwordRef} type='password' required pattern="[0-9]+"  name="password" placeholder='Password' />
+					<p style={{fontSize:"12px", fontWeight:"bold", marginBottom:"0px"}}>Password must contain at least one number</p>
 					<span className="icon is-small is-left">
 							{lock}
 						</span>

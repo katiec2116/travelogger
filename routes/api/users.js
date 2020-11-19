@@ -27,6 +27,9 @@ router.route("/getalltrips")
 router.route("/:id")
   .put(usersController.addTrip)
   .get(usersController.getMyTrips);
+  
+router.route("/:id/:tripid")
+  .put(usersController.deleteTrip)
 
   router.route("/getusers")
   .get(usersController.getUsers);  

@@ -34,6 +34,16 @@ getMyTrips: function(id){
     });
   },
 
+
+  deleteTrip: function (id, tripid) {
+    return axios({
+      method: "PUT",
+      withCredential: true,
+      url: "/api/users/" + id +"/" + tripid
+    }).then((res) => console.log(res));
+  },
+
+
   getUsers: function(){
     return axios.get("/api/users/getusers");
     },

@@ -1,6 +1,6 @@
 import React from 'react';
 import mapboxgl from 'mapbox-gl';
-import './style.css';
+import './myMap.css';
 import API from "../../utils/API"
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX;
 
@@ -12,7 +12,7 @@ class Map extends React.Component {
             trips: [],
             long: props.long,
             lat: props.lat,
-            zoom: 0
+            zoom: 1
         };
     }
 
@@ -57,9 +57,6 @@ class Map extends React.Component {
         return (
 
             <div className="mt-6">
-                <div className='sidebarStyle'>
-                    <div>Longitude: {this.state.long} | Latitude: {this.state.lat} | Zoom: {this.state.zoom}</div>
-                </div>
                 <div ref={el => this.mapContainer = el} className='mapContainer' />
             </div>
         )

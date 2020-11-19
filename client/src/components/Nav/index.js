@@ -36,7 +36,7 @@ function Nav() {
 
     if (!user) {
         return (
-            <nav className="navbar" role="navigation" aria-label="main navigation">
+            <nav className="navbar is-dark" role="navigation" aria-label="main navigation">
                 <div className="navbar-brand ml-2">
                     <Link to="/"><img src={logo} style={{ width: "100px" }} alt="logo" />
                     </Link>
@@ -73,11 +73,9 @@ function Nav() {
                         Add a Trip
                         </Link>
                     <div className="navbar-end">
-                        <div className="navbar-item">
-                            <a className="button is-primary" href="/login">
-                                Logout
-                        </a>
-                        </div>
+                    <div className="navbar-item">
+                        <AuthButton />
+                    </div>
                     </div>
                 </div>
             </nav>
