@@ -4,14 +4,14 @@ import API from "../../utils/API"
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX;
 
 
-class Map extends React.Component {
+class ExploreMap extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            trips:[],
-            long: props.long,
-            lat: props.lat,
-            zoom: 0
+            users:[],
+            long: 0,
+            lat: 0,
+            zoom: 2
         };
     }
 
@@ -25,20 +25,26 @@ class Map extends React.Component {
     }
 
    async componentDidUpdate() {
-    const id = localStorage.getItem('user');
-    if (!this.state.trips.length){
-   await  API.getMyTrips(id)
-        .then(results => 
-            this.setState({ ...this.state, trips: results.data.trips })).then(console.log(this.state))
-        .catch(err => console.log(err))
+       console.log(this.state.users)
+//     const id = localStorage.getItem('user');
+//     if (!this.state.trips.length){
+//    await  API.getMyTrips(id)
+//         .then(results => 
+//             this.setState({ ...this.state, trips: results.data.trips })).then(console.log(this.state))
+//         .catch(err => console.log(err))
     }
 
-    this.props.all.map(trip => (
-        // console.log(trip.lat , trip.long)))
-        this.marker = new mapboxgl.Marker()
-        .setLngLat([trip.long, trip.lat])
-        .addTo(this.map)))
-    }
+    // this.props.all.map(trip => (
+    //     this.popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
+    //         `<div> <p>Location: ${trip.location}</p><p>Notes: ${trip.notes}</p> </div>`),
+    //     this.marker = new mapboxgl.Marker({color:'rgb(153,0,153)'})
+    //     .setLngLat([trip.long, trip.lat])
+    //     .addTo(this.map)
+    //     .setPopup(this.popup))
+        
+        
+    //     )
+    // }
 
     
 
@@ -46,13 +52,11 @@ class Map extends React.Component {
         return (
             
             <div className="mt-6">
-                <div className='sidebarStyle'>
-                    <div>Longitude: {this.state.long} | Latitude: {this.state.lat} | Zoom: {this.state.zoom}</div>
-                </div>
+     
                 <div ref={el => this.mapContainer = el} className='mapContainer' />
             </div>
         )
     }
 }
 
-export default Map
+export default ExploreMap

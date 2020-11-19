@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from "axios";
+import "./yelp.css"
+import yelp from "./yelp.png"
 const yelp_key = process.env.REACT_APP_YELP
 
 class Yelp extends React.Component {
@@ -8,7 +10,7 @@ class Yelp extends React.Component {
         this.state = {
             long: -81,
             lat: 27,
-            restaurants:[]
+            restaurants: []
         };
     }
 
@@ -23,7 +25,7 @@ class Yelp extends React.Component {
         })
             .then((res) => {
                 console.log(res.data.businesses)
-                this.setState({...this.state, restaurants: res.data.businesses})
+                this.setState({ ...this.state, restaurants: res.data.businesses })
 
             })
             .catch((err) => {
@@ -43,42 +45,41 @@ class Yelp extends React.Component {
 
     render() {
         return (
-            <div>
+            <div style={{marginLeft: "auto" ,marginRight: "auto",marginTop: "20px"}}>
+                
 
-                    {!this.state.restaurants.length ? (
-                        <h1 className="subtitle has-text-centered my-4 pb-6">No restaurants in the area! <p> &#128546;</p></h1>
-                    ) : (
-                            <div>
-                                {this.state.restaurants.map(place => (
+                {!this.state.restaurants.length ? (
+                    <h1 className="subtitle has-text-centered my-4 pb-6">No restaurants in the area! <p> &#128546;</p></h1>
+                ) : (
+                        <div style={{display: "flex" ,flexWrap: "wrap", justifyContent:"space-around", alignContent: "flex-start", flexDirection: "row"}}>
+                            {this.state.restaurants.map(place => (
+                                <div className="card__wrapper box pb-0">
+                                    <div className="card__photo">
+                                    {!place.image_url ? (<img style={{height:"200px", width:"200px"}} src={yelp} alt={place.title}/>
+                                    ) : 
                                     
-
-
-                <div className="box" key={place.id}>
-                    <article className="media">
-                        <div className="media-left">
-                            <figure className="image is-64x64">
-                                <img src={place.image_url }alt="Image" />
-                            </figure>
+                                    (<img style={{height:"200px", width:"200px"}}
+                                    src={place.image_url} alt={place.title}/>)}
+                                            
+                                    </div>
+                                    <div className="restaurants-container">
+                                        <div style={{width:"200px"}}>
+                                        <span className="restaurants__name"><a href={place.url} target="_blank" className="restaurants__name-link">{place.name}</a></span>
+                                        </div>
+                                        <span>{place.display_phone}</span>
+                                        <div className="restaurants__rating">
+                                        <span className="restaurants-info__cost">{place.price}</span>
+                                            <span className={place.rating}></span>
+                                            <span className="review-counter">{place.review_count} reviews</span>
+                                        </div>
+                                        <div className="restaurants-info">
+                                            <span>{place.categories.map(type => <p className="restaurants-info__food">{type.title} </p>)}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
-                        <div className="media-content">
-                            <div className="content">
-                                
-                                    <strong>{place.name}</strong> <small>{place.location.address1}</small>
-                                    <ul>
-                                    {place.categories.map(type => (
-                                        <li>{type.title}</li>
-                                    ))}
-                                    </ul>                               
-                                
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                    ))}
-                    </div>
-                )}
-
-
+                    )}
             </div>
         )
     }

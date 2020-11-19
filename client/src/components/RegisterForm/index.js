@@ -1,4 +1,9 @@
 import React, { useRef } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser, faUnlock } from '@fortawesome/free-solid-svg-icons'
+
+const user = <FontAwesomeIcon icon={faUser} />
+const lock = <FontAwesomeIcon icon={faUnlock} />
 
 // class RegisterForm extends React.Component {
 function RegisterForm({ onRegister }) {
@@ -8,7 +13,8 @@ function RegisterForm({ onRegister }) {
 	const passwordRef = useRef();
 
 	return (
-		<div title="Register a New User">
+		<div>
+			<h3>Register a New User</h3>
 			<form
 				ref={formRef}
 				onSubmit={(e) => {
@@ -19,10 +25,23 @@ function RegisterForm({ onRegister }) {
 					});
 				}}
 			>
-				<div className="form-group">
-					<input className="form-control" ref={userNameRef} type='text' name="username" placeholder='Enter Username' /><br />
-					<input className="form-control" ref={passwordRef} type='password' name="password" placeholder='Password' /><br />
-					<button className="button is-primary" type='submit'>Submit</button>
+				<div className="field">
+				<div className="control has-icons-left has-icons-right">
+					<input className="input mb-3" ref={userNameRef} type='text' name="username" placeholder='Enter Username' />
+					<span className="icon is-small is-left">
+							{user}
+					</span>
+					<br />
+					<div className="control has-icons-left has-icons-right">
+					<input className="input mb-3" ref={passwordRef} type='password' required pattern="[0-9]+"  name="password" placeholder='Password' />
+					<p style={{fontSize:"12px", fontWeight:"bold", marginBottom:"0px"}}>Password must contain at least one number</p>
+					<span className="icon is-small is-left">
+							{lock}
+						</span>
+						<br />
+					<button className="button is-dark my-3" type='submit'>Submit</button>
+				</div>
+				</div>
 				</div>
 			</form>
 		</div>

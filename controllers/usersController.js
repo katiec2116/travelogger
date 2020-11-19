@@ -79,8 +79,30 @@ module.exports = {
 			.then(results => res.json(results))
 	},
 
-	getAllTrips: function (req, res) {
-		User.find().limit(10).sort({_id: 1})
+	deleteTrip: function (req, res) {
+		User.updateOne({ _id:req.params.id},
+			{ "$pull" : {
+				"trips" : {
+					"_id" : req.params.tripid 
+				}}}, {safe:true},
+				function(err, data){
+					console.log(data)
+				}
+		)
 		.then(results => res.send(results))
-}
+		.catch(err => {
+			console.error(err)
+			res.status(422).json(err)
+		});
+	},
+
+	getAllTrips: function (req, res) {
+		User.find().limit(10).sort({_id:1})
+		.then(results => res.send(results))
+},
+
+	getUsers: function (req, res) {
+	User.find()
+	.then(results => res.send(results))
+},
 };

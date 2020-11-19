@@ -1,18 +1,23 @@
 import React from "react";
 import Logo from "../../components/Logo";
-import Initial from "../../components/Initial"
+import Initial from "../../components/Initial";
+import "../initial.css"
 
 function inital() {
-    return (
-      <div>
-      <div className="columns">
-        <div className="column is-4 is-offset-4 has-text-centered">
-        <Logo />
-        <Initial />
+  return (
+    <section className="hero">
+      <div className="hero-body mt-6">
+        <div className="columns">
+          <div className="column is-6 is-offset-3 has-text-centered">
+            <div className="welcome is-rounded has-text-centered mt-6">
+              <Logo />
+              <Initial />
+            </div>
+          </div>
+        </div>
       </div>
-      </div>
-      </div>
-    );
-  }
-  
-  export default inital;
+    </section>
+  );
+}
+
+export default inital;

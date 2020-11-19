@@ -1,0 +1,152 @@
+.card_wrapper {
+    border: solid 2px black;
+    width:250px;
+}
+
+
+.card__photo img {
+    border-radius: 4px 4px 0 0;
+  }
+  
+  .restaurants-container {
+    font-size: 14px;
+      font-family: sans-serif;
+      font-stretch: extra-condensed;
+      padding: 12px;
+  }
+  
+  .restaurants__name {
+    display: block;
+    margin-bottom: 6px;
+  }
+  
+  .restaurants__name-link {
+    font-family: sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+      color: #0073bb;	
+      text-decoration: none;
+  }
+  
+  /* .restaurants__name-link:hover {
+    
+  } */
+  
+  .restaurants__rating {
+    margin-bottom: 7px;
+    margin-left: -5px;
+    padding: 11px 0 0 0;
+  }
+  
+  [class = '0'] {
+    display: inline-block;
+      width: 82px;
+      height: 14px;
+      background-image: url("./small/small_0.png");
+     background-position: 0 196px;
+  }
+  
+  [class = '1'] {
+    display: inline-block;
+      width: 82px;
+      height: 14px;
+      background-image: url("./small/small_1.png");
+     background-position: 0 196px;
+  }
+
+  [class = '1.5'] {
+    display: inline-block;
+      width: 82px;
+      height: 14px;
+      background-image: url("./small/small_1_half.png");
+     background-position: 0 196px;
+  }
+
+  [class = '2'] {
+    display: inline-block;
+      width: 82px;
+      height: 14px;
+      background-image: url("./small/small_2.png");
+     background-position: 0 196px;
+  }
+
+  [class = '2.5'] {
+    display: inline-block;
+      width: 82px;
+      height: 14px;
+      background-image: url("./small/small_2_half.png");
+     background-position: 0 196px;
+  }
+
+  [class = '3'] {
+    display: inline-block;
+      width: 82px;
+      height: 14px;
+      background-image: url("./small/small_3.png");
+     background-position: 0 196px;
+  }
+
+  [class = '3.5'] {
+    display: inline-block;
+      width: 82px;
+      height: 14px;
+      background-image: url("./small/small_3_half.png");
+     background-position: 0 196px;
+  }
+
+  [class = '4'] {
+    display: inline-block;
+      width: 82px;
+      height: 14px;
+      background-image: url("./small/small_4.png");
+     background-position: 0 196px;
+  }
+
+  [class = '4.5'] {
+    display: inline-block;
+      width: 82px;
+      height: 14px;
+      background-image: url("./small/small_4_half.png");
+     background-position: 0 196px;
+  }
+
+  [class = '5'] {
+    display: inline-block;
+      width: 82px;
+      height: 14px;
+      background-image: url("./small/small_5.png");
+     background-position: 0 196px;
+  }
+  
+  .restaurants__rating .review-counter {
+      display: inline-block;
+      margin-left:10px;
+      color: #666;
+      user-select: none;
+    vertical-align: text-bottom;
+  }
+  
+  .restaurants-info {
+    color: #333;
+      margin-bottom: 7px;
+  }
+  
+  .restaurants-info__cost {
+    font-size: 14px;
+    padding-right: 10px;
+    vertical-align: text-bottom;
+  }
+  
+  .restaurants-info__food {
+    font-size: 14px;
+  }
+  
+  .restaurants-info__food:before {
+      content: "\2022";
+      position: relative;
+      left: -7px;
+      top: 0;
+      color: #999;
+  }
+  
+

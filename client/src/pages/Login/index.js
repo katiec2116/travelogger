@@ -1,15 +1,24 @@
 import React from "react";
 import Logo from "../../components/Logo";
 import Login from "../../components/Login";
+import '../initial.css';
+
 function LoginPage() {
-    return (
-        <div>
+  return (
+    <section className="hero">
+      <div className="hero-body mt-6">
         <div className="columns">
-          <div className="column is-4 is-offset-4 has-text-centered">
-          <Logo />
-          <Login />
+          <div className="column is-6 is-offset-3 has-text-centered">
+            <div className="welcome is-rounded has-text-centered mt-6">
+              <Logo />
+              <div className="logoTitle pb-6">Travelogger</div>
+              <Login />
+            </div>
+          </div>
         </div>
-        </div>
-        </div>
-)}
+      </div>
+    </section>
+
+  )
+}
 export default LoginPage;

@@ -37,7 +37,7 @@ function LoginForm({ onLogin }) {
 						<span className="icon is-small is-left">
 							{lock}
 						</span><br />
-						<button className="button is-success" type='submit'>
+						<button className="button is-dark my-3" type='submit'>
 							Submit
 						</button>
 					</div>

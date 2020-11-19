@@ -57,12 +57,17 @@ class AddTrip extends React.Component {
 
 
     mapQuest = (location) => {
+        if (!location || location === " "){
+            this.setState({...this.state, lat:0, long:0})
+        }
+        else {
         API.location(location)
             .then(res => this.setState(
                 {
                     ...this.state, lat: (res.data.results[0].locations[0].latLng.lat),
                     long: (res.data.results[0].locations[0].latLng.lng)
                 }))
+            }
     }
 
 
