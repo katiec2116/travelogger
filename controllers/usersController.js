@@ -66,43 +66,11 @@ module.exports = {
 			res.status(200).send('OK');
 		});
 	},
-
-	addTrip: function (req, res) {
-		console.log("req.id "+ req.body)
-		User
-		.findByIdAndUpdate({_id:req.params.id} ,{  $push: { trips: req.body }})
-		.then(results => console.log("results "+results))
-	},
-
-	getMyTrips: function (req, res) {
-			User.findById({ _id: req.params.id })
-			.then(results => res.json(results))
-	},
-
-	deleteTrip: function (req, res) {
-		User.updateOne({ _id:req.params.id},
-			{ "$pull" : {
-				"trips" : {
-					"_id" : req.params.tripid 
-				}}}, {safe:true},
-				function(err, data){
-					console.log(data)
-				}
-		)
-		.then(results => res.send(results))
-		.catch(err => {
-			console.error(err)
-			res.status(422).json(err)
-		});
-	},
-
-	getAllTrips: function (req, res) {
-		User.find().limit(10).sort({_id:1})
-		.then(results => res.send(results))
-},
+	
 
 	getUsers: function (req, res) {
 	User.find()
 	.then(results => res.send(results))
-},
+}
+
 };

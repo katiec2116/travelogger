@@ -15,7 +15,8 @@ function AddForm(props) {
             <label className="label">Location</label>
                 <div className="field has-addons">
                     <div className="control has-icons-left is-expanded">
-                        <input className="input" type="text" placeholder="Find a Location" name="location" onChange={props.handleLocation}/>
+                        <input className="input" type="text" placeholder="Find a Location" name="location" onChange={props.handleLocation}
+                        value={props.location}/>
                         <span className="icon is-small is-left">
                             {plane}
                         </span>
@@ -33,6 +34,7 @@ function AddForm(props) {
                     <div className="control has-icons-left">
                         <input className="input" type="date" name="date"
                             onChange={props.handleInputChange}
+                            value={props.date}
                         />
                         <span className="icon is-small is-left">
                             {calendar}
@@ -42,8 +44,8 @@ function AddForm(props) {
                 <label className="label">Already Been?</label>
                 <div className="select mb-3">
                     <select name="been" onChange={props.handleInputChange}>
-                        <option value='no'>No</option>
-                        <option value='yes'>Yes</option>
+                        <option value='No'>No</option>
+                        <option value='Yes'>Yes</option>
                     </select>
                 </div>
 
@@ -52,6 +54,7 @@ function AddForm(props) {
                     <div className="control">
                         <textarea className="textarea" type="text" name="notes"
                             onChange={props.handleInputChange}
+                            value={props.notes}
                         >
                         </textarea>
                     </div>

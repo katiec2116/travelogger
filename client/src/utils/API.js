@@ -13,39 +13,49 @@ register: function(username, password) {
   }).then((res) => console.log(res));
 },
 
-addTrip: function (trips, id) {
+addTrip: function (trips) {
+  console.log(trips)
   return axios({
-      method: "PUT",
+      method: "POST",
       data: trips,
-      withCredential:true,
-      url:"/api/users/" + id
-    }).then((res) => console.log(res));
+      url:"/api/trips"
+    }).then((res) => console.log(res, "hello'"));
   },
 
 location: function(location){
   return axios.get(`http://www.mapquestapi.com/geocoding/v1/address?key=	JG30h6celAzQfuBmyuO2k0g4rAjh7BZc&location=${location}`);
   },
 
-getMyTrips: function(id){
+getMyTrips: function(user){
   return axios({
       method: "GET",
       withCredential:true,
-      url:"/api/users/" + id
+      url:"/api/trips/" + user
     });
   },
 
 
-  deleteTrip: function (id, tripid) {
+deleteTrip: function (id) {
     return axios({
-      method: "PUT",
+      method: "DELETE",
       withCredential: true,
-      url: "/api/users/" + id +"/" + tripid
+      url: "/api/trips/" + id
     }).then((res) => console.log(res));
   },
 
 
-  getUsers: function(){
-    return axios.get("/api/users/getusers");
+updateTrip: function (tripid, data) {
+    return axios({
+      method: "PUT",
+      data: data,
+      withCredential: true,
+      url: "/api/trips/update/" + tripid
+    }).then((res) => console.log(res));
+  },
+
+
+getUsers: function(){
+    return axios.get("/").then((res) => console.log(res));;
     },
 
 };
