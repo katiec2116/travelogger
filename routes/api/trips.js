@@ -4,17 +4,19 @@ const tripsController = require("../../controllers/tripsController");
 // matches /api/trips/
 
 router.route("/")
-  .post(tripsController.addTrip);
+  .post(tripsController.addTrip)
 
 router.route("/:user")
-.get(tripsController.getMyTrips)
-.delete(tripsController.deleteTrip);
+  .get(tripsController.getMyTrips);
 
-router.route("/update/:tripid")
-  .put(tripsController.updateTrip);
+router.route("/:tripid")
+  .put(tripsController.updateTrip)
+  .delete(tripsController.deleteTrip);
 
-router.route("/getalltrips")
-.get(tripsController.getAllTrips);
+
+router.route("/getall")
+  .get(tripsController.getAll)  
+
 
 
 module.exports = router;

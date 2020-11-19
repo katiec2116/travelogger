@@ -29,6 +29,7 @@ class MyTrips extends React.Component {
         API.getMyTrips(user)
             .then(results => this.setState({ ...this.state, myTrips: results.data }))
             .catch(err => console.log(err))
+            .then(console.log(this.state.trips))
     }
 
     deleteTrip(tripid) {
@@ -44,7 +45,7 @@ class MyTrips extends React.Component {
             <div>
                 <div className="columns">
                     <div className="column is-two-thirds">
-                        <MyTripsMap long={-81} lat={27} all={this.state.myTrips} />
+                        <MyTripsMap long={-81} lat={27} trips={this.state.myTrips} />
                     </div>
                     <div className="column is-one-third">
                         {!this.state.myTrips.length ? (

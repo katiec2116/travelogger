@@ -11,34 +11,35 @@ class Explore extends React.Component {
     }
     
     componentDidMount() {
-		fetch('api/users/getall', {
-			credentials: 'include'
-		})
-			.then((res) => {
-				return res.json(res)
-			})
-			.then(data => {                
-                for (let i = 0; i < data.length; i++) {  
-                    if (data[i].trips.length > 0) {                  
-                    trips.push(data[i])
-                    }
-                    // console.log(data[i].trips)
-                }
-			}).then(() => {
-                this.state.trips = trips.flat()
-                console.log(this.state.trips)
-            })
-			.catch((err) => {
-				console.log('Error fetching authorized user.');
-			});
+	// 	fetch('api/users/getall', {
+	// 		credentials: 'include'
+	// 	})
+	// 		.then((res) => {
+	// 			return res.json(res)
+	// 		})
+	// 		.then(data => {                
+    //             for (let i = 0; i < data.length; i++) {  
+    //                 if (data[i].trips.length > 0) {                  
+    //                 trips.push(data[i])
+    //                 }
+    //                 // console.log(data[i].trips)
+    //             }
+	// 		}).then(() => {
+    //             this.state.trips = trips.flat()
+                console.log("this.state.trips " , this.state.trips)
+    //         })
+	// 		.catch((err) => {
+	// 			console.log('Error fetching authorized user.');
+	// 		});
 
 	}
      
-    // componentDidUpdate() {
-    //     API.getUsers()
-    //         .then(results => this.setState({ ...this.state, users: results.data.trips }))
-    //         .catch(err => console.log(err))
-    // }
+    componentDidUpdate() {
+        API.getAll()
+            .then(results => this.setState(results))
+            .catch(err => console.log(err))
+            .then(this.componentDidMount())
+    }
 
 
     render() {

@@ -35,11 +35,11 @@ getMyTrips: function(user){
   },
 
 
-deleteTrip: function (id) {
+deleteTrip: function (tripid) {
     return axios({
       method: "DELETE",
       withCredential: true,
-      url: "/api/trips/" + id
+      url: "/api/trips/" + tripid
     }).then((res) => console.log(res));
   },
 
@@ -54,8 +54,9 @@ updateTrip: function (tripid, data) {
   },
 
 
-getUsers: function(){
-    return axios.get("/").then((res) => console.log(res));;
+getAll: function(){
+  console.log("hello")
+    return axios.get("/api/trips/getall").then((res) => console.log(res));;
     },
 
 };

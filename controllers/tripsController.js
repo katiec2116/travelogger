@@ -17,7 +17,7 @@ module.exports = {
 
     deleteTrip: function (req, res) {
         Trip
-            .findOneAndDelete({ _id: req.params.id })
+            .findOneAndDelete({ _id: req.params.tripid })
             .then(results => res.send(results))
             .catch(err => {
                 console.error(err)
@@ -27,8 +27,8 @@ module.exports = {
 
     updateTrip: function (req, res) {
         Trip
-            .findOneAndUpdate({ _id: req.params.id },
-                { trips: req.body },
+            .findOneAndUpdate({ _id: req.params.tripid },
+                req.body ,
                 function (err, data) {
                     console.log(data)
                 }
@@ -36,9 +36,10 @@ module.exports = {
     },
 
 
-	getAllTrips: function (req, res) {
+	getAll: function (req, res) {
+        console.log("hi")
         Trip
-        .find().limit(10).sort({_id:1})
+        .find({})
 		.then(results => res.send(results))
 },
 

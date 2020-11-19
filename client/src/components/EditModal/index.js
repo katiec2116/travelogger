@@ -10,15 +10,16 @@ const calendar = <FontAwesomeIcon icon={faCalendarAlt} />
 
 
 const EditModal = ({ trip, closeModal, modalState, title }) => {
+    console.log(trip.location)
 
     const [ data , setData ] = useState({
         location: trip.location,
-        date: trip.date,
-        been: trip.been,
-        notes: trip.notes,
-        lat: trip.lat,
-        long: trip.long,
-        images: trip.images
+        // date: trip.date,
+        // been: trip.been,
+        // notes: trip.notes,
+        // lat: trip.lat,
+        // long: trip.long,
+        // images: trip.images
     });
     
     const handleInputChange = e => {
@@ -29,14 +30,14 @@ const EditModal = ({ trip, closeModal, modalState, title }) => {
         setData({...data,
             [name]: value
         });
+        console.log(trip._id)
         
     };
 
 
     const submitEdit = (tripid) =>{
-        const id = localStorage.getItem('user');
         console.log("this.state " + data.notes);
-        API.updateTrip(id, tripid, data);
+        API.updateTrip(tripid, data);
     };
 
     
@@ -62,7 +63,7 @@ const EditModal = ({ trip, closeModal, modalState, title }) => {
                         <div className="field has-addons">
                             <div className="control has-icons-left is-expanded">
                                 <input className="input" type="text" placeholder="Find a Location" name="location"
-                                    value={trip.location} readOnly />
+                                    value={trip} readOnly />
                                 <span className="icon is-small is-left">
                                     {plane}
                                 </span>
