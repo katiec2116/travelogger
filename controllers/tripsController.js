@@ -9,6 +9,12 @@ module.exports = {
             .then(results => console.log("results " + results));
     },
 
+    getTrip: function (req, res) {
+        Trip
+            .findOne({ _id: req.params.tripid })
+            .then(results => res.json(results))
+    },
+
     getMyTrips: function (req, res) {
         Trip
             .find({ user: req.params.user })
@@ -17,7 +23,7 @@ module.exports = {
 
     deleteTrip: function (req, res) {
         Trip
-            .findOneAndDelete({ _id: req.params.id })
+            .findOneAndDelete({ _id: req.params.tripid })
             .then(results => res.send(results))
             .catch(err => {
                 console.error(err)
@@ -27,8 +33,8 @@ module.exports = {
 
     updateTrip: function (req, res) {
         Trip
-            .findOneAndUpdate({ _id: req.params.id },
-                { trips: req.body },
+            .findOneAndUpdate({ _id: req.params.tripid },
+                req.body ,
                 function (err, data) {
                     console.log(data)
                 }
@@ -37,7 +43,9 @@ module.exports = {
 
 	getAllTrips: function (req, res) {
         Trip
-        .find().then(results => res.json(results));
-    }
+        .find().sort({_id: - 1}).limit(10).then(results => res.json(results));
+
+},
+
 
 }

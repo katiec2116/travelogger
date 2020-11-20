@@ -9,7 +9,7 @@ class Map extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            trips: [],
+            // trips: [],
             long: props.long,
             lat: props.lat,
             zoom: 1
@@ -27,27 +27,30 @@ class Map extends React.Component {
 
     async componentDidUpdate() {
         const user = localStorage.getItem('user');
-        if (!this.state.trips.length) {
+        if (!this.props.trips.length) {
             await API.getMyTrips(user)
                 .then(results =>
-                    this.setState({ ...this.state, trips: results.data })).then(console.log(this.state))
+                    // this.setState({ ...this.state, trips: results.data })).then(
+                        console.log(this.state))
                 .catch(err => console.log(err))
+                .then(console.log(this.props.trips))
         }
 
-        this.props.all.map(trip => {
-            if (trip.been === "yes") {
+        this.props.trips.map(trip => {
+            console.log(trip)
+            if (trip.been === "Yes") {
                 this.marker = new mapboxgl.Marker({ color: 'rgb(95,238,200)' })
                     .setLngLat([trip.long, trip.lat])
                     .addTo(this.map)
-                    .setPopup(this.popup)
+                    .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(
+                        `<div> <p>Location: ${trip.location}</p><p>Notes: ${trip.notes}</p> </div>`))
             } else {
                 this.marker = new mapboxgl.Marker({ color: 'rgb(0,60,153)' })
                     .setLngLat([trip.long, trip.lat])
                     .addTo(this.map)
-                    .setPopup(this.popup)
+                    .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(
+                        `<div> <p>Location: ${trip.location}</p><p>Notes: ${trip.notes}</p> </div>`))
             }
-            this.popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
-                `<div> <p>Location: ${trip.location}</p><p>Notes: ${trip.notes}</p> </div>`)
         })
     }
 
