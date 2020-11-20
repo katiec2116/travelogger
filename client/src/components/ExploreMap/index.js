@@ -46,13 +46,13 @@ class ExploreMap extends React.Component {
                         .setLngLat([trip.long, trip.lat])
                         .addTo(this.map)
                         .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(
-                            `<div> <p>Location: ${trip.location}</p><p>Notes: ${trip.notes}</p> </div>`))
+                            `<div> <p>User: ${trip.user}</p><p>Location: ${trip.location}</p><p>Notes: ${trip.notes}</p> </div>`))
                 } else {
                     this.marker = new mapboxgl.Marker({ color: 'rgb(55, 0, 87)' })
                         .setLngLat([trip.long, trip.lat])
                         .addTo(this.map)
                         .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(
-                            `<div> <p>Location: ${trip.location}</p><p>Notes: ${trip.notes}</p> </div>`))
+                            `<div> <p>User: ${trip.user}</p><p>Location: ${trip.location}</p><p>Notes: ${trip.notes}</p> </div>`))
 
                 }
             })
