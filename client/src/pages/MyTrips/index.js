@@ -10,19 +10,21 @@ class MyTrips extends React.Component {
 
         this.state = {
             modalState: false,
-            myTrips: [], 
+            myTrips: [],
+            selected:{}
         };
 
-    this.toggleModal = this.toggleModal.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
     }
 
-    toggleModal() {
+    toggleModal(trip) {
         this.setState((prev, props) => {
+            console.log(trip)
             const newState = !prev.modalState;
-            return {...this.state,  modalState: newState };
+            return { ...this.state, modalState: newState, selected:trip };
         });
     }
-   
+
 
     componentDidMount() {
         const user = localStorage.getItem('user')
@@ -58,24 +60,22 @@ class MyTrips extends React.Component {
                                                 <p className="tileTitle">Location: {trip.location}</p>
                                                 <p className="tileSubtitle">When: {trip.date}</p>
                                                 <p className="tileSubtitle">Notes: {trip.notes}</p>
-                                                <button onClick={this.toggleModal} className="button is-small p-1 is-outlined is-link mt-3 ml-3" >
+                                                <button onClick={() => this.toggleModal(trip)} className="button is-small p-1 is-outlined is-link mt-3 ml-3" >
                                                     <strong>Edit</strong>
                                                 </button>
                                                 <button onClick={() => this.deleteTrip(trip._id)} className="button p-1 is-small is-outlined is-danger mt-3 ml-3" >
                                                     <strong>Delete</strong>
                                                 </button>
-                                                <EditModal
-                                                    submitEdit={this.submitEdit}
-                                                    closeModal={this.toggleModal}
-                                                    modalState={this.state.modalState}
-                                                    trip={trip}
-                                                    >
-                                                        {trip._id}
-                                                </EditModal>
                                             </div>
 
                                         ))}
                                     </div>
+                                    <EditModal
+                                        submitEdit={this.submitEdit}
+                                        closeModal={this.toggleModal}
+                                        modalState={this.state.modalState}
+                                        trip={this.state.selected}>
+                                    </EditModal>
                                 </div>
                             )}
                     </div>
