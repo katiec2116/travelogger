@@ -10,8 +10,8 @@ class Map extends React.Component {
         super(props);
         this.state = {
             // trips: [],
-            long: props.long,
-            lat: props.lat,
+            long: 0,
+            lat: 0,
             zoom: 1
         };
     }

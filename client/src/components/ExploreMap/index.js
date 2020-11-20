@@ -11,7 +11,7 @@ class ExploreMap extends React.Component {
             trips: props.all,
             long: 0,
             lat: 0,
-            zoom: 0
+            // zoom: 0
         };
     }
 
@@ -20,22 +20,22 @@ class ExploreMap extends React.Component {
             container: this.mapContainer,
             style: 'mapbox://styles/mapbox/streets-v11',
             center: [this.state.long, this.state.lat],
-            zoom: 0
+            zoom: 1
         });
         console.log(this.props.all)
     }
 
     async componentDidUpdate() {
-        const user = localStorage.getItem('user');
-        if (!this.props.all.length) {
-            console.log(this.props.all)
-                await API.getAllTrips(user)
-                .then(results =>
-                    this.setState({ ...this.state, trips: results.data }))
+        // const user = localStorage.getItem('user');
+        if (this.props.all.length) {
+            // console.log(this.props.all)
+                // await API.getAllTrips(user)
+                // .then(results =>
+                //     this.setState({ ...this.state, trips: results.data }))
                         // console.log(this.state))
-                .catch(err => console.log(err))
-                .then(console.log(this.props.trips))
-            }
+                // .catch(err => console.log(err))
+                // .then(console.log(this.props.trips))
+            
 
                 
 
@@ -56,7 +56,7 @@ class ExploreMap extends React.Component {
 
                 }
             })
-
+        }
         
     }
 
