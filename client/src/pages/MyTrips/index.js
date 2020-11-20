@@ -13,13 +13,13 @@ class MyTrips extends React.Component {
             myTrips: [], 
         };
 
-        this.toggleModal = this.toggleModal.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
     }
 
     toggleModal() {
         this.setState((prev, props) => {
             const newState = !prev.modalState;
-            return { modalState: newState };
+            return {...this.state,  modalState: newState };
         });
     }
    
@@ -29,7 +29,6 @@ class MyTrips extends React.Component {
         API.getMyTrips(user)
             .then(results => this.setState({ ...this.state, myTrips: results.data }))
             .catch(err => console.log(err))
-            .then(console.log(this.state.trips))
     }
 
     deleteTrip(tripid) {
@@ -56,22 +55,22 @@ class MyTrips extends React.Component {
                                     <div style={{ display: "flex", flexWrap: "wrap", alignItems: "stretch", justifyContent: "space-around", alignContent: "flex-start", flexDirection: "row" }}>
                                         {this.state.myTrips.map(trip => (
                                             <div style={{ width: "200px" }} className="box" key={trip._id}>
-                                                <p>Location: <span className="tileTitle">{trip.location} </span></p>
-                                                <p className="Tilesubtitle">When: {trip.date}</p>
-                                                <p>Notes: {trip.notes}</p>
-
-
-                                                <button onClick={this.toggleModal} className="button is-small is-rounded is-outlined is-warning mt-3 ml-3" >
+                                                <p className="tileTitle">Location: {trip.location}</p>
+                                                <p className="tileSubtitle">When: {trip.date}</p>
+                                                <p className="tileSubtitle">Notes: {trip.notes}</p>
+                                                <button onClick={this.toggleModal} className="button is-small p-1 is-outlined is-link mt-3 ml-3" >
                                                     <strong>Edit</strong>
                                                 </button>
-                                                <button onClick={() => this.deleteTrip(trip._id)} className="button is-small is-rounded is-outlined is-danger mt-3 ml-3" >
-                                                    <strong>x</strong>
+                                                <button onClick={() => this.deleteTrip(trip._id)} className="button p-1 is-small is-outlined is-danger mt-3 ml-3" >
+                                                    <strong>Delete</strong>
                                                 </button>
                                                 <EditModal
                                                     submitEdit={this.submitEdit}
                                                     closeModal={this.toggleModal}
                                                     modalState={this.state.modalState}
-                                                    trip={trip}>
+                                                    trip={trip._id}
+                                                    >
+                                                        {trip._id}
                                                 </EditModal>
                                             </div>
 

@@ -9,6 +9,12 @@ module.exports = {
             .then(results => console.log("results " + results))
     },
 
+    getTrip: function (req, res) {
+        Trip
+            .findOne({ _id: req.params.tripid })
+            .then(results => res.json(results))
+    },
+
     getMyTrips: function (req, res) {
         Trip
             .find({ user: req.params.user })
@@ -36,11 +42,10 @@ module.exports = {
     },
 
 
-	getAll: function (req, res) {
-        console.log("hi")
+	getAllTrips: function (req, res) {
+        console.log("getting all the trips")
         Trip
-        .find({})
-		.then(results => res.send(results))
+        .find().then(results => res.json(results));
 },
 
 }

@@ -2,7 +2,6 @@ import React from 'react';
 import mapboxgl from 'mapbox-gl';
 import './myMap.css';
 import API from "../../utils/API"
-import { DH_NOT_SUITABLE_GENERATOR } from 'constants';
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX;
 
 

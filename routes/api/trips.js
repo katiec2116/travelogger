@@ -11,11 +11,12 @@ router.route("/:user")
 
 router.route("/:tripid")
   .put(tripsController.updateTrip)
-  .delete(tripsController.deleteTrip);
+  .delete(tripsController.deleteTrip)
+  .get(tripsController.getTrip);
 
 
-router.route("/getall")
-  .get(tripsController.getAll)  
+  router.route("/getalltrips/:user")
+  .get(tripsController.getAllTrips); 
 
 
 

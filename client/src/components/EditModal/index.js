@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import API from "../../utils/API"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -10,28 +10,28 @@ const calendar = <FontAwesomeIcon icon={faCalendarAlt} />
 
 
 const EditModal = ({ trip, closeModal, modalState, title }) => {
-    console.log(trip.location)
+    console.log(trip)
 
     const [ data , setData ] = useState({
         location: trip.location,
-        // date: trip.date,
-        // been: trip.been,
-        // notes: trip.notes,
-        // lat: trip.lat,
-        // long: trip.long,
-        // images: trip.images
+        date: trip.date,
+        been: trip.been,
+        notes: trip.notes,
+        lat: trip.lat,
+        long: trip.long,
+        images: trip.images
     });
+
     
     const handleInputChange = e => {
         const name = e.target.name;
         const value = e.target.value;
         console.log(value)
+        console.log(trip) 
         console.log(name)
         setData({...data,
             [name]: value
         });
-        console.log(trip._id)
-        
     };
 
 
@@ -40,7 +40,6 @@ const EditModal = ({ trip, closeModal, modalState, title }) => {
         API.updateTrip(tripid, data);
     };
 
-    
 
     if (!modalState) {
         return null;
@@ -51,7 +50,7 @@ const EditModal = ({ trip, closeModal, modalState, title }) => {
             <div className="modal-background" onClick={closeModal} />
             <div className="modal-card">
                 <header className="modal-card-head">
-                    <p className="modal-card-title">{title}</p>
+                    <p className="modal-card-title">{trip._id}</p>
                     <button className="delete" onClick={closeModal} />
                 </header>
                 <section className="modal-card-body">
@@ -63,7 +62,7 @@ const EditModal = ({ trip, closeModal, modalState, title }) => {
                         <div className="field has-addons">
                             <div className="control has-icons-left is-expanded">
                                 <input className="input" type="text" placeholder="Find a Location" name="location"
-                                    value={trip} readOnly />
+                                    value={data.location} readOnly />
                                 <span className="icon is-small is-left">
                                     {plane}
                                 </span>
@@ -91,7 +90,7 @@ const EditModal = ({ trip, closeModal, modalState, title }) => {
                             <label className="label">Notes:</label>
                             <div className="control">
                                 <textarea className="textarea" type="text" name="notes"
-                                    defaultValue={trip.notes} onChange={handleInputChange}
+                                    defaultValue={data.notes} onChange={handleInputChange}
                                 >
                                 </textarea>
                             </div>

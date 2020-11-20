@@ -50,8 +50,6 @@ class AddTrip extends React.Component {
         this.setState({
             ...this.state, location: e.target.value
         });
-        console.log(e.target.value)
-
     };
     
 
@@ -74,7 +72,7 @@ class AddTrip extends React.Component {
     render(){
         return (
             <div>
-                <div className="columns">
+                <div className="columns" style={{ height: "100%" }}>
                     <div className="column is-two-fifths">
                     <AddForm
                         onSubmit={this.onSubmit}
@@ -82,7 +80,7 @@ class AddTrip extends React.Component {
                         handleLocation={this.handleLocation}
                         handleImages={this.handleImages}/>
                     </div>
-                    <div className="column is-three-fifths">
+                    <div className="column scroll is-three-fifths">
                         <Map lat={this.state.lat} long={this.state.long}/>
                         <Yelp data={this.state} />
                     </div>
