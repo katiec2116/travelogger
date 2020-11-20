@@ -36,7 +36,6 @@ module.exports = {
     },
 
 	getAllTrips: function (req, res) {
-        console.log("getting all the trips")
         Trip
         .find().then(results => res.json(results));
     }
