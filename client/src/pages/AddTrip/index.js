@@ -22,7 +22,6 @@ class AddTrip extends React.Component {
 
     onSubmit = e => {
         e.preventDefault();
-        console.log("this.state " + this.state.location, this.state.location, this.state.lat, this.state.long, this.state.notes)
         API.addTrip(this.state)
         .then(res => console.log(res))
     };
@@ -30,8 +29,6 @@ class AddTrip extends React.Component {
     handleInputChange = e => {
         const name = e.target.name;
         const value = e.target.value;
-        console.log(value)
-        console.log(name)
         this.setState({
             [name]: value
         });
@@ -41,8 +38,6 @@ class AddTrip extends React.Component {
         const images = this.state.images;
         images.push(e.target.value);
         this.setState({ ...this.state, images: images });
-        console.log(e.target.value)
-        console.log(this.state)
     }
 
     handleLocation = e => {

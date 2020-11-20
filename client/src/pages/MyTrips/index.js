@@ -68,7 +68,7 @@ class MyTrips extends React.Component {
                                                     submitEdit={this.submitEdit}
                                                     closeModal={this.toggleModal}
                                                     modalState={this.state.modalState}
-                                                    trip={trip._id}
+                                                    trip={trip}
                                                     >
                                                         {trip._id}
                                                 </EditModal>

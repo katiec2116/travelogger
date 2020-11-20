@@ -10,7 +10,7 @@ const calendar = <FontAwesomeIcon icon={faCalendarAlt} />
 
 
 const EditModal = ({ trip, closeModal, modalState, title }) => {
-    console.log(trip)
+    console.log(trip.location)
 
     const [ data , setData ] = useState({
         location: trip.location,
@@ -50,7 +50,7 @@ const EditModal = ({ trip, closeModal, modalState, title }) => {
             <div className="modal-background" onClick={closeModal} />
             <div className="modal-card">
                 <header className="modal-card-head">
-                    <p className="modal-card-title">{trip._id}</p>
+                    <p className="modal-card-title">{title}</p>
                     <button className="delete" onClick={closeModal} />
                 </header>
                 <section className="modal-card-body">

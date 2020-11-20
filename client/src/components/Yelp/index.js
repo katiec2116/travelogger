@@ -24,9 +24,7 @@ class Yelp extends React.Component {
             }
         })
             .then((res) => {
-                console.log(res.data.businesses)
                 this.setState({ ...this.state, restaurants: res.data.businesses })
-
             })
             .catch((err) => {
                 console.log('error')
@@ -35,7 +33,6 @@ class Yelp extends React.Component {
 
 
     async componentDidUpdate(prevProps) {
-        console.log(prevProps)
         // Typical usage (don't forget to compare props):
         if (this.props.data !== prevProps.data) {
             await this.setState({ lat: this.props.data.lat, long: this.props.data.long });

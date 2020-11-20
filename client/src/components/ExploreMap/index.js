@@ -38,17 +38,17 @@ class ExploreMap extends React.Component {
             
 
                 
-
+            const user =localStorage.getItem('user')
             this.props.all.map(trip => {
                 console.log(trip)
-                if (trip.been === "Yes") {
-                    this.marker = new mapboxgl.Marker({ color: 'rgb(95,238,200)' })
+                if (trip.user === user) {
+                    this.marker = new mapboxgl.Marker({ color: 'rgb(3, 252, 240)' })
                         .setLngLat([trip.long, trip.lat])
                         .addTo(this.map)
                         .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(
                             `<div> <p>Location: ${trip.location}</p><p>Notes: ${trip.notes}</p> </div>`))
                 } else {
-                    this.marker = new mapboxgl.Marker({ color: 'rgb(0,60,153)' })
+                    this.marker = new mapboxgl.Marker({ color: 'rgb(55, 0, 87)' })
                         .setLngLat([trip.long, trip.lat])
                         .addTo(this.map)
                         .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(
