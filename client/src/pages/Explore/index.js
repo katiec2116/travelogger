@@ -3,13 +3,13 @@ import API from "../../utils/API"
 import ExploreMap from "../../components/ExploreMap"
 
 
-
 class Explore extends React.Component {
 
     state = {
         trips: [],
     }
     
+
     componentDidMount() {
         const user = localStorage.getItem('user')
         API.getAllTrips(user)
@@ -18,6 +18,7 @@ class Explore extends React.Component {
             .catch(err => console.log(err))
     }
 
+    
 
     render() {
         return (
@@ -32,6 +33,7 @@ class Explore extends React.Component {
                               {this.state.trips.map(trip => (
                               <li key={trip._id}>{trip.username} added: <span>{trip.date}</span>  to their trips!</li>
                               ))}
+
                           </ul>
                       </aside>
                     </div>

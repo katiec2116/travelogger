@@ -62,12 +62,14 @@ updateTrip: function (tripid, data) {
   },
 
 
-  getAllTrips: function(user){
-    return axios({
-        method: "GET",
-        withCredential:true,
-        url:"/api/trips/getalltrips/" + user
-      });
-    },
+
+getAllTrips: function(user){
+  return axios({
+      method: "GET",
+      withCredential:true,
+      url:"/api/trips/getalltrips/" + user
+    });
+  },
+
 
 };
