@@ -57,7 +57,7 @@ updateTrip: function (tripid, data) {
       method: "PUT",
       data: data,
       withCredential: true,
-      url: "/api/trips/update/" + tripid
+      url: "/api/trips/" + tripid
     }).then((res) => console.log(res));
   },
 
