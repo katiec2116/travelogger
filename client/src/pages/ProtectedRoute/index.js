@@ -33,9 +33,7 @@ function ProtectedRoute() {
 	}, []);
 
 	return (
-		<div className="container">
-            <Explore/>
-		</div>
+		<Explore />
 	)
 
 }
