@@ -53,7 +53,7 @@ class ExploreMap extends React.Component {
             
             <div className="mt-6">
      
-                <div ref={el => this.mapContainer = el} className='mapContainer' />
+                <div style={{width: "98%"}} ref={el => this.mapContainer = el} className='mapContainer' />
             </div>
         )
     }

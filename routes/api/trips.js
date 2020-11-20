@@ -13,7 +13,7 @@ router.route("/:user")
 router.route("/update/:tripid")
   .put(tripsController.updateTrip);
 
-router.route("/getalltrips")
+router.route("/getalltrips/:user")
 .get(tripsController.getAllTrips);
 
 
