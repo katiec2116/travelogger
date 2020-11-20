@@ -1,18 +1,18 @@
 const Trip = require("../models/trip");
-const passport = require('passport');
+
 
 module.exports = {
     addTrip: function (req, res) {
         console.log(req.body)
         Trip
             .create(req.body)
-            .then(results => console.log("results " + results))
+            .then(results => console.log("results " + results));
     },
 
     getMyTrips: function (req, res) {
         Trip
             .find({ user: req.params.user })
-            .then(results => res.json(results))
+            .then(results => res.json(results));
     },
 
     deleteTrip: function (req, res) {
@@ -32,14 +32,13 @@ module.exports = {
                 function (err, data) {
                     console.log(data)
                 }
-            ).then(results => res.send(results))
+            ).then(results => res.send(results));
     },
 
-
 	getAllTrips: function (req, res) {
+        console.log("getting all the trips")
         Trip
-        .find().limit(10).sort({_id:1})
-		.then(results => res.send(results))
-},
+        .find().then(results => res.json(results));
+    }
 
 }

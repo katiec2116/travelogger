@@ -54,8 +54,12 @@ updateTrip: function (tripid, data) {
   },
 
 
-getUsers: function(){
-    return axios.get("/").then((res) => console.log(res));;
-    },
+getAllTrips: function(user){
+  return axios({
+      method: "GET",
+      withCredential:true,
+      url:"/api/trips/getalltrips/" + user
+    });
+  },
 
 };
