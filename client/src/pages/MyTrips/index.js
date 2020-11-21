@@ -24,8 +24,7 @@ class MyTrips extends React.Component {
             return { ...this.state, modalState: newState, selected:trip };
         });
     }
-
-
+  
     componentDidMount() {
         const user = localStorage.getItem('user')
         API.getMyTrips(user)
@@ -67,7 +66,6 @@ class MyTrips extends React.Component {
                                                     <strong>Delete</strong>
                                                 </button>
                                             </div>
-
                                         ))}
                                     </div>
                                     <EditModal

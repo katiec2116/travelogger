@@ -23,6 +23,7 @@ const EditModal = ({ trip, closeModal, modalState, title }) => {
     const handleInputChange = e => {
         const name = e.target.name;
         const value = e.target.value;
+        console.log('here')
         console.log(value)
         console.log(trip)
         console.log(name)

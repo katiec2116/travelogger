@@ -42,9 +42,8 @@ module.exports = {
     },
 
 	getAllTrips: function (req, res) {
-        console.log("getting all the trips")
         Trip
-        .find().then(results => res.json(results));
+        .find().sort({_id: - 1}).limit(10).then(results => res.json(results));
 
 },
 
