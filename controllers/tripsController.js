@@ -46,7 +46,13 @@ module.exports = {
         Trip
         .find().then(results => res.json(results));
 
-},
+    },
+
+    getMyTripsType: function (req, res) {
+        Trip
+            .find({ user: req.params.user , been: req.params.been })
+            .then(results => res.json(results));
+    },
 
 
 }
