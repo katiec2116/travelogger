@@ -31,7 +31,7 @@ class Map extends React.Component {
             await API.getMyTrips(user)
                 .then(results =>
                     // this.setState({ ...this.state, trips: results.data })).then(
-                        console.log(this.state))
+                    console.log(this.state))
                 .catch(err => console.log(err))
                 .then(console.log(this.props.trips))
         }
@@ -60,7 +60,21 @@ class Map extends React.Component {
         return (
 
             <div className="mt-6">
-                <div ref={el => this.mapContainer = el} className='mapContainer' />
+                <div ref={el => this.mapContainer = el} className='mapContainer' >
+                    <div className="legend">
+                        <div>
+                            <h2 className="legendTitle pb-2">Your Trips</h2>
+                        </div>
+                        <div className="pb-2">
+                            <span className="circle1"></span>
+                            <span className="items ml-1">Future Trips </span>
+                        </div>
+                        <div>
+                            <span className="circle2"></span>
+                            <span className="items ml-1">Already Visited </span>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }

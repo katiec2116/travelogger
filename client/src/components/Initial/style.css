@@ -1,13 +1,15 @@
 .logoTitle{
-    font-family: 'Pacifico', cursive;
-    font-size: 3.5em;
-    color:black;
-    margin-top:-35px;
-    letter-spacing: 2px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 10.5em;
+    color:whitesmoke;
+    margin-top:-55px;
+    letter-spacing: 10px;
 }
 
 .blurb{
     font-family: 'Open Sans', sans-serif;
-    font-size:1.8em;
+    font-size:1.4em;
     letter-spacing: 3px;
+    margin-top:-55px;
+    color:whitesmoke;
 }

@@ -15,7 +15,7 @@ function AddForm(props) {
             <label className="label">Location</label>
                 <div className="field has-addons">
                     <div className="control has-icons-left is-expanded">
-                        <input className="input" type="text" placeholder="Find a Location" name="location" onChange={props.handleLocation}
+                        <input className="input" type="text" placeholder="Find a Location" name="location" style={{textTransform: "capitalize"}} onChange={props.handleLocation}
                         value={props.location}/>
                         <span className="icon is-small is-left">
                             {plane}
@@ -59,7 +59,7 @@ function AddForm(props) {
                         </textarea>
                     </div>
                 </div>
-                <div id="file-js-example" className="file is-info my-4">
+                <div id="file-js-example" method="POST" action="/upload-multiple-images" enctype="multipart/form-data"className="file is-info my-4">
                     <label className="file-label">
                         <input className="file-input" type="file" name="images"
                             onChange={props.handleImages}
