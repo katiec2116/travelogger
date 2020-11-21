@@ -15,7 +15,7 @@ router.route("/:tripid")
   .get(tripsController.getTrip);
 
 
-  router.route("/getalltrips/:user")
+router.route("/getalltrips/:user")
   .get(tripsController.getAllTrips); 
 
 

@@ -40,7 +40,6 @@ class ExploreMap extends React.Component {
                 
 
             this.props.all.map(trip => {
-                console.log(trip)
                 if (trip.been === "Yes") {
                     this.marker = new mapboxgl.Marker({ color: 'rgb(95,238,200)' })
                         .setLngLat([trip.long, trip.lat])

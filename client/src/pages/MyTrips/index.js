@@ -23,7 +23,6 @@ class MyTrips extends React.Component {
         });
     }
    
-
     componentDidMount() {
         const user = localStorage.getItem('user')
         API.getMyTrips(user)
@@ -64,14 +63,7 @@ class MyTrips extends React.Component {
                                                 <button onClick={() => this.deleteTrip(trip._id)} className="button p-1 is-small is-outlined is-danger mt-3 ml-3" >
                                                     <strong>Delete</strong>
                                                 </button>
-                                                <EditModal
-                                                    submitEdit={this.submitEdit}
-                                                    closeModal={this.toggleModal}
-                                                    modalState={this.state.modalState}
-                                                    trip={trip._id}
-                                                    >
-                                                        {trip._id}
-                                                </EditModal>
+                                                
                                             </div>
 
                                         ))}
