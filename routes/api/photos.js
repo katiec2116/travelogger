@@ -5,8 +5,8 @@ const router = require("express").Router();
   var multer = require('multer')
   var multerS3 = require('multer-s3')
   var s3 = new aws.S3({
-      accessKeyId: 'AKIAJZOZXZ2JHIJYAH2A',
-      secretAccessKey: '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',
+      accessKeyId: '',
+      secretAccessKey: '',
       region: 'us-east-2'
   })
    
