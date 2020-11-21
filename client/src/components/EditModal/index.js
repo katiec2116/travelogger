@@ -6,7 +6,7 @@ import { faPlane, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 
 const plane = <FontAwesomeIcon icon={faPlane} />
 const calendar = <FontAwesomeIcon icon={faCalendarAlt} />
-const EditModal = ({ trip, closeModal, modalState, title }) => {
+const EditModal = ({ trip, closeModal, modalState}) => {
     console.log(trip)
 
     const [data, setData] = useState({
@@ -34,7 +34,7 @@ const EditModal = ({ trip, closeModal, modalState, title }) => {
 
     const submitEdit = (tripid) => {
         console.log("this.state " + data.notes);
-        API.updateTrip(tripid, data);
+        API.updateTrip(tripid, data)
     };
 
 
@@ -104,7 +104,7 @@ const EditModal = ({ trip, closeModal, modalState, title }) => {
                 </section>
                 <footer className="modal-card-foot">
                     <a className="button" onClick={() => submitEdit(trip._id)} >Submit</a>
-                    <a className="button" onClick={closeModal}>Cancel</a>
+                    <a className="button" onClick={closeModal}>Close</a>
                 </footer>
             </div>
         </div>

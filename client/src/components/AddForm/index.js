@@ -44,7 +44,7 @@ function AddForm(props) {
                 <label className="label">Already Been?</label>
                 <div className="select mb-3">
                     <select name="been" onChange={props.handleInputChange}>
-                        <option defaultValue='No'>No</option>
+                        <option value="No" selected>No</option>
                         <option value='Yes'>Yes</option>
                     </select>
                 </div>

@@ -8,8 +8,8 @@ class Yelp extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            long: -81,
-            lat: 27,
+            long: 1,
+            lat: 1,
             restaurants: []
         };
     }

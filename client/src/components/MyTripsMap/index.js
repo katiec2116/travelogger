@@ -1,6 +1,5 @@
 import React from 'react';
 import mapboxgl from 'mapbox-gl';
-import './myMap.css';
 import API from "../../utils/API"
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX;
 
@@ -39,17 +38,17 @@ class Map extends React.Component {
         this.props.trips.map(trip => {
             console.log(trip)
             if (trip.been === "Yes") {
-                this.marker = new mapboxgl.Marker({ color: 'rgb(95,238,200)' })
+                this.marker = new mapboxgl.Marker({ color: 'rgb(0, 145, 156)' })
                     .setLngLat([trip.long, trip.lat])
                     .addTo(this.map)
                     .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(
-                        `<div> <p>Location: ${trip.location}</p><p>Notes: ${trip.notes}</p> </div>`))
+                        `<div> <p class=location>Location: ${trip.location}</p><p>Notes: ${trip.notes}</p> </div>`))
             } else {
-                this.marker = new mapboxgl.Marker({ color: 'rgb(0,60,153)' })
+                this.marker = new mapboxgl.Marker({ color: 'rgb(232, 117, 51)' })
                     .setLngLat([trip.long, trip.lat])
                     .addTo(this.map)
                     .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(
-                        `<div> <p>Location: ${trip.location}</p><p>Notes: ${trip.notes}</p></br> <button class="button is-small"> edit </button> </div>`))
+                        `<div> <p class=location>Location: ${trip.location}</p><p>Notes: ${trip.notes}</p></br> <button class="button is-small"> edit </button> </div>`))
             }
         })
     }
@@ -60,7 +59,7 @@ class Map extends React.Component {
         return (
 
             <div className="mt-6">
-                <div ref={el => this.mapContainer = el} className='mapContainer' >
+                <div ref={el => this.mapContainer = el} className='mapContainer1' >
                     <div className="legend">
                         <div>
                             <h2 className="legendTitle pb-2">Your Trips</h2>

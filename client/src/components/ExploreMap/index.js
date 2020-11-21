@@ -1,6 +1,6 @@
 import React from 'react';
+import API from "../../utils/API"
 import mapboxgl from 'mapbox-gl';
-import "./exploremap.css"
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX;
 
 
@@ -26,37 +26,37 @@ class ExploreMap extends React.Component {
     }
 
     async componentDidUpdate() {
-        // const user = localStorage.getItem('user');
-        if (this.props.all.length) {
-            // console.log(this.props.all)
-                // await API.getAllTrips(user)
-                // .then(results =>
-                //     this.setState({ ...this.state, trips: results.data }))
+        const user = localStorage.getItem('user');
+        if (!this.props.all.length) {
+            console.log(this.props.all)
+                await API.getAllTrips(user)
+                .then(results =>
+                    this.setState({ ...this.state, trips: results.data }))
                         // console.log(this.state))
-                // .catch(err => console.log(err))
-                // .then(console.log(this.props.trips))
-            
+                .catch(err => console.log(err))
+                .then(console.log(this.props.trips))
+            }
 
                 
-            const user =localStorage.getItem('user')
+
             this.props.all.map(trip => {
                 console.log(trip)
                 if (trip.user === user) {
-                    this.marker = new mapboxgl.Marker({ color: 'rgb(3, 252, 240)' })
+                    this.marker = new mapboxgl.Marker({ color: 'rgb(117, 0, 0)' })
                         .setLngLat([trip.long, trip.lat])
                         .addTo(this.map)
                         .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(
-                            `<div> <span class = popup> ${trip.user}</span><p class = location>Location: ${trip.location}</p><p>Notes: ${trip.notes}</p> </div>`))
+                            `<div> <p class=location> ${trip.location}</p><p>Notes: ${trip.notes}</p> </div>`))
                 } else {
-                    this.marker = new mapboxgl.Marker({ color: 'rgb(55, 0, 87)' })
+                    this.marker = new mapboxgl.Marker({ color: 'rgb(171, 171, 171)' })
                         .setLngLat([trip.long, trip.lat])
                         .addTo(this.map)
                         .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(
-                            `<div> <span class = popup> ${trip.user}</span><p class = location>Location: ${trip.location}</p><p>Notes: ${trip.notes}</p> </div>`))
+                            `<div> <p> <span class=bold> ${trip.user}</span>  went to <span class=bold>${trip.location}</span></p><p>Notes: ${trip.notes}</p> </div>`))
 
                 }
             })
-        }
+
         
     }
 
@@ -64,8 +64,22 @@ class ExploreMap extends React.Component {
     render() {
         return (
 
-            <div className="mt-6">
-                <div ref={el => this.mapContainer = el} className='mapContainer' />
+            <div>
+                <div ref={el => this.mapContainer = el} className='mapContainerExplore' >
+                    <div className="legend">
+                        <div>
+                            <h2 className="legendTitle pb-2">All Trips</h2>
+                        </div>
+                        <div className="pb-2">
+                            <span className="myTrips"></span>
+                            <span className="items ml-1">My Trips </span>
+                        </div>
+                        <div>
+                            <span className="other"></span>
+                            <span className="items ml-1">Others Trips </span>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }

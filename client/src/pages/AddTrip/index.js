@@ -3,7 +3,6 @@ import AddForm from "../../components/AddForm"
 import API from "../../utils/API"
 import Yelp from "../../components/Yelp"
 import Map from "../../components/Map"
-import './style.css';
 
 
 
@@ -13,7 +12,7 @@ class AddTrip extends React.Component {
         user: localStorage.getItem('user'),
         location: "",
         date: "",
-        been:"",
+        been:"No",
         notes: "",
         lat: "",
         long: "",
