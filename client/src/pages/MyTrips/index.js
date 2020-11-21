@@ -69,7 +69,7 @@ class MyTrips extends React.Component {
                                         {this.state.myTrips.map(trip => (
                                             <div style={{ width: '200px' }} className='box columns p-1 m-3' key={trip._id}>
                                                 <div className ="column is-10 p-1">
-                                                <p className='tileTitle location'>Location: {trip.location}</p>
+                                                <p className='tileTitle location'>{trip.location}</p>
                                                 <p className='tileSubtitle'>When: {trip.date}</p>
                                                 <p className='tileSubtitle'>Notes: {trip.notes}</p>
                                                 </div>

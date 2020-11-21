@@ -14,11 +14,12 @@ const ViewModal = ({ trip, closeModal, ViewModalState}) => {
             <div className="modal-background" onClick={closeModal} />
             <div className="modal-card">
                 <header className="modal-card-head">
-                    <p className="modal-card-title">{trip.user}'s trip to {trip.location}</p>
+                    <p className="modal-card-title location" >{trip.location}</p>
                     <button className="delete" onClick={closeModal} />
                 </header>
                 <section className="modal-card-body">
                     <div className="content">
+                        
                         
                        Display data here
                     </div>
