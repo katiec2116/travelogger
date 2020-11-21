@@ -70,6 +70,4 @@ getAllTrips: function(user){
       url:"/api/trips/getalltrips/" + user
     });
   },
-
-
 };
