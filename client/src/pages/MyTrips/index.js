@@ -58,6 +58,7 @@ class MyTrips extends React.Component {
             .then(results => this.setState({ ...this.state, myTrips: results.data, activeTab: been }))
             .catch(err => console.log(err))
     }
+    
     filterAll() {
         this.setState({ ...this.state,  activeTab: "" })
         this.componentDidMount();
