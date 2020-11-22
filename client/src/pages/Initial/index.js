@@ -1,7 +1,6 @@
 import React from "react";
 import Logo from "../../components/Logo";
 import Initial from "../../components/Initial";
-import "../initial.css"
 
 
 function inital() {
