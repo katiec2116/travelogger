@@ -13,7 +13,8 @@ class MyTrips extends React.Component {
             modalState: false,
             viewModalState: false,
             myTrips: [],
-            selected: {}
+            selected: {},
+            activeTab: ""
         };
 
         this.toggleModal = this.toggleModal.bind(this);
@@ -51,13 +52,17 @@ class MyTrips extends React.Component {
         });
     }
 
-    filter(been){
+    filter(been) {
         const user = localStorage.getItem('user')
         API.getMyTripsType(user, been)
-            .then(results => this.setState({ ...this.state, myTrips: results.data }))
+            .then(results => this.setState({ ...this.state, myTrips: results.data, activeTab: been }))
             .catch(err => console.log(err))
     }
-
+    filterAll() {
+        this.setState({ ...this.state,  activeTab: "" })
+        this.componentDidMount();
+            
+    }
 
     render() {
         return (
@@ -73,9 +78,9 @@ class MyTrips extends React.Component {
                                 <div>
                                     <h1 className='columnHeader has-text-centered mt-6 mb-3'>My Trips</h1>
                                     <div className="buttons has-addons is-centered">
-                                        <button className="button is-small" onClick={() => this.filter("No")}>Planned</button>
-                                        <button className="button is-small" onClick={() => this.filter("Yes")}>Visited</button>
-                                        <button className="button is-small" onClick={() => this.componentDidMount()}>All</button>
+                                        <button className={this.state.activeTab === "No" ? "active" : "notActive"} onClick={() => this.filter("No")}>Planned</button>
+                                        <button className={this.state.activeTab === "Yes" ? "active" : "notActive"} onClick={() => this.filter("Yes")}>Visited</button>
+                                        <button className={this.state.activeTab === "" ? "active" : "notActive"} onClick={() => this.filterAll()}>All</button>
                                     </div>
                                     <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'stretch', justifyContent: 'space-around', alignContent: 'flex-start', flexDirection: 'row' }}>
                                         {this.state.myTrips.map(trip => (
