@@ -34,6 +34,14 @@ getMyTrips: function(user){
     });
   },
 
+getMyTripsType: function(user, been){
+    return axios({
+        method: "GET",
+        withCredential:true,
+        url:"/api/trips/" + user +"/been/" + been
+      });
+    },
+
   getTrip: function(tripid){
     return axios({
         method: "GET",
@@ -57,7 +65,7 @@ updateTrip: function (tripid, data) {
       method: "PUT",
       data: data,
       withCredential: true,
-      url: "/api/trips/update/" + tripid
+      url: "/api/trips/" + tripid
     }).then((res) => console.log(res));
   },
 

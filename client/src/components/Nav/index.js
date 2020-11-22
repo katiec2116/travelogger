@@ -36,31 +36,32 @@ function Nav() {
 
     if (!user) {
         return (
-            <nav className="navbar is-dark" role="navigation" aria-label="main navigation">
-                <div className="navbar-brand ml-2">
-                    <Link to="/"><img src={logo} style={{ width: "100px" }} alt="logo" />
-                    </Link>
-                </div>
-                <div className="navbar-end">
-                    <div className="navbar-item">
-                        <Link style={buttonStyle} className="button is-light" to="/register">Signup</Link>
-                        <AuthButton />
-                    </div>
-                </div>
-            </nav>
+            <div></div>
+            // <nav className="navbar is-dark" role="navigation" aria-label="main navigation">
+            //     <div className="navbar-brand ml-2">
+            //         <Link to="/"><img src={logo} style={{ width: "100px" }} alt="logo" />
+            //         </Link>
+            //     </div>
+            //     <div className="navbar-end">
+            //         <div className="navbar-item">
+            //             <Link style={buttonStyle} className="button is-light" to="/register">Signup</Link>
+            //             <AuthButton />
+            //         </div>
+            //     </div>
+            // </nav>
         )
     }
     else {
         return (
 
-            <nav className="navbar is-dark" role="navigation" aria-label="main navigation">
+            <nav className="navbar myNav" role="navigation" aria-label="main navigation">
                 <div className="navbar-brand ml-2">
                     <Link to="/"><img src={logo} style={{ width: "100px" }} alt="logo" />
                     </Link>
                 </div>
+                <div className="logoNav navbar-item">TRAVELOGGER</div>
 
-
-                <div className="navbar-start is-pulled-right">
+                <div className="navbar-end">
                     <Link className="navbar-item" to={`/explore/${user}`}>
                         Explore
                         </Link>
@@ -72,10 +73,8 @@ function Nav() {
                     <Link className="navbar-item" to={`/addtrip/${user}`} onClick={() => history.push('/addtrip')}>
                         Add a Trip
                         </Link>
-                    <div className="navbar-end">
                     <div className="navbar-item">
                         <AuthButton />
-                    </div>
                     </div>
                 </div>
             </nav>

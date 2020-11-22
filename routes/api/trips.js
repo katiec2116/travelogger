@@ -9,6 +9,9 @@ router.route("/")
 router.route("/:user")
   .get(tripsController.getMyTrips);
 
+router.route("/:user/been/:been")
+  .get(tripsController.getMyTripsType);
+
 router.route("/:tripid")
   .put(tripsController.updateTrip)
   .delete(tripsController.deleteTrip)
@@ -17,6 +20,7 @@ router.route("/:tripid")
 
 router.route("/getalltrips/:user")
   .get(tripsController.getAllTrips); 
+
 
 
 

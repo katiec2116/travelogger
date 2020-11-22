@@ -1,9 +1,10 @@
 import React from "react";
 import Travelogger from './logo1.png';
+import { Link } from "react-router-dom";
 
 function Logo() {
   return (
-    <img className=" " src={Travelogger} alt="logo" style={{height:"200px"}} />
+    <Link to="/"><img className=" " src={Travelogger} alt="logo"  /></Link>
   );
 }
 

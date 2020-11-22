@@ -1,6 +1,6 @@
 import React from 'react';
-import mapboxgl from 'mapbox-gl';
 import API from "../../utils/API"
+import mapboxgl from 'mapbox-gl';
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX;
 
 
@@ -11,7 +11,7 @@ class ExploreMap extends React.Component {
             trips: props.all,
             long: 0,
             lat: 0,
-            zoom: 0
+            // zoom: 0
         };
     }
 
@@ -20,7 +20,7 @@ class ExploreMap extends React.Component {
             container: this.mapContainer,
             style: 'mapbox://styles/mapbox/streets-v11',
             center: [this.state.long, this.state.lat],
-            zoom: 0
+            zoom: 1
         });
         console.log(this.props.all)
     }
@@ -40,18 +40,18 @@ class ExploreMap extends React.Component {
                 
 
             this.props.all.map(trip => {
-                if (trip.been === "Yes") {
-                    this.marker = new mapboxgl.Marker({ color: 'rgb(95,238,200)' })
+                if (trip.user === user) {
+                    this.marker = new mapboxgl.Marker({ color: 'rgb(117, 0, 0)' })
                         .setLngLat([trip.long, trip.lat])
                         .addTo(this.map)
                         .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(
-                            `<div> <p>Location: ${trip.location}</p><p>Notes: ${trip.notes}</p> </div>`))
+                            `<div> <p class=location> ${trip.location}</p><p>Notes: ${trip.notes}</p> </div>`))
                 } else {
-                    this.marker = new mapboxgl.Marker({ color: 'rgb(0,60,153)' })
+                    this.marker = new mapboxgl.Marker({ color: 'rgb(171, 171, 171)' })
                         .setLngLat([trip.long, trip.lat])
                         .addTo(this.map)
                         .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(
-                            `<div> <p>Location: ${trip.location}</p><p>Notes: ${trip.notes}</p> </div>`))
+                            `<div> <p> <span class=bold> ${trip.user}</span>  went to <span class=bold>${trip.location}</span></p><p>Notes: ${trip.notes}</p> </div>`))
 
                 }
             })
@@ -63,8 +63,22 @@ class ExploreMap extends React.Component {
     render() {
         return (
 
-            <div className="mt-6">
-                <div style={{width: "98%"}} ref={el => this.mapContainer = el} className='mapContainer' />
+            <div>
+                <div ref={el => this.mapContainer = el} className='mapContainerExplore' >
+                    <div className="legend">
+                        <div>
+                            <h2 className="legendTitle pb-2">All Trips</h2>
+                        </div>
+                        <div className="pb-2">
+                            <span className="myTrips"></span>
+                            <span className="items ml-1">My Trips </span>
+                        </div>
+                        <div>
+                            <span className="other"></span>
+                            <span className="items ml-1">Others Trips </span>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }

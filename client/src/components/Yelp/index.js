@@ -8,25 +8,24 @@ class Yelp extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            long: -81,
-            lat: 27,
-            restaurants: []
+            long: 1,
+            lat: 1,
+            businesses: [],
+            activeTab: ""
         };
     }
 
-    componentDidMount() {
+    componentDidMount(type) {
         axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?latitude=${this.state.lat}&longitude=${this.state.long}`, {
             headers: {
                 Authorization: yelp_key
             },
             params: {
-                categories: 'restaurant',
+                categories: type,
             }
         })
             .then((res) => {
-                console.log(res.data.businesses)
-                this.setState({ ...this.state, restaurants: res.data.businesses })
-
+                this.setState({ ...this.state, businesses: res.data.businesses, activeTab: type})
             })
             .catch((err) => {
                 console.log('error')
@@ -35,7 +34,6 @@ class Yelp extends React.Component {
 
 
     async componentDidUpdate(prevProps) {
-        console.log(prevProps)
         // Typical usage (don't forget to compare props):
         if (this.props.data !== prevProps.data) {
             await this.setState({ lat: this.props.data.lat, long: this.props.data.long });
@@ -45,39 +43,66 @@ class Yelp extends React.Component {
 
     render() {
         return (
-            <div style={{marginLeft: "auto" ,marginRight: "auto",marginTop: "20px"}}>
-                
+            <div style={{ marginLeft: "auto", marginRight: "auto", marginTop: "20px" }}>
 
-                {!this.state.restaurants.length ? (
+
+                {!this.state.businesses.length ? (
                     <h1 className="subtitle has-text-centered my-4 pb-6">No restaurants in the area! <p> &#128546;</p></h1>
                 ) : (
-                        <div style={{display: "flex" ,flexWrap: "wrap", justifyContent:"space-around", alignContent: "flex-start", flexDirection: "row"}}>
-                            {this.state.restaurants.map(place => (
-                                <div className="card__wrapper box pb-0">
-                                    <div className="card__photo">
-                                    {!place.image_url ? (<img style={{height:"200px", width:"200px"}} src={yelp} alt={place.title}/>
-                                    ) : 
-                                    
-                                    (<img style={{height:"200px", width:"200px"}}
-                                    src={place.image_url} alt={place.title}/>)}
-                                            
+                        <div>
+                            <h1>Suggestions</h1>
+                            <div className="tabs is-boxed">
+                                <ul>
+                                    <li className={this.state.activeTab === "" ? "is-active" : "notActiveTab"} onClick={() => this.componentDidMount("")}>
+                                        <a>
+                                            <span>All</span>
+                                        </a>
+                                    </li>
+                                    <li className={this.state.activeTab === "hotels, bedbreakfasts" ? "is-active" : "notActiveTab"} onClick={() => this.componentDidMount("hotels, bedbreakfasts")}>
+                                        <a>
+                                            <span>Hotels</span>
+                                        </a>
+                                    </li>
+                                    <li className={this.state.activeTab === "restaurants, food" ? "is-active" : "notActiveTab"} onClick={() => this.componentDidMount("restaurants, food")}>
+                                        <a>
+                                            <span>Food</span>
+                                        </a>
+                                    </li>
+                                    <li className={this.state.activeTab === "arts, all" ? "is-active" : "notActiveTab"} onClick={() => this.componentDidMount("arts, all")}>
+                                        <a>
+                                            <span>Arts</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-around", alignContent: "flex-start", flexDirection: "row" }}>
+                                {this.state.businesses.map(place => (
+                                    <div className="card__wrapper box pb-0" key={place.id}>
+                                        <div className="card__photo">
+                                            {!place.image_url ? (<img style={{ height: "200px", width: "200px" }} src={yelp} alt={place.title} />
+                                            ) :
+
+                                                (<img style={{ height: "200px", width: "200px" }}
+                                                    src={place.image_url} alt={place.title} />)}
+
+                                        </div>
+                                        <div className="restaurants-container">
+                                            <div style={{ width: "200px" }}>
+                                                <span className="restaurants__name"><a href={place.url} target="_blank" className="restaurants__name-link">{place.name}</a></span>
+                                            </div>
+                                            <span>{place.display_phone}</span>
+                                            <div className="restaurants__rating">
+                                                <span className="restaurants-info__cost">{place.price}</span>
+                                                <span className={place.rating}></span>
+                                                <span className="review-counter">{place.review_count} reviews</span>
+                                            </div>
+                                            <div className="restaurants-info">
+                                                <span>{place.categories.map(type => <p className="restaurants-info__food">{type.title} </p>)}</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className="restaurants-container">
-                                        <div style={{width:"200px"}}>
-                                        <span className="restaurants__name"><a href={place.url} target="_blank" className="restaurants__name-link">{place.name}</a></span>
-                                        </div>
-                                        <span>{place.display_phone}</span>
-                                        <div className="restaurants__rating">
-                                        <span className="restaurants-info__cost">{place.price}</span>
-                                            <span className={place.rating}></span>
-                                            <span className="review-counter">{place.review_count} reviews</span>
-                                        </div>
-                                        <div className="restaurants-info">
-                                            <span>{place.categories.map(type => <p className="restaurants-info__food">{type.title} </p>)}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
                     )}
             </div>
