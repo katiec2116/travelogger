@@ -61,6 +61,22 @@ updateTrip: function (tripid, data) {
     }).then((res) => console.log(res));
   },
 
+likeTrip: function (tripid) {
+    return axios({
+      method: "PUT",
+      withCredential: true,
+      url: "/api/trips/likes/" + tripid
+    }).then((res) => console.log(res));
+  },
+  
+  unlikeTrip: function (tripid) {
+    return axios({
+      method: "PUT",
+      withCredential: true,
+      url: "/api/trips/unlike/" + tripid
+    }).then((res) => console.log(res));
+  },
+
 
 
 getAllTrips: function(user){

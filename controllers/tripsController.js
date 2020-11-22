@@ -34,18 +34,34 @@ module.exports = {
     updateTrip: function (req, res) {
         Trip
             .findOneAndUpdate({ _id: req.params.tripid },
-                req.body ,
+                req.body,
                 function (err, data) {
                     console.log(data)
                 }
             ).then(results => res.send(results));
     },
 
-	getAllTrips: function (req, res) {
+    getAllTrips: function (req, res) {
         Trip
-        .find().sort({_id: - 1}).limit(10).then(results => res.json(results));
+            .find().sort({ _id: - 1 }).limit(10).then(results => res.json(results));
 
-},
+    },
+
+    likeTrip: function (req, res) {
+        Trip
+            .findOneAndUpdate({ _id: req.params.tripid }, { $inc: { likes: 1 } }, { new: true }, function (err, data) {
+                console.log(data)
+            }
+        ).then(results => res.send(results));
+    },
+
+    unlikeTrip: function (req, res) {
+        Trip
+            .findOneAndUpdate({ _id: req.params.tripid }, { $inc: { likes: -1 } }, { new: true }, function (err, data) {
+                console.log(data)
+            }
+        ).then(results => res.send(results));
+    }
 
 
 }

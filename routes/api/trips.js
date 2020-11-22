@@ -14,6 +14,11 @@ router.route("/:tripid")
   .delete(tripsController.deleteTrip)
   .get(tripsController.getTrip);
 
+router.route("/likes/:tripid")
+  .put(tripsController.likeTrip);
+
+router.route("/unlike/:tripid")
+  .put(tripsController.unlikeTrip)
 
 router.route("/getalltrips/:user")
   .get(tripsController.getAllTrips); 

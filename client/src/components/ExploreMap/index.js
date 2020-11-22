@@ -1,7 +1,10 @@
 import React from 'react';
 import API from "../../utils/API"
 import mapboxgl from 'mapbox-gl';
+import ReactDOM from "react-dom";
+import Popup from "../Popup"
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX;
+
 
 
 class ExploreMap extends React.Component {
@@ -11,9 +14,11 @@ class ExploreMap extends React.Component {
             trips: props.all,
             long: 0,
             lat: 0,
+            trip: ''
             // zoom: 0
         };
     }
+    
 
     componentDidMount() {
         this.map = new mapboxgl.Map({
@@ -25,7 +30,13 @@ class ExploreMap extends React.Component {
         console.log(this.props.all)
     }
 
-    async componentDidUpdate() {
+     addLike(){
+        // await this.state.set({...this.state, trip:likedTrip});
+        console.log("hello")
+    }
+    
+
+    async componentDidUpdate() {       
         const user = localStorage.getItem('user');
         if (!this.props.all.length) {
             console.log(this.props.all)
@@ -40,18 +51,19 @@ class ExploreMap extends React.Component {
                 
 
             this.props.all.map(trip => {
+                const popup = document.createElement('div');
+                ReactDOM.render(<Popup trip={trip}/>, popup);
+
                 if (trip.user === user) {
                     this.marker = new mapboxgl.Marker({ color: 'rgb(117, 0, 0)' })
                         .setLngLat([trip.long, trip.lat])
                         .addTo(this.map)
-                        .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(
-                            `<div> <p class=location> ${trip.location}</p><p>Notes: ${trip.notes}</p> </div>`))
+                        .setPopup(new mapboxgl.Popup({ offset: 25 }).setDOMContent(popup))
                 } else {
                     this.marker = new mapboxgl.Marker({ color: 'rgb(171, 171, 171)' })
                         .setLngLat([trip.long, trip.lat])
                         .addTo(this.map)
-                        .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(
-                            `<div> <p> <span class=bold> ${trip.user}</span>  went to <span class=bold>${trip.location}</span></p><p>Notes: ${trip.notes}</p> </div>`))
+                        .setPopup(new mapboxgl.Popup({ offset: 25 }).setDOMContent(popup))
 
                 }
             })

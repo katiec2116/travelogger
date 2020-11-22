@@ -16,6 +16,7 @@ class AddTrip extends React.Component {
         notes: "",
         lat: "",
         long: "",
+        likes:0,
         images: []
     }
 

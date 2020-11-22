@@ -6,7 +6,7 @@ class Explore extends React.Component {
 
     state = {
         trips: [],
-
+    }
     componentDidMount() {
         const user = localStorage.getItem('user')
 
