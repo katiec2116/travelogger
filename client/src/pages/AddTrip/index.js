@@ -38,6 +38,7 @@ class AddTrip extends React.Component {
         const images = this.state.images;
         images.push(e.target.value);
         this.setState({ ...this.state, images: images });
+        console.log(this.state.images)
     }
 
     handleLocation = e => {

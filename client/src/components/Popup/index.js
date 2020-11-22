@@ -11,15 +11,13 @@ function Popup({trip}) {
         )
 
     const likeTrip=() =>{
-        if (likes.like === true){
+        if (likes.like === false){
             API.likeTrip(trip._id)
             setLikes({like: true, status: "unlike" })
-            console.log("TRUE" , likes)
         }
         else {
             API.unlikeTrip(trip._id)
             setLikes({like: true, status: "like" })
-            console.log("FALSE " , likes)
         }
     }
 
@@ -28,7 +26,7 @@ function Popup({trip}) {
         <div>
             <bold>{trip.user} </bold> visited <bold>{trip.location}</bold>
            <p> <small>Liked by {trip.likes} people</small></p>
-            <button className="button is-small" onClick={() => likeTrip(!likes.like)}> {likes.status}</button>
+            <button className="button is-small is-rounded" onClick={() => likeTrip(!likes.like)}> {likes.status}</button>
         </div>
     )
     }
@@ -37,6 +35,7 @@ function Popup({trip}) {
             <div>
                 <bold>{trip.user} </bold> wants to vist <bold>{trip.location}</bold>
                <p> <small>Liked by {trip.likes} people</small></p>
+               <button className="button is-small is-rounded" onClick={() => likeTrip(!likes.like)}> {likes.status}</button>
             </div>
         )
     }
