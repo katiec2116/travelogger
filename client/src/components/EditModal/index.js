@@ -1,18 +1,15 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import API from "../../utils/API"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlane, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 
-
 const plane = <FontAwesomeIcon icon={faPlane} />
 const calendar = <FontAwesomeIcon icon={faCalendarAlt} />
-
-
-const EditModal = ({ trip, closeModal, modalState, title }) => {
+const EditModal = ({ trip, closeModal, modalState}) => {
     console.log(trip)
 
-    const [ data , setData ] = useState({
+    const [data, setData] = useState({
         location: trip.location,
         date: trip.date,
         been: trip.been,
@@ -22,23 +19,23 @@ const EditModal = ({ trip, closeModal, modalState, title }) => {
         images: trip.images
     });
 
-    
+
     const handleInputChange = e => {
         const name = e.target.name;
         const value = e.target.value;
         console.log('here')
         console.log(value)
-        console.log(trip) 
+        console.log(trip)
         console.log(name)
-        setData({...data,
+        setData({
+            ...data,
             [name]: value
         });
     };
 
-
-    const submitEdit = (tripid) =>{
+    const submitEdit = (tripid) => {
         console.log("this.state " + data.notes);
-        API.updateTrip(tripid, data);
+        API.updateTrip(tripid, data)
     };
 
 
@@ -51,19 +48,16 @@ const EditModal = ({ trip, closeModal, modalState, title }) => {
             <div className="modal-background" onClick={closeModal} />
             <div className="modal-card">
                 <header className="modal-card-head">
-                    <p className="modal-card-title">{trip._id}</p>
+                    <p className="modal-card-title">{trip.location}</p>
                     <button className="delete" onClick={closeModal} />
                 </header>
                 <section className="modal-card-body">
                     <div className="content">
-
-
-
                         <label className="label">Location</label>
                         <div className="field has-addons">
                             <div className="control has-icons-left is-expanded">
                                 <input className="input" type="text" placeholder="Find a Location" name="location"
-                                    value={data.location} readOnly />
+                                    value={trip.location} readOnly />
                                 <span className="icon is-small is-left">
                                     {plane}
                                 </span>
@@ -73,7 +67,7 @@ const EditModal = ({ trip, closeModal, modalState, title }) => {
                             <label className="label">When?</label>
                             <div className="control has-icons-left">
                                 <input className="input" type="date" name="date"
-                                    defaultValue={trip.date} onChange={handleInputChange}/>
+                                    defaultValue={trip.date} onChange={handleInputChange} />
                                 <span className="icon is-small is-left">
                                     {calendar}
                                 </span>
@@ -91,7 +85,7 @@ const EditModal = ({ trip, closeModal, modalState, title }) => {
                             <label className="label">Notes:</label>
                             <div className="control">
                                 <textarea className="textarea" type="text" name="notes"
-                                    defaultValue={data.notes} onChange={handleInputChange}
+                                    defaultValue={trip.notes} onChange={handleInputChange}
                                 >
                                 </textarea>
                             </div>
@@ -107,12 +101,11 @@ const EditModal = ({ trip, closeModal, modalState, title }) => {
                                 </span>
                             </label>
                         </div>
-
                     </div>
                 </section>
                 <footer className="modal-card-foot">
                     <a className="button" onClick={() => submitEdit(trip._id)} >Submit</a>
-                    <a className="button" onClick={closeModal}>Cancel</a>
+                    <a className="button" onClick={closeModal}>Close</a>
                 </footer>
             </div>
         </div>

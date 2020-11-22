@@ -3,7 +3,6 @@ import AddForm from "../../components/AddForm"
 import API from "../../utils/API"
 import Yelp from "../../components/Yelp"
 import Map from "../../components/Map"
-import './style.css';
 
 
 
@@ -13,7 +12,7 @@ class AddTrip extends React.Component {
         user: localStorage.getItem('user'),
         location: "",
         date: "",
-        been:"",
+        been:"No",
         notes: "",
         lat: "",
         long: "",
@@ -22,7 +21,6 @@ class AddTrip extends React.Component {
 
     onSubmit = e => {
         e.preventDefault();
-        console.log("this.state " + this.state.location, this.state.location, this.state.lat, this.state.long, this.state.notes)
         API.addTrip(this.state)
         .then(res => console.log(res))
     };
@@ -39,8 +37,6 @@ class AddTrip extends React.Component {
         const images = this.state.images;
         images.push(e.target.value);
         this.setState({ ...this.state, images: images });
-        console.log(e.target.value)
-        console.log(this.state)
     }
 
     handleLocation = e => {

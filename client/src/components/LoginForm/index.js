@@ -13,7 +13,7 @@ function LoginForm({ onLogin }) {
 
 	return (
 		<div>
-			<h3>Login</h3>
+			<h3 style={{fontFamily: 'Open Sans', color:"whitesmoke", letterSpacing:"3px"}}>Login</h3>
 			<form
 				ref={formRef}
 				onSubmit={(e) => {

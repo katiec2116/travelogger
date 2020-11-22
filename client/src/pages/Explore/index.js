@@ -2,13 +2,11 @@ import React from 'react';
 import API from "../../utils/API"
 import ExploreMap from "../../components/ExploreMap"
 
-
 class Explore extends React.Component {
 
     state = {
         trips: [],
-    }
-    
+
     componentDidMount() {
         const user = localStorage.getItem('user')
 
@@ -25,25 +23,20 @@ class Explore extends React.Component {
         clearInterval(this.timer);
     }
 
-    
 
     render() {
         return (
-            <div className="container">
+            <div className="container1">
                 <div className="columns">
-                  <div className="column is-9 py-6">
-                      <ExploreMap long={-81} lat={27} all={this.state.trips} />
-                  </div>
-                  <div className="column is-3 py-6" style={{marginTop: "3rem"}}>
-                  <aside className="menu" style={{border: "2px solid #75cff1"}}>
-                          <ul className="menu-list">
+                    <div className="column is-9 py-6 mt-6">
+                        <ExploreMap long={-81} lat={27} all={this.state.trips} />
+                    </div>
+                    <div className="column is-3 py-6 mt-6">
+                        <aside className="menu" style={{ border: '1px solid black' }}>
+                            <ul className="menu-list">
                             <p className="menu-label" style={{borderBottom: "1px solid black", marginBottom: "0px", fontSize: "18px", padding: "5px 10px", color: "black", fontWeight: "500"}}>
                                 Live Stream
                             </p>
-                             {/* {this.state.trips.reverse().map(trip => (
-                                 <li key={trip._id} style={{padding: "15px 10px", borderBottom: "1px solid #75cff1", color: "#000"}}>{trip.user} added {trip.location} to their trips!</li>
-                             ))} */}
-
                             {this.state.trips.map(function(trip, i){
                                  if (trip.been === 'Yes') {
                                      return <li key={trip._id} style={{padding: "15px 10px", borderBottom: "1px solid #75cff1", color: "#000"}}>{trip.user} added {trip.location} to their trips!</li>
@@ -54,8 +47,8 @@ class Explore extends React.Component {
                           </ul>
                       </aside>
                     </div>
-              </div>
-          </div>
+                </div>
+            </div>
         );
     }
 }

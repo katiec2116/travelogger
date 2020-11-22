@@ -14,7 +14,7 @@ function RegisterForm({ onRegister }) {
 
 	return (
 		<div>
-			<h3>Register a New User</h3>
+			<h3 style={{fontFamily: 'Open Sans', color:"whitesmoke", letterSpacing:"3px"}}>Register a New User</h3>
 			<form
 				ref={formRef}
 				onSubmit={(e) => {
@@ -34,12 +34,12 @@ function RegisterForm({ onRegister }) {
 					<br />
 					<div className="control has-icons-left has-icons-right">
 					<input className="input mb-3" ref={passwordRef} type='password' required pattern="[0-9]+"  name="password" placeholder='Password' />
-					<p style={{fontSize:"12px", fontWeight:"bold", marginBottom:"0px"}}>Password must contain at least one number</p>
+					<p style={{fontSize:"12px", fontWeight:"bold", marginBottom:"0px", color:"whitesmoke"}}>Password must contain at least one number</p>
 					<span className="icon is-small is-left">
 							{lock}
 						</span>
 						<br />
-					<button className="button is-dark my-3" type='submit'>Submit</button>
+					<button className="button is-dark my-3" type='submit'> Register</button>
 				</div>
 				</div>
 				</div>
