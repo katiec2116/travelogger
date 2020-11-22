@@ -45,7 +45,13 @@ module.exports = {
         Trip
         .find().sort({_id: - 1}).limit(10).then(results => res.json(results));
 
-},
+    },
+
+    getMyTripsType: function (req, res) {
+        Trip
+            .find({ user: req.params.user , been: req.params.been })
+            .then(results => res.json(results));
+    },
 
 
 }
