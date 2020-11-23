@@ -12,10 +12,11 @@ class Popup extends React.Component {
             viewModalState: false,
         }
 
+        this.toggleView = this.toggleView.bind(this);
     } 
   
 
-    toggleView(trip) {
+    toggleView() {
         this.setState((prev, props) => {
             console.log(this.props.trip)
             const newState = !prev.viewModalState;
