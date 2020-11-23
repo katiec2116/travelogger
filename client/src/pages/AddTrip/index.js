@@ -33,10 +33,15 @@ class AddTrip extends React.Component {
         });
         
     };
-    handleImages = e => {
-        const images = this.state.images;
-        images.push(e.target.value);
-        this.setState({ ...this.state, images: images });
+
+    handleImages(event) {
+        event.preventDefault();
+        alert('A name was submitted: ' + this.state.value);
+      }
+    
+    uploadImages(e) {
+        e.preventDefault();
+        API.uploadPhoto().then(res => console.log(res));  
     }
 
     handleLocation = e => {

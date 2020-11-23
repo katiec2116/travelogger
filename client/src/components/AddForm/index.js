@@ -2,12 +2,27 @@ import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlane, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 
-
 const plane = <FontAwesomeIcon icon={faPlane} />
 const calendar = <FontAwesomeIcon icon={faCalendarAlt} />
+
+
+function test(e){
+    e.preventDefault()
+    const data = new FormData();
+    const user = localStorage.getItem('user')
+
+    data.append('photo', e.target.photo.files[0])
+    data.append('user', user)
+
+    const options = {
+        method: 'POST',
+        body: data
+      };
+
+    fetch('/api/photos/upload', options).then(data => console.log(data));
+}
+  
 function AddForm(props) {
-
-
     return (
         <div className="box mt-6">
             <div className="content">
@@ -44,7 +59,7 @@ function AddForm(props) {
                 <label className="label">Already Been?</label>
                 <div className="select mb-3">
                     <select name="been" onChange={props.handleInputChange}>
-                        <option value="No" selected>No</option>
+                        <option value="No" defaultValue>No</option>
                         <option value='Yes'>Yes</option>
                     </select>
                 </div>
@@ -59,10 +74,10 @@ function AddForm(props) {
                         </textarea>
                     </div>
                 </div>
-                <div id="file-js-example" method="POST" action="/upload-multiple-images" enctype="multipart/form-data"className="file is-info my-4">
+                <form onSubmit={test} id="file-js" method="POST" action="" className="file is-info my-4">
                     <label className="file-label">
-                        <input className="file-input" type="file" name="images"
-                            onChange={props.handleImages}
+                        <input className="file-input" type="file" name="photo"
+                            
                         />
                         <span className="file-cta">
                             <span className="file-label">
@@ -70,7 +85,8 @@ function AddForm(props) {
                                     </span>
                         </span>
                     </label>
-                </div>
+                    <button type="submit" className="btn" >Upload</button>
+                </form>
 
                 <div className="field is-grouped">
                     <div className="control">
