@@ -47,6 +47,7 @@ module.exports = {
 
     },
 
+
     likeTrip: function (req, res) {
         Trip
             .findOneAndUpdate({ _id: req.params.tripid } ,{$push:{likes:req.params.user}}, function (err, data) {
@@ -61,7 +62,14 @@ module.exports = {
                 console.log(data)
             }
         ).then(results => res.send(results));
-    }
+    },
+
+    getMyTripsType: function (req, res) {
+        Trip
+            .find({ user: req.params.user , been: req.params.been })
+            .then(results => res.json(results));
+    },
+
 
 
 }

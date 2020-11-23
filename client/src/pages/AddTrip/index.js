@@ -33,8 +33,8 @@ class AddTrip extends React.Component {
             date: "",
             been:"No",
             notes: "",
-            lat: 0,
-            long: 0,
+            lat: "",
+            long: "",
             likes:"",
             images: []
         }); 

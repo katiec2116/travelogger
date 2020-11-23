@@ -54,7 +54,7 @@ function Popup({ trip }) {
             <div>
                 <bold>{trip.user} </bold> wants to vist <bold>{trip.location}</bold>
                 <p> <small>Liked by {trip.likes.length} people</small></p>
-                <button className="button is-small is-rounded" onClick={() => likeTrip(!likes.like)}> {likes.status}</button>
+                <button className="button is-small is-rounded" onClick={() => likeTrip(!likes.like)}> {likes.status}</button><button className="button is-small is-rounded" onClick={() => toggleView()}> See More</button>
             </div>
         )
     }

@@ -1,5 +1,4 @@
 import React from "react";
-import "./style.css"
 import AuthButton from "../../components/AuthButton";
 import { Link } from "react-router-dom";
 

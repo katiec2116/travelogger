@@ -13,7 +13,8 @@ class MyTrips extends React.Component {
             modalState: false,
             viewModalState: false,
             myTrips: [],
-            selected:{}
+            selected: {},
+            activeTab: ""
         };
 
         this.toggleModal = this.toggleModal.bind(this);
@@ -24,7 +25,7 @@ class MyTrips extends React.Component {
         this.setState((prev, props) => {
             console.log(trip)
             const newState = !prev.modalState;
-            return { ...this.state, modalState: newState, selected:trip };
+            return { ...this.state, modalState: newState, selected: trip };
         });
     }
   
@@ -46,10 +47,22 @@ class MyTrips extends React.Component {
         this.setState((prev, props) => {
             console.log(trip)
             const newState = !prev.viewModalState;
-            return { ...this.state, viewModalState: newState, selected:trip };
+            return { ...this.state, viewModalState: newState, selected: trip };
         });
     }
 
+    filter(been) {
+        const user = localStorage.getItem('user')
+        API.getMyTripsType(user, been)
+            .then(results => this.setState({ ...this.state, myTrips: results.data, activeTab: been }))
+            .catch(err => console.log(err))
+    }
+    
+    filterAll() {
+        this.setState({ ...this.state,  activeTab: "" })
+        this.componentDidMount();
+            
+    }
 
     render() {
         return (
@@ -64,24 +77,29 @@ class MyTrips extends React.Component {
                         ) : (
                                 <div>
                                     <h1 className='columnHeader has-text-centered mt-6 mb-3'>My Trips</h1>
+                                    <div className="buttons has-addons is-centered">
+                                        <button className={this.state.activeTab === "No" ? "active" : "notActive"} onClick={() => this.filter("No")}>Planned</button>
+                                        <button className={this.state.activeTab === "Yes" ? "active" : "notActive"} onClick={() => this.filter("Yes")}>Visited</button>
+                                        <button className={this.state.activeTab === "" ? "active" : "notActive"} onClick={() => this.filterAll()}>All</button>
+                                    </div>
                                     <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'stretch', justifyContent: 'space-around', alignContent: 'flex-start', flexDirection: 'row' }}>
                                         {this.state.myTrips.map(trip => (
                                             <div style={{ width: '200px' }} className='box columns p-1 m-3' key={trip._id}>
-                                                <div className ="column is-10 p-1">
-                                                <p className='tileTitle location'>{trip.location}</p>
-                                                <p className='tileSubtitle'>When: {trip.date}</p>
-                                                <p className='tileSubtitle'>Notes: {trip.notes}</p>
+                                                <div className="column is-10 p-1">
+                                                    <p className='tileTitle location'>{trip.location}</p>
+                                                    <p className='tileSubtitle'>When: {trip.date}</p>
+                                                    <p className='tileSubtitle'>Notes: {trip.notes}</p>
                                                 </div>
-                                                <div className ="column is-2 p-1">
+                                                <div className="column is-2 p-1">
                                                     <div>
-                                                <img src={require('./view.png')} style={{maxWidth:"75%", cursor:"pointer"}} alt="view"  onClick={() => this.toggleView(trip)} />
-                                                </div>
-                                                <div>
-                                                <img src={require('./edit.png')}  style={{maxWidth:"75%", cursor:"pointer"}} alt="edit" className ="py-1" onClick={() => this.toggleModal(trip)} />
-                                                </div>
-                                                <div>
-                                                <img src={require('./delete.png')}  style={{maxWidth:"75%", cursor:"pointer"}} alt="delete" onClick={() => this.deleteTrip(trip._id)} />
-                                                </div>
+                                                        <img src={require('./view.png')} style={{ maxWidth: "75%", cursor: "pointer" }} alt="view" onClick={() => this.toggleView(trip)} />
+                                                    </div>
+                                                    <div>
+                                                        <img src={require('./edit.png')} style={{ maxWidth: "75%", cursor: "pointer" }} alt="edit" className="py-1" onClick={() => this.toggleModal(trip)} />
+                                                    </div>
+                                                    <div>
+                                                        <img src={require('./delete.png')} style={{ maxWidth: "75%", cursor: "pointer" }} alt="delete" onClick={() => this.deleteTrip(trip._id)} />
+                                                    </div>
                                                 </div>
                                             </div>
 
