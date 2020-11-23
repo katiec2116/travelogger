@@ -11,7 +11,7 @@ class MyTrips extends React.Component {
 
         this.state = {
             modalState: false,
-            // viewModalState: false,
+            viewModalState: false,
             myTrips: [],
             selected:{}
         };

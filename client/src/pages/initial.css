@@ -153,3 +153,13 @@ background: linear-gradient(160deg, rgba(19,58,112,1) 24%, rgba(37,72,103,1) 45%
     position:absolute;
     font-size: 13px;
 }
+
+.popupCard{
+    width:500px;
+    height:500px;
+}
+
+.popupModal{
+    width:400px;
+    height:400px;
+}

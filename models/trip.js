@@ -10,7 +10,7 @@ const tripSchema = new Schema(
       lat: Number,
       long:  Number,
       notes: String,
-      likes: Number,
+      likes: [String],
     },
     { timestamps: true }
 
