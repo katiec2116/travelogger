@@ -114,7 +114,7 @@ function AddForm(props) {
 
                 <div className="field is-grouped">
                     <div className="control">
-                        <button className="button" onClick={props.onSubmit}>Add</button>
+                        <button className="button" onClick={() =>{props.onSubmit(); alert()}}>Add</button>
                     </div>
                     <div className="control">
                         <button className="button is-light">Cancel</button>

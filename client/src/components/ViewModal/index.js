@@ -19,7 +19,23 @@ const ViewModal = ({ trip, closeModal, ViewModalState}) => {
                 </header>
                 <section className="modal-card-body">
                     <div className="content">
-                        
+                    <div className="container">
+                            {trip.images}
+                            <div id="carousel-demo" className="carousel">
+                                {/* {trip.image.length ? (
+                                    <h1 className='columnHeader has-text-centered mt-6'>No Trips to Display</h1>
+                                ) : (
+                                        <div>
+                                            {trip.image.map(image => (
+                                                <div className="item-1">
+                                                    <img src={image} />
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )
+                                } */}
+                            </div>
+                        </div>
                         
                        Display data here
                     </div>
