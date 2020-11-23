@@ -7,23 +7,16 @@ const plane = <FontAwesomeIcon icon={faPlane} />
 const calendar = <FontAwesomeIcon icon={faCalendarAlt} />
 let imagePath;
 
+
 function uploadImages(e){
-    const [alertBox, setAlert] = useState(false)
-
-    const alert =()=>{
-        setAlert(true)
-            setTimeout(function() { setAlert(false) }, 3000)
-    }
-
-
-function test(e){
     e.preventDefault()
     const span = document.getElementById('uploading');
     span.innerText = "uploading...";
     const data = new FormData();
     const user = localStorage.getItem('user')
+    console.log(e.target.photo.files);
 
-    data.append('photo', e.target.photo.files[0])
+    data.append('photos', e.target.photo.files)
     data.append('user', user)
 
     const options = {
@@ -41,6 +34,14 @@ function test(e){
 }
   
 function AddForm(props) {
+
+    const [alertBox, setAlert] = useState(false)
+
+    const alert =()=>{
+        setAlert(true)
+            setTimeout(function() { setAlert(false) }, 3000)
+    }
+
     return (
         <div className="box mt-6">
             <div className="content">
@@ -95,7 +96,7 @@ function AddForm(props) {
                 <form onSubmit={uploadImages} id="file-js" method="POST" action="" className="file is-info my-4" encType="multipart/form-data">
                     <label className="file-label">
                         <input className="file-input" type="file" name="photo"
-                            
+                        multiple
                         />
                         <span className="file-cta">
                             <span className="file-label">
@@ -109,7 +110,7 @@ function AddForm(props) {
 
                 <div className="field is-grouped">
                     <div className="control">
-                        <button className="button" onClick={() =>{props.onSubmit(); alert()}}>Add</button>
+                        <button className="button" onClick={props.onSubmit}>Add</button>
                     </div>
                     <div className="control">
                         <button className="button is-light">Cancel</button>

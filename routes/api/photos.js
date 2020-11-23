@@ -27,8 +27,8 @@ let user;
   })
    
   router.route('/upload')
-    .post(upload.single('photo'), function(req, res, next) {
-        console.log(req.body.user);
+    .post(upload.array('photos', 3), function(req, res, next) {
+        console.log(req.files.length);
         return res.send({filename:req.file.location});
       })
 
