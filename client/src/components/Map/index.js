@@ -19,7 +19,7 @@ class Map extends React.Component {
             container: this.mapContainer,
             style: 'mapbox://styles/mapbox/streets-v11',
             center: [this.state.long,this.state.lat],
-            zoom: this.state.zoom
+            zoom: 1
         });
         this.marker = new mapboxgl.Marker()
             .setLngLat([this.state.long,this.state.lat])
@@ -30,11 +30,11 @@ class Map extends React.Component {
    async componentDidUpdate(prevProps) {
         // Typical usage (don't forget to compare props):
         if (this.props.lat !== prevProps.lat) {
-          await this.setState({ lat:this.props.lat, zoom:7});
+          await this.setState({ lat:this.props.lat, zoom:5});
           this.componentDidMount();
         }
         if (this.props.long !== prevProps.long) {
-            await this.setState({ long:this.props.long, zoom:7});
+            await this.setState({ long:this.props.long, zoom:5});
             this.componentDidMount();
       }
     }

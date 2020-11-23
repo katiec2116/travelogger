@@ -5,7 +5,7 @@ import { faPlane, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 
 const plane = <FontAwesomeIcon icon={faPlane} />
 const calendar = <FontAwesomeIcon icon={faCalendarAlt} />
-let imagePath;
+let imagePath = [];
 
 
 function uploadImages(e){
@@ -15,8 +15,11 @@ function uploadImages(e){
     const data = new FormData();
     const user = localStorage.getItem('user')
     console.log(e.target.photo.files);
-
-    data.append('photos', e.target.photo.files)
+    const images = e.target.photo.files;
+    for (let i = 0; i < images.length; i++) {
+        console.log(images[i]);
+        data.append('photos', images[i])
+    }
     data.append('user', user)
 
     const options = {
@@ -27,7 +30,7 @@ function uploadImages(e){
     fetch('/api/photos/upload', options).then(response => response.json())
     .then(result => {
       console.log(result.filename);
-      imagePath = result.filename;
+      imagePath.push(result.filename);
       span.innerText = "Upload Successful!"
       span.setAttribute('filepath', imagePath)
     })
@@ -38,6 +41,7 @@ function AddForm(props) {
     const [alertBox, setAlert] = useState(false)
 
     const alert =()=>{
+        console.log("hi")
         setAlert(true)
             setTimeout(function() { setAlert(false) }, 3000)
     }
@@ -121,5 +125,6 @@ function AddForm(props) {
         </div>
     );
 }
+
 
 export default AddForm;

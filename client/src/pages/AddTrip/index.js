@@ -17,16 +17,12 @@ class AddTrip extends React.Component {
         lat: "",
         long: "",
         likes:"",
-        images: ""
+        images: []
     }
 
     
 
     onSubmit = e => {
-        e.preventDefault();
-        const span = document.getElementById("uploading");
-        const imagePath = span.getAttribute("filepath")
-        this.state.images = imagePath;
         if(this.state.location === "" || !this.state.user){
             this.setState({
                 user: localStorage.getItem('user'),
@@ -41,6 +37,11 @@ class AddTrip extends React.Component {
             
         })}
         else{
+        const span = document.getElementById('uploading');
+        let images = span.getAttribute("filepath").split(",");;
+        console.log(images);
+        this.state.images = images;
+
         API.addTrip(this.state)
         .then(res => console.log(res))
         .then(
@@ -59,7 +60,6 @@ class AddTrip extends React.Component {
     }     
             
     };
-    
 
     handleInputChange = e => {
         const name = e.target.name;
@@ -69,7 +69,25 @@ class AddTrip extends React.Component {
         });
         
     };
+
+    handleImages = e => {
+        const images = this.state.images;
+        images.push(e.target.value);
+        this.setState({ ...this.state, images: images });
+        console.log(this.state.images)
+
+
+//     handleImages(event) {
+//         event.preventDefault();
+//         alert('A name was submitted: ' + this.state.value);
+      }
     
+    uploadImages=(e)=> {
+        e.preventDefault();
+        API.uploadPhoto().then(res => console.log(res));  
+
+    }
+
     handleLocation = e => {
         this.mapQuest(e.target.value);
         this.setState({
