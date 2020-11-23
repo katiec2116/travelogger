@@ -5,7 +5,7 @@ import { faPlane, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 
 const plane = <FontAwesomeIcon icon={faPlane} />
 const calendar = <FontAwesomeIcon icon={faCalendarAlt} />
-let imagePath;
+let imagePath = [];
 
 
 function uploadImages(e){
@@ -14,8 +14,12 @@ function uploadImages(e){
     span.innerText = "uploading...";
     const data = new FormData();
     const user = localStorage.getItem('user')
-
-    data.append('photo', e.target.photo.files[0])
+    console.log(e.target.photo.files);
+    const images = e.target.photo.files;
+    for (let i = 0; i < images.length; i++) {
+        console.log(images[i]);
+        data.append('photos', images[i])
+    }
     data.append('user', user)
 
     const options = {
@@ -26,7 +30,7 @@ function uploadImages(e){
     fetch('/api/photos/upload', options).then(response => response.json())
     .then(result => {
       console.log(result.filename);
-      imagePath = result.filename;
+      imagePath.push(result.filename);
       span.innerText = "Upload Successful!"
       span.setAttribute('filepath', imagePath)
     })
@@ -96,7 +100,7 @@ function AddForm(props) {
                 <form onSubmit={uploadImages} id="file-js" method="POST" action="" className="file is-info my-4" encType="multipart/form-data">
                     <label className="file-label">
                         <input className="file-input" type="file" name="photo"
-                            
+                        multiple
                         />
                         <span className="file-cta">
                             <span className="file-label">
@@ -110,7 +114,7 @@ function AddForm(props) {
 
                 <div className="field is-grouped">
                     <div className="control">
-                        <button className="button" onClick={() =>{props.onSubmit(); alert()}}>Add</button>
+                        <button className="button" onClick={props.onSubmit}>Add</button>
                     </div>
                     <div className="control">
                         <button className="button is-light">Cancel</button>

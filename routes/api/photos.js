@@ -27,9 +27,13 @@ let user;
   })
    
   router.route('/upload')
-    .post(upload.single('photo'), function(req, res, next) {
-        console.log(req.body.user);
-        return res.send({filename:req.file.location});
+    .post(upload.array('photos', 5), function(req, res, next) {
+      let paths = [];
+        for (i = 0; i < req.files.length; i++) {
+          console.log(req.files[i].location);
+          paths.push(req.files[i].location)
+        }
+        return res.send({filename:paths});
       })
 
 module.exports = router;

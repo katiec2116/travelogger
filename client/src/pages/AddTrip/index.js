@@ -17,7 +17,7 @@ class AddTrip extends React.Component {
         lat: "",
         long: "",
         likes:"",
-        images: ""
+        images: []
     }
 
     
@@ -33,10 +33,15 @@ class AddTrip extends React.Component {
                 lat: "",
                 long: "",
                 likes:"",
-                images: ""
+                images: []
             
         })}
         else{
+        const span = document.getElementById('uploading');
+        let images = span.getAttribute("filepath").split(",");;
+        console.log(images);
+        this.state.images = images;
+
         API.addTrip(this.state)
         .then(res => console.log(res))
         .then(
@@ -49,7 +54,7 @@ class AddTrip extends React.Component {
             lat: "",
             long: "",
             likes:"",
-            images: ""
+            images: []
         }); 
         }, 3000))
     }     
