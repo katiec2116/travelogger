@@ -2,7 +2,7 @@ import React from 'react';
 import axios from "axios";
 import "./yelp.css"
 import yelp from "./yelp.png"
-const yelp_key = process.env.REACT_APP_YELP
+const yelp_key = `${process.env.REACT_APP_YELP}`
 
 class Yelp extends React.Component {
     constructor(props) {
