@@ -90,7 +90,7 @@ const EditModal = ({ trip, closeModal, modalState}) => {
                                 </textarea>
                             </div>
                         </div>
-                        <div id="file-js-example" className="file is-info my-4">
+                        {/* <div id="file-js-example" className="file is-info my-4">
                             <label className="file-label">
                                 <input className="file-input" type="file" name="images" onChange={handleInputChange} defaultValue={trip.images}
                                 />
@@ -100,7 +100,7 @@ const EditModal = ({ trip, closeModal, modalState}) => {
                                                                 </span>
                                 </span>
                             </label>
-                        </div>
+                        </div> */}
                     </div>
                 </section>
                 <footer className="modal-card-foot">

@@ -48,7 +48,7 @@ class Map extends React.Component {
                     .setLngLat([trip.long, trip.lat])
                     .addTo(this.map)
                     .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(
-                        `<div> <p class=location>Location: ${trip.location}</p><p>Notes: ${trip.notes}</p></br> <button class="button is-small"> edit </button> </div>`))
+                        `<div> <p class=location>Location: ${trip.location}</p><p>Notes: ${trip.notes}</p> </div>`))
             }
         })
     }

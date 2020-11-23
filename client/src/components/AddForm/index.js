@@ -104,17 +104,17 @@ function AddForm(props) {
                         />
                         <span className="file-cta">
                             <span className="file-label">
-                                Add Images
+                                Select Images
                                     </span>
                         </span>
                     </label>
-                    <button type="submit" className="btn" >Upload</button>
+                    <button type="submit" className="button ml-2" >Upload</button>
                     <span id="uploading"></span>
                 </form>
 
                 <div className="field is-grouped">
                     <div className="control">
-                        <button className="button" onClick={props.onSubmit}>Add</button>
+                        <button className="button" onClick={() =>{props.onSubmit(); alert()}}>Add</button>
                     </div>
                     <div className="control">
                         <button className="button is-light">Cancel</button>

@@ -168,14 +168,14 @@ background: linear-gradient(160deg, rgba(19,58,112,1) 24%, rgba(37,72,103,1) 45%
     font-size: 13px;
 }
 
-.popupCard{
-    width:500px;
+/* .popupCard{
+    widows: 4px;00px;
     height:500px;
-}
+} */
 
 .popupModal{
-    width:400px;
-    height:400px;
+    width:640px;
+    height:500px;
 }
 
 .active{

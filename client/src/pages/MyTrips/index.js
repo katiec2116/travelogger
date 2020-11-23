@@ -72,9 +72,9 @@ class MyTrips extends React.Component {
                         <MyTripsMap long={-81} lat={27} trips={this.state.myTrips} />
                     </div>
                     <div className='column is-one-third'>
-                        {!this.state.myTrips.length ? (
+                        {/* {!this.state.myTrips.length ? (
                             <h1 className='columnHeader has-text-centered mt-6'>No Trips to Display</h1>
-                        ) : (
+                        ) : ( */}
                                 <div>
                                     <h1 className='columnHeader has-text-centered mt-6 mb-3'>My Trips</h1>
                                     <div className="buttons has-addons is-centered">
@@ -117,7 +117,7 @@ class MyTrips extends React.Component {
                                         trip={this.state.selected}>
                                     </ViewModal>
                                 </div>
-                            )}
+                            {/* )} */}
                     </div>
                 </div>
             </div>
