@@ -22,7 +22,7 @@ function Popup({ trip }) {
     }
 
     const likeTrip = () => {
-        // API.getTrip(trip._id)
+        console.log(trip)
         const user = localStorage.getItem("user")
         if (likes.like === false) {
             API.likeTrip(trip._id, user)

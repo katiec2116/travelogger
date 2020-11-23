@@ -89,7 +89,7 @@ function AddForm(props) {
                     </div>
                 </div>
             </div>
-            <Alert location = {props.location} alertStatus={alertBox} />
+            <Alert location = {props.location} alert={alertBox} />
         </div>
     );
 }

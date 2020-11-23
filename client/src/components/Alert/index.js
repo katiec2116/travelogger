@@ -1,8 +1,8 @@
 import React from 'react'
 
 function Alert(props) {
-    console.log(props)
-    if (!props.alertStatus) {
+    console.log(props.alert)
+    if (!props.alert) {
         return null;
     }
 

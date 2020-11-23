@@ -23,7 +23,20 @@ class AddTrip extends React.Component {
     
 
     onSubmit = e => {
-        // e.preventDefault();
+        if(this.state.location === "" || !this.state.user){
+            this.setState({
+                user: localStorage.getItem('user'),
+                location: "",
+                date: "",
+                been:"No",
+                notes: "",
+                lat: "",
+                long: "",
+                likes:"",
+                images: []
+            
+        })}
+        else{
         API.addTrip(this.state)
         .then(res => console.log(res))
         .then(
@@ -39,7 +52,7 @@ class AddTrip extends React.Component {
             images: []
         }); 
         }, 3000))
-            
+    }     
             
     };
 
