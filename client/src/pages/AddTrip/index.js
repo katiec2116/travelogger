@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import AddForm from "../../components/AddForm"
 import API from "../../utils/API"
 import Yelp from "../../components/Yelp"
 import Map from "../../components/Map"
 
 
-
 class AddTrip extends React.Component {
+    
 
     state = {
         user: localStorage.getItem('user'),
@@ -20,10 +20,27 @@ class AddTrip extends React.Component {
         images: []
     }
 
+    
+
     onSubmit = e => {
-        e.preventDefault();
+        // e.preventDefault();
         API.addTrip(this.state)
         .then(res => console.log(res))
+        .then(
+            setTimeout(() =>{ this.setState({
+            user: localStorage.getItem('user'),
+            location: "",
+            date: "",
+            been:"No",
+            notes: "",
+            lat: 0,
+            long: 0,
+            likes:"",
+            images: []
+        }); 
+        }, 3000))
+            
+            
     };
 
     handleInputChange = e => {
@@ -71,6 +88,7 @@ class AddTrip extends React.Component {
                 <div className="columns" style={{ height: "100%" }}>
                     <div className="column is-two-fifths">
                     <AddForm
+                        location={this.state.location}
                         onSubmit={this.onSubmit}
                         handleInputChange={this.handleInputChange}
                         handleLocation={this.handleLocation}
