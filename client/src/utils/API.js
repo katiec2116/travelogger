@@ -23,7 +23,7 @@ addTrip: function (trips) {
   },
 
 location: function(location){
-  return axios.get(`http://www.mapquestapi.com/geocoding/v1/address?key=	JG30h6celAzQfuBmyuO2k0g4rAjh7BZc&location=${location}`);
+  return axios.get(`http://www.mapquestapi.com/geocoding/v1/address?key=JG30h6celAzQfuBmyuO2k0g4rAjh7BZc&location=${location}`);
   },
 
 getMyTrips: function(user){
@@ -47,7 +47,7 @@ getMyTripsType: function(user, been){
         method: "GET",
         withCredential:true,
         url:"/api/trips/" + tripid
-      });
+      }).then((res) => console.log(res));
     },
 
 
@@ -66,6 +66,23 @@ updateTrip: function (tripid, data) {
       data: data,
       withCredential: true,
       url: "/api/trips/" + tripid
+    }).then((res) => console.log(res));
+  },
+
+likeTrip: function (tripid, user) {
+  console.log(user)
+    return axios({
+      method: "PUT",
+      withCredential: true,
+      url: "/api/trips/likes/" + tripid + "/" + user
+    }).then((res) => console.log(res));
+  },
+  
+  unlikeTrip: function (tripid, user) {
+    return axios({
+      method: "PUT",
+      withCredential: true,
+      url: "/api/trips/unlike/" + tripid + "/" + user
     }).then((res) => console.log(res));
   },
 

@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "../../components/Logo";
 import Login from "../../components/Login";
-import '../initial.css';
+import '../style.css';
 
 function LoginPage() {
   return (
