@@ -34,17 +34,34 @@ module.exports = {
     updateTrip: function (req, res) {
         Trip
             .findOneAndUpdate({ _id: req.params.tripid },
-                req.body ,
+                req.body,
                 function (err, data) {
                     console.log(data)
                 }
             ).then(results => res.send(results));
     },
 
-	getAllTrips: function (req, res) {
+    getAllTrips: function (req, res) {
         Trip
-        .find().sort({_id: - 1}).limit(10).then(results => res.json(results));
+            .find().sort({ _id: - 1 }).limit(10).then(results => res.json(results));
 
+    },
+
+
+    likeTrip: function (req, res) {
+        Trip
+            .findOneAndUpdate({ _id: req.params.tripid } ,{$push:{likes:req.params.user}}, function (err, data) {
+                console.log(data)
+            }
+        ).then(results => res.json(results));
+    },
+
+    unlikeTrip: function (req, res) {
+        Trip
+            .findOneAndUpdate({ _id: req.params.tripid }, {$pull:{likes:req.params.user}}, { new: true }, function (err, data) {
+                console.log(data)
+            }
+        ).then(results => res.send(results));
     },
 
     getMyTripsType: function (req, res) {
@@ -52,6 +69,7 @@ module.exports = {
             .find({ user: req.params.user , been: req.params.been })
             .then(results => res.json(results));
     },
+
 
 
 }

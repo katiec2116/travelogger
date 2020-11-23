@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import AddForm from "../../components/AddForm"
 import API from "../../utils/API"
 import Yelp from "../../components/Yelp"
 import Map from "../../components/Map"
 
 
-
 class AddTrip extends React.Component {
+    
 
     state = {
         user: localStorage.getItem('user'),
@@ -16,16 +16,48 @@ class AddTrip extends React.Component {
         notes: "",
         lat: "",
         long: "",
+        likes:"",
         images: ""
     }
+
+    
 
     onSubmit = e => {
         e.preventDefault();
         const span = document.getElementById("uploading");
         const imagePath = span.getAttribute("filepath")
         this.state.images = imagePath;
+        if(this.state.location === "" || !this.state.user){
+            this.setState({
+                user: localStorage.getItem('user'),
+                location: "",
+                date: "",
+                been:"No",
+                notes: "",
+                lat: "",
+                long: "",
+                likes:"",
+                images: []
+            
+        })}
+        else{
         API.addTrip(this.state)
         .then(res => console.log(res))
+        .then(
+            setTimeout(() =>{ this.setState({
+            user: localStorage.getItem('user'),
+            location: "",
+            date: "",
+            been:"No",
+            notes: "",
+            lat: "",
+            long: "",
+            likes:"",
+            images: []
+        }); 
+        }, 3000))
+    }     
+            
     };
     
 
@@ -37,11 +69,6 @@ class AddTrip extends React.Component {
         });
         
     };
-
-    handleImages(event) {
-        event.preventDefault();
-        alert('A name was submitted: ' + this.state.value);
-      }
     
     handleLocation = e => {
         this.mapQuest(e.target.value);
@@ -73,6 +100,7 @@ class AddTrip extends React.Component {
                 <div className="columns" style={{ height: "100%" }}>
                     <div className="column is-two-fifths">
                     <AddForm
+                        location={this.state.location}
                         onSubmit={this.onSubmit}
                         handleInputChange={this.handleInputChange}
                         handleLocation={this.handleLocation}

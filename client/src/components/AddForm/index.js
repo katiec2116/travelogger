@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import Alert from "../Alert"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlane, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 
@@ -7,6 +8,15 @@ const calendar = <FontAwesomeIcon icon={faCalendarAlt} />
 let imagePath;
 
 function uploadImages(e){
+    const [alertBox, setAlert] = useState(false)
+
+    const alert =()=>{
+        setAlert(true)
+            setTimeout(function() { setAlert(false) }, 3000)
+    }
+
+
+function test(e){
     e.preventDefault()
     const span = document.getElementById('uploading');
     span.innerText = "uploading...";
@@ -99,13 +109,14 @@ function AddForm(props) {
 
                 <div className="field is-grouped">
                     <div className="control">
-                        <button className="button" onClick={props.onSubmit}>Add</button>
+                        <button className="button" onClick={() =>{props.onSubmit(); alert()}}>Add</button>
                     </div>
                     <div className="control">
                         <button className="button is-light">Cancel</button>
                     </div>
                 </div>
             </div>
+            <Alert location = {props.location} alert={alertBox} />
         </div>
     );
 }
