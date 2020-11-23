@@ -47,7 +47,7 @@ class Yelp extends React.Component {
 
 
                 {!this.state.businesses.length ? (
-                    <h1 className="subtitle has-text-centered my-4 pb-6">No restaurants in the area! <p> &#128546;</p></h1>
+                    <h1 className="subtitle has-text-centered my-4 pb-6">No businesses in the area! <p> &#128546;</p></h1>
                 ) : (
                         <div>
                             <h1>Suggestions</h1>

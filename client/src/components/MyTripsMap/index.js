@@ -38,13 +38,13 @@ class Map extends React.Component {
         this.props.trips.map(trip => {
             console.log(trip)
             if (trip.been === "Yes") {
-                this.marker = new mapboxgl.Marker({ color: 'rgb(0, 145, 156)' })
+                this.marker = new mapboxgl.Marker({ color: 'rgb(232, 117, 51)'})
                     .setLngLat([trip.long, trip.lat])
                     .addTo(this.map)
                     .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(
                         `<div> <p class=location>Location: ${trip.location}</p><p>Notes: ${trip.notes}</p> </div>`))
             } else {
-                this.marker = new mapboxgl.Marker({ color: 'rgb(232, 117, 51)' })
+                this.marker = new mapboxgl.Marker({ color: 'rgb(0, 145, 156)' })
                     .setLngLat([trip.long, trip.lat])
                     .addTo(this.map)
                     .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(
