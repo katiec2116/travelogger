@@ -95,4 +95,13 @@ getAllTrips: function(user){
       url:"/api/trips/getalltrips/" + user
     });
   },
+
+  uploadPhoto: function(photo){
+    console.log(photo);
+    return axios({
+        method: "POST",
+        withCredential:true,
+        url:"/api/photos/upload"
+      });
+    }
 };

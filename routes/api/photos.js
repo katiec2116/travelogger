@@ -1,12 +1,13 @@
 const router = require("express").Router();
+const path = require('path');
 // matches /api/trips/
 
   var aws = require('aws-sdk')
   var multer = require('multer')
   var multerS3 = require('multer-s3')
   var s3 = new aws.S3({
-      accessKeyId: '',
-      secretAccessKey: '',
+      accessKeyId: 'AKIAJZOZXZ2JHIJYAH2A',
+      secretAccessKey: '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',
       region: 'us-east-2'
   })
    
@@ -18,14 +19,18 @@ const router = require("express").Router();
         cb(null, {fieldName: file.fieldname});
       },
       key: function (req, file, cb) {
-        cb(null, Date.now().toString() + '.jpg')
+
+        cb(null, Date.now().toString() + path.extname(file.originalname));
       }
     })
   })
    
   router.route('/upload')
     .post(upload.single('photo'), function(req, res, next) {
-        res.send('Successfully uploaded an image!')
+        console.log(req.file);
+       
+          res.json(req.file)
+        
       })
 
 module.exports = router;
