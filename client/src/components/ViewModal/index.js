@@ -20,20 +20,19 @@ const ViewModal = ({ trip, closeModal, ViewModalState}) => {
                 <section className="modal-card-body">
                     <div className="content">
                     <div className="container">
-                            {trip.images}
                             <div id="carousel-demo" className="carousel">
-                                {/* {trip.image.length ? (
+                                {!trip.images.length ? (
                                     <h1 className='columnHeader has-text-centered mt-6'>No Trips to Display</h1>
                                 ) : (
                                         <div>
-                                            {trip.image.map(image => (
+                                            {trip.images.map(image => (
                                                 <div className="item-1">
                                                     <img src={image} />
                                                 </div>
                                             ))}
                                         </div>
                                     )
-                                } */}
+                                }
                             </div>
                         </div>
                         
