@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import API from "../../utils/API"
 import PopupModal from '../../components/PopupModal';
 
@@ -6,12 +6,19 @@ function Popup({ trip }) {
 
     const [likes, setLikes] = useState(
         {
-            status: "like",
+            status: "",
             like: false,
             viewModalState: false,
         }
     )
 
+    useEffect(() => {
+        const user = localStorage.getItem("user")
+        if (trip.likes.includes(user)) {
+            console.log("already liked")
+            // setLikes({...likes, status:"unlike"})
+        }
+      });
 
     const toggleView = () => {
         setLikes((prev, props) => {
@@ -22,15 +29,16 @@ function Popup({ trip }) {
     }
 
     const likeTrip = () => {
-        console.log(trip)
+        console.log("from like trip " ,trip)
         const user = localStorage.getItem("user")
-        if (likes.like === false) {
-            API.likeTrip(trip._id, user)
-            setLikes({ like: true, status: "unlike" })
-        }
-        else {
+        if (trip.likes.includes(user)) {
             API.unlikeTrip(trip._id)
             setLikes({ like: true, status: "like" })
+            
+        }
+        else {
+            API.likeTrip(trip._id, user)
+            setLikes({ like: true, status: "unlike" })
         }
     }
 
