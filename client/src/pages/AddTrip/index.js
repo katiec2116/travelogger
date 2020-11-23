@@ -16,11 +16,14 @@ class AddTrip extends React.Component {
         notes: "",
         lat: "",
         long: "",
-        images: []
+        images: ""
     }
 
     onSubmit = e => {
         e.preventDefault();
+        const span = document.getElementById("uploading");
+        const imagePath = span.getAttribute("filepath")
+        this.state.images = imagePath;
         API.addTrip(this.state)
         .then(res => console.log(res))
     };
@@ -40,11 +43,6 @@ class AddTrip extends React.Component {
         alert('A name was submitted: ' + this.state.value);
       }
     
-    uploadImages(e) {
-        e.preventDefault();
-        API.uploadPhoto().then(res => console.log(res));  
-    }
-
     handleLocation = e => {
         this.mapQuest(e.target.value);
         this.setState({

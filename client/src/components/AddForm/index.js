@@ -4,9 +4,9 @@ import { faPlane, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 
 const plane = <FontAwesomeIcon icon={faPlane} />
 const calendar = <FontAwesomeIcon icon={faCalendarAlt} />
+let imagePath;
 
-
-function test(e){
+function uploadImages(e){
     e.preventDefault()
     const span = document.getElementById('uploading');
     span.innerText = "uploading...";
@@ -24,7 +24,9 @@ function test(e){
     fetch('/api/photos/upload', options).then(response => response.json())
     .then(result => {
       console.log(result.filename);
+      imagePath = result.filename;
       span.innerText = "Upload Successful!"
+      span.setAttribute('filepath', imagePath)
     })
 }
   
@@ -80,7 +82,7 @@ function AddForm(props) {
                         </textarea>
                     </div>
                 </div>
-                <form onSubmit={test} id="file-js" method="POST" action="" className="file is-info my-4" encType="multipart/form-data">
+                <form onSubmit={uploadImages} id="file-js" method="POST" action="" className="file is-info my-4" encType="multipart/form-data">
                     <label className="file-label">
                         <input className="file-input" type="file" name="photo"
                             

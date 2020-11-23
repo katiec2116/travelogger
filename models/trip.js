@@ -9,7 +9,8 @@ const tripSchema = new Schema(
       been: String,
       lat: Number,
       long:  Number,
-      notes: String
+      notes: String,
+      images: String
     },
     { timestamps: true }
 
