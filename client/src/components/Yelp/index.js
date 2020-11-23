@@ -18,7 +18,7 @@ class Yelp extends React.Component {
     componentDidMount(type) {
         axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?latitude=${this.state.lat}&longitude=${this.state.long}`, {
             headers: {
-                Authorization: yelp_key
+                Authorization: "Bearer " + yelp_key
             },
             params: {
                 categories: type,
