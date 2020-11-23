@@ -3,7 +3,7 @@ import API from "../../utils/API"
 import mapboxgl from 'mapbox-gl';
 import ReactDOM from "react-dom";
 import Popup from "../Popup"
-mapboxgl.accessToken = REACT_APP_MAPBOX;
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX;
 
 
 
