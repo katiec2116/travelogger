@@ -5,9 +5,10 @@ import 'react-awesome-slider/dist/styles.css';
 
 
 
-const PopupModal = ({ trip, closeModal, ViewModalState }) => {
+const PopupModal = ({ trip, closeModal, viewModalState }) => {
+    console.log(viewModalState)
 
-    if (!ViewModalState) {
+    if (!viewModalState) {
         return null;
     }
 

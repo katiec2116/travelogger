@@ -48,11 +48,14 @@ class ExploreMap extends React.Component {
                 .then(console.log(this.props.trips))
             }
 
-                
-
             this.props.all.map(trip => {
+                let status=false;
+                if (trip.likes.includes(user)){
+                    status=true
+                }
                 const popup = document.createElement('div');
-                ReactDOM.render(<Popup trip={trip}/>, popup);
+                ReactDOM.render(<Popup trip={trip} status={status}/>, popup);
+                
 
                 if (trip.user === user) {
                     this.marker = new mapboxgl.Marker({ color: 'rgb(117, 0, 0)' })

@@ -44,19 +44,19 @@ class AddTrip extends React.Component {
 
         API.addTrip(this.state)
         .then(res => console.log(res))
-        .then(
-            setTimeout(() =>{ this.setState({
-            user: localStorage.getItem('user'),
-            location: "",
-            date: "",
-            been:"No",
-            notes: "",
-            lat: "",
-            long: "",
-            likes:"",
-            images: []
-        }); 
-        }, 3000))
+        // .then(
+        //     setTimeout(() =>{ this.setState({
+        //     user: localStorage.getItem('user'),
+        //     location: "",
+        //     date: "",
+        //     been:"No",
+        //     notes: " ",
+        //     lat: "",
+        //     long: "",
+        //     likes:"",
+        //     images: []
+        // }); 
+        // }, 3000))
     }     
             
     };

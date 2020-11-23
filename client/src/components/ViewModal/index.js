@@ -26,13 +26,14 @@ const ViewModal = ({ trip, closeModal, ViewModalState }) => {
                         <div className="container">
                             <div >
                                 {!trip.images.length ? (
-                                    <h1 className='columnHeader has-text-centered mt-6'>No Trips to Display</h1>
+                                    <h1 className='columnHeader has-text-centered mt-6'>No Images to Display</h1>
                                 ) : (
                                         <AwesomeSlider>
                                             {trip.images.map(image => (
                                                 <div data-src={image}  width="640" height="310"/>
                                             ))}
                                         </AwesomeSlider>
+                                       
                                     )
                                 }
                             </div>
