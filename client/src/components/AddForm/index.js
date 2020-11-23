@@ -8,6 +8,8 @@ const calendar = <FontAwesomeIcon icon={faCalendarAlt} />
 
 function test(e){
     e.preventDefault()
+    const span = document.getElementById('uploading');
+    span.innerText = "uploading...";
     const data = new FormData();
     const user = localStorage.getItem('user')
 
@@ -19,7 +21,11 @@ function test(e){
         body: data
       };
 
-    fetch('/api/photos/upload', options).then(data => console.log(data));
+    fetch('/api/photos/upload', options).then(response => response.json())
+    .then(result => {
+      console.log(result.filename);
+      span.innerText = "Upload Successful!"
+    })
 }
   
 function AddForm(props) {
@@ -74,18 +80,19 @@ function AddForm(props) {
                         </textarea>
                     </div>
                 </div>
-                <form onSubmit={test} id="file-js" method="POST" action="" className="file is-info my-4">
+                <form onSubmit={test} id="file-js" method="POST" action="" className="file is-info my-4" encType="multipart/form-data">
                     <label className="file-label">
                         <input className="file-input" type="file" name="photo"
                             
                         />
                         <span className="file-cta">
                             <span className="file-label">
-                                Upload Images
+                                Add Images
                                     </span>
                         </span>
                     </label>
                     <button type="submit" className="btn" >Upload</button>
+                    <span id="uploading"></span>
                 </form>
 
                 <div className="field is-grouped">

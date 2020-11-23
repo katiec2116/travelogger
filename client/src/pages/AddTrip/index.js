@@ -24,6 +24,7 @@ class AddTrip extends React.Component {
         API.addTrip(this.state)
         .then(res => console.log(res))
     };
+    
 
     handleInputChange = e => {
         const name = e.target.name;

@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const path = require('path');
 // matches /api/trips/
+let user;
 
   var aws = require('aws-sdk')
   var multer = require('multer')
@@ -27,10 +28,8 @@ const path = require('path');
    
   router.route('/upload')
     .post(upload.single('photo'), function(req, res, next) {
-        console.log(req.file);
-       
-          res.json(req.file)
-        
+        console.log(req.body.user);
+        return res.send({filename:req.file.location});
       })
 
 module.exports = router;
