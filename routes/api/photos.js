@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const path = require('path');
 // matches /api/trips/
 
   var aws = require('aws-sdk')
@@ -18,14 +19,18 @@ const router = require("express").Router();
         cb(null, {fieldName: file.fieldname});
       },
       key: function (req, file, cb) {
-        cb(null, Date.now().toString() + '.jpg')
+
+        cb(null, Date.now().toString() + path.extname(file.originalname));
       }
     })
   })
    
   router.route('/upload')
     .post(upload.single('photo'), function(req, res, next) {
-        res.send(req.files)
+        console.log(req.file);
+       
+          res.json(req.file)
+        
       })
 
 module.exports = router;

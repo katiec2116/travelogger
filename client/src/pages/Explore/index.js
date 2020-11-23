@@ -6,22 +6,23 @@ class Explore extends React.Component {
 
     state = {
         trips: [],
-
-    componentDidMount() {
-        const user = localStorage.getItem('user')
-
-        API.getAllTrips(user).then(results => {
-            this.setState({trips:results.data})}).then(() => (this.state.trips));
-
-        this.timer = setInterval(() => API.getAllTrips(user).then(results => {
-            this.setState({trips:results.data})}).then(() => console.log(this.state.trips)),
-            10000,
-        );
     }
 
-    componentWillUnmount() {
-        clearInterval(this.timer);
-    }
+        componentDidMount() {
+            const user = localStorage.getItem('user')
+    
+            API.getAllTrips(user).then(results => {
+                this.setState({trips:results.data})}).then(() => (this.state.trips));
+    
+            this.timer = setInterval(() => API.getAllTrips(user).then(results => {
+                this.setState({trips:results.data})}).then(() => console.log(this.state.trips)),
+                10000,
+            );
+        }
+    
+        componentWillUnmount() {
+            clearInterval(this.timer);
+        }
 
 
     render() {
