@@ -7,16 +7,8 @@ const plane = <FontAwesomeIcon icon={faPlane} />
 const calendar = <FontAwesomeIcon icon={faCalendarAlt} />
 let imagePath;
 
+
 function uploadImages(e){
-    const [alertBox, setAlert] = useState(false)
-
-    const alert =()=>{
-        setAlert(true)
-            setTimeout(function() { setAlert(false) }, 3000)
-    }
-
-
-function test(e){
     e.preventDefault()
     const span = document.getElementById('uploading');
     span.innerText = "uploading...";
@@ -41,6 +33,15 @@ function test(e){
 }
   
 function AddForm(props) {
+
+    const [alertBox, setAlert] = useState(false)
+
+    const alert =()=>{
+        console.log("hi")
+        setAlert(true)
+            setTimeout(function() { setAlert(false) }, 3000)
+    }
+
     return (
         <div className="box mt-6">
             <div className="content">
@@ -120,5 +121,6 @@ function AddForm(props) {
         </div>
     );
 }
+
 
 export default AddForm;
