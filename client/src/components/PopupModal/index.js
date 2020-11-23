@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import AwesomeSlider from 'react-awesome-slider';
+import 'react-awesome-slider/dist/styles.css';
 
 
 
-const PopupModal = ({ trip, closeModal, ViewModalState}) => {
+const PopupModal = ({ trip, closeModal, ViewModalState }) => {
 
     if (!ViewModalState) {
         return null;
@@ -19,14 +21,23 @@ const PopupModal = ({ trip, closeModal, ViewModalState}) => {
                 </header>
                 <section className="modal-card-body">
                     <div className="content">
-                        
-                        
-                       Display data here
+                        <div >
+                            {!trip.images.length ? (
+                                <h1 className='columnHeader has-text-centered mt-6'>No Trips to Display</h1>
+                            ) : (
+                                    <AwesomeSlider>
+                                        {trip.images.map(image => (
+                                            <div data-src={image} width="640" height="310" />
+                                        ))}
+                                    </AwesomeSlider>
+                                )
+                            }
+                        </div>
                     </div>
                 </section>
-                
-                    <a className="button" onClick={closeModal}>Close</a>
-                
+
+                <a className="button" onClick={closeModal}>Close</a>
+
             </div>
         </div>
     );

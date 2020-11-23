@@ -1,13 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import AwesomeSlider from 'react-awesome-slider';
+import 'react-awesome-slider/dist/styles.css';
 
 
 
-const ViewModal = ({ trip, closeModal, ViewModalState}) => {
+const ViewModal = ({ trip, closeModal, ViewModalState }) => {
 
     if (!ViewModalState) {
         return null;
     }
+
+
 
     return (
         <div className="modal is-active">
@@ -19,31 +23,28 @@ const ViewModal = ({ trip, closeModal, ViewModalState}) => {
                 </header>
                 <section className="modal-card-body">
                     <div className="content">
-                    <div className="container">
-                            <div id="carousel-demo" className="carousel">
+                        <div className="container">
+                            <div >
                                 {!trip.images.length ? (
                                     <h1 className='columnHeader has-text-centered mt-6'>No Trips to Display</h1>
                                 ) : (
-                                        <div>
+                                        <AwesomeSlider>
                                             {trip.images.map(image => (
-                                                <div className="item-1">
-                                                    <img src={image} />
-                                                </div>
+                                                <div data-src={image}  width="640" height="310"/>
                                             ))}
-                                        </div>
+                                        </AwesomeSlider>
                                     )
                                 }
                             </div>
                         </div>
-                        
-                       Display data here
-                    </div>
-                </section>
+
+        </div>
+                </section >
                 <footer className="modal-card-foot">
                     <a className="button" onClick={closeModal}>Cancel</a>
                 </footer>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 
 }
