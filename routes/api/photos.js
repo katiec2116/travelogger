@@ -1,14 +1,15 @@
 const router = require("express").Router();
 const path = require('path');
-// matches /api/trips/
+const access_id = process.env.ACCESS_ID;
+const access_key = process.env.ACCESS_KEY;
 let user;
 
   var aws = require('aws-sdk')
   var multer = require('multer')
   var multerS3 = require('multer-s3')
   var s3 = new aws.S3({
-      accessKeyId: 'AKIAJZOZXZ2JHIJYAH2A',
-      secretAccessKey: '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',
+      accessKeyId: access_id,
+      secretAccessKey: access_key,
       region: 'us-east-2'
   })
    
