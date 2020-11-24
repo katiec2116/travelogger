@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const flash = require('connect-flash');
+const cors =require('cors')
 const routes = require('./routes/index');
 /* === Set the PORT to work with deployment environment === */
 const PORT = process.env.PORT || 3001;
@@ -28,6 +29,7 @@ app.use(require('express-session')({
 }));
 app.use(passport.initialize());
 app.use(flash());
+app.use(cors());
 /* === End of middleware ===*/
 
 
