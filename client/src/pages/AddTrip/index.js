@@ -103,10 +103,11 @@ class AddTrip extends React.Component {
         }
         else {
         API.location(location)
+        // .then(res => console.log(res))
             .then(res => this.setState(
                 {
-                    ...this.state, lat: (res.data.results[0].locations[0].latLng.lat),
-                    long: (res.data.results[0].locations[0].latLng.lng)
+                    ...this.state, lat: (res.data.features[0].center[1]),
+                    long: (res.data.features[0].center[0])
                 }))
             }
     }

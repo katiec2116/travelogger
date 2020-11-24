@@ -23,7 +23,7 @@ addTrip: function (trips) {
   },
 
 location: function(location){
-  return axios.get(`${'https://cors-anywhere.herokuapp.com/'} https://www.mapquestapi.com/geocoding/v1/address?key=JG30h6celAzQfuBmyuO2k0g4rAjh7BZc&location=${location}`);
+  return axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${location}.json?access_token=${process.env.REACT_APP_MAPBOX}`);
   },
 
 getMyTrips: function(user){
