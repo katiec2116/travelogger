@@ -2,6 +2,8 @@ import React from 'react';
 import API from "../../utils/API"
 import ExploreMap from "../../components/ExploreMap"
 
+
+
 class Explore extends React.Component {
 
     state = {
@@ -9,6 +11,7 @@ class Explore extends React.Component {
 
     }
     componentDidMount() {
+        console.log(process.env.REACT_APP_MAPBOX)
         const user = localStorage.getItem('user')
 
         API.getAllTrips(user).then(results => {
@@ -39,6 +42,7 @@ class Explore extends React.Component {
 
 
     render() {
+        console.log(process.env.REACT_APP_MAPBOX)
         return (
             <div className="container1">
                 <div className="columns">

@@ -2,7 +2,7 @@ import React from 'react';
 import axios from "axios";
 import "./yelp.css"
 import yelp from "./yelp.png"
-const yelp_key = process.env.REACT_APP_YELP
+const yelp_key = `${process.env.REACT_APP_YELP}`
 
 class Yelp extends React.Component {
     constructor(props) {
@@ -18,7 +18,7 @@ class Yelp extends React.Component {
     componentDidMount(type) {
         axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?latitude=${this.state.lat}&longitude=${this.state.long}`, {
             headers: {
-                Authorization: yelp_key
+                Authorization: "Bearer " + yelp_key
             },
             params: {
                 categories: type,
