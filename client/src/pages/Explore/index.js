@@ -2,6 +2,8 @@ import React from 'react';
 import API from "../../utils/API"
 import ExploreMap from "../../components/ExploreMap"
 
+console.log(process.env.REACT_APP_MAPBOX)
+
 class Explore extends React.Component {
 
     state = {
