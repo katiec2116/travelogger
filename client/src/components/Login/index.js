@@ -50,7 +50,7 @@ function Login() {
 
     return (
 
-        <div style={{width:"30%",  marginLeft:"auto", marginRight:"auto"}}>
+        <div>
             <div className="content">
                 <LoginForm onLogin={login} />
             </div>

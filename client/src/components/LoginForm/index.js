@@ -13,8 +13,8 @@ function LoginForm({ onLogin }) {
 
 	return (
 		<div>
-			<h3 style={{fontFamily: 'Open Sans', color:"whitesmoke", letterSpacing:"3px"}}>Login</h3>
-			<form
+			<h5 style={{fontFamily: 'Open Sans', color:"whitesmoke", letterSpacing:"3px"}}>Login</h5>
+			<form className="login"
 				ref={formRef}
 				onSubmit={(e) => {
 					e.preventDefault();
@@ -25,14 +25,14 @@ function LoginForm({ onLogin }) {
 				}}
 			>
 				<div className="field" >
-					<div className="control has-icons-left has-icons-right">
+					<div className="control has-icons-left">
 						<input className="input mb-3" ref={userNameRef} type='text' name="username" />
 						<span className="icon is-small is-left">
 							{user}
 						</span>
 						<br />
 					</div>
-					<div className="control has-icons-left has-icons-right">
+					<div className="control has-icons-left">
 						<input className="input mb-3" ref={passwordRef} type='password' name="password" />
 						<span className="icon is-small is-left">
 							{lock}
