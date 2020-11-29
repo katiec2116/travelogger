@@ -39,6 +39,9 @@ function Login() {
 
                     });
                 }
+                else{
+                    alert("Error logging in")
+                }
             })
             .catch((err) => {// No beuno, kick them
                 console.log('Error logging in.', err);
