@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import AddForm from "../../components/AddForm"
 import API from "../../utils/API"
 import Yelp from "../../components/Yelp"
@@ -38,7 +38,7 @@ class AddTrip extends React.Component {
         })}
         else{
         const span = document.getElementById('uploading');
-        let images = span.getAttribute("filepath").split(",");;
+        let images = span.getAttribute("filepath").split(",");
         console.log(images);
         this.state.images = images;
 
@@ -115,7 +115,7 @@ class AddTrip extends React.Component {
 
     render(){
         return (
-            <div className="container1">
+            <div className = "container1">
                 <div className="columns" style={{ height: "100%" }}>
                     <div className="column is-two-fifths">
                     <AddForm
@@ -125,12 +125,11 @@ class AddTrip extends React.Component {
                         handleLocation={this.handleLocation}
                         handleImages={this.handleImages}/>
                     </div>
-                    <div className="column is-three-fifths mapColumn">
+                    <div className="column scroll is-three-fifths">
                         <Map lat={this.state.lat} long={this.state.long}/>
-                        {/* <Yelp data={this.state} /> */}
+                        <Yelp data={this.state} />
                     </div>
                 </div>
-                <Yelp data={this.state} />
             </div>
         );
     }

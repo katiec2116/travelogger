@@ -59,6 +59,7 @@ function AddForm(props) {
                             {plane}
                         </span>
                     </div>
+
                 </div>
 
                 <div className="field">

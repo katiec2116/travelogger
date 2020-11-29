@@ -1,6 +1,5 @@
 import React from 'react';
 import mapboxgl from 'mapbox-gl';
-import API from "../../utils/API"
 mapboxgl.accessToken = `${process.env.REACT_APP_MAPBOX}`;
 
 
@@ -36,7 +35,6 @@ class Map extends React.Component {
         
 
         this.props.trips.map(trip => {
-            console.log(trip)
             if (trip.been === "Yes") {
                 this.marker = new mapboxgl.Marker({ color: 'rgb(232, 117, 51)'})
                     .setLngLat([trip.long, trip.lat])

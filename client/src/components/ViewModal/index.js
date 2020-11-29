@@ -42,7 +42,7 @@ const ViewModal = ({ trip, closeModal, ViewModalState }) => {
         </div>
                 </section >
                 <footer className="modal-card-foot">
-                    <a className="button" onClick={closeModal}>Cancel</a>
+                    <button className="button" onClick={closeModal}>Close</button>
                 </footer>
             </div >
         </div >

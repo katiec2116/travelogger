@@ -104,8 +104,8 @@ const EditModal = ({ trip, closeModal, modalState}) => {
                     </div>
                 </section>
                 <footer className="modal-card-foot">
-                    <a className="button" onClick={() => submitEdit(trip._id)} >Submit</a>
-                    <a className="button" onClick={closeModal}>Close</a>
+                    <button className="button" onClick={() => submitEdit(trip._id)} >Submit</button>
+                    <button className="button" onClick={closeModal}>Close</button>
                 </footer>
             </div>
         </div>
