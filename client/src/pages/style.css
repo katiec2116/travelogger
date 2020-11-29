@@ -37,8 +37,8 @@
 }
 /* ADD FORM  */
 .mapContainer {
-    height:60vh;
-    width: 55vw;
+    height:64vh;
+    width: 100%;
     /* box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.1), 0 0 20px 8px rgba(0, 0, 0, 0.19); */
 }
     
@@ -91,11 +91,11 @@ background: linear-gradient(160deg, rgba(19,58,112,1) 24%, rgba(37,72,103,1) 45%
     margin-right:2%;
 }
 
+
 .mapContainerExplore {
-    margin-left:20px;
+    /* margin-left:20px; */
     height:78vh;
-    width: 70vw;
-    position:absolute;
+    width: 100%;
     box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.12), 0 0 20px 8px rgba(0, 0, 0, 0.19);
 }
 
@@ -120,10 +120,10 @@ background: linear-gradient(160deg, rgba(19,58,112,1) 24%, rgba(37,72,103,1) 45%
 /* MY TRIPS MAP */
 
 .mapContainer1 {
-    margin-left:20px;
+    /* margin-left:20px; */
     height:78vh;
-    width: 64vw;
-    position:absolute;
+    width: 97%;
+    /* position:absolute; */
     box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.12), 0 0 20px 8px rgba(0, 0, 0, 0.19);
 }
     
@@ -174,8 +174,12 @@ background: linear-gradient(160deg, rgba(19,58,112,1) 24%, rgba(37,72,103,1) 45%
 } */
 
 .popupModal{
-    width:640px;
-    height:500px;
+    width:60vw;
+    height:40vh;
+}
+
+.popupBackground{
+    background-color: rgba(0, 0, 0, 0) !important;
 }
 
 .active{
@@ -205,31 +209,76 @@ background: linear-gradient(160deg, rgba(19,58,112,1) 24%, rgba(37,72,103,1) 45%
   
 }
   
-@media screen and (max-width:1310px) {
-        .logoTitle{
-          font-size:140px;
-          
-        }
-  }
-
-@media screen and (max-width:1100px) {
+@media screen and (max-width:1370px) {
     .logoTitle{
-      font-size:100px;
+      font-size:140px;
       
     }
-  }
+}
 
-@media screen and (max-width: 700px) {
-    .logoTitle {
-        font-size:60px;
-      
-    }
+@media screen and (max-width:1190px) {
+.logoTitle{
+  font-size:100px;
   
-  }
+}
+.blurb{
+    margin-top: -30px;
+}
+.legend{
+    left:80%;
+}
+}
+
+@media screen and (max-width: 900px) {
+.logoTitle {
+    font-size:60px;
+    margin-top:-35px;
+}
+.blurb{
+    font-size: 1em;
+    margin-top: -10px;
+}
+.legend{
+    left:75%;
+}
+
+
+}
 @media screen and (max-width:640px) {
 
-    .logoTitle{
-        font-size:40px;
-      
+.logoTitle{
+    font-size:40px;
+  
+}
+}
+
+@media screen and (max-width:570px) {
+
+    .legend{
+        left:70%;
     }
+    }
+
+@media screen and (max-width:420px) {
+
+.logoTitle{
+    /* font-size:25px; */
+    margin-top: 0px;
+}
+
+.blurb{
+    font-size: 0.8em;
+    margin-top: 0px;
+    padding-bottom: 30px;
+}
+.legend{
+    left:60%;
+}
+}
+
+@media screen and (max-width:400px) {
+
+.logoTitle{
+    font-size:25px;
+}
 }

@@ -28,7 +28,7 @@ const PopupModal = ({ trip, closeModal, viewModalState }) => {
                             ) : (
                                     <AwesomeSlider>
                                         {trip.images.map(image => (
-                                            <div data-src={image} width="640" height="310" />
+                                            <div data-src={image} width="300px" height="300px" />
                                         ))}
                                     </AwesomeSlider>
                                 )

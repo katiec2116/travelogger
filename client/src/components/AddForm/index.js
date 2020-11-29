@@ -51,19 +51,13 @@ function AddForm(props) {
             <div className="content">
 
             <label className="label">Location</label>
-                <div className="field has-addons">
-                    <div className="control has-icons-left is-expanded">
+                <div className="field">
+                    <div className="control has-icons-left">
                         <input className="input" type="text" placeholder="Find a Location" name="location" style={{textTransform: "capitalize"}} onChange={props.handleLocation}
                         value={props.location}/>
                         <span className="icon is-small is-left">
                             {plane}
                         </span>
-                    </div>
-                    
-                    <div className="control">
-                        <button className="button is-info" onClick={props.submitLocation}>
-                            Search
-                        </button>
                     </div>
                 </div>
 

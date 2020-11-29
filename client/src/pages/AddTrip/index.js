@@ -115,7 +115,7 @@ class AddTrip extends React.Component {
 
     render(){
         return (
-            <div>
+            <div className="container1">
                 <div className="columns" style={{ height: "100%" }}>
                     <div className="column is-two-fifths">
                     <AddForm
@@ -125,11 +125,12 @@ class AddTrip extends React.Component {
                         handleLocation={this.handleLocation}
                         handleImages={this.handleImages}/>
                     </div>
-                    <div className="column scroll is-three-fifths">
+                    <div className="column is-three-fifths mapColumn">
                         <Map lat={this.state.lat} long={this.state.long}/>
-                        <Yelp data={this.state} />
+                        {/* <Yelp data={this.state} /> */}
                     </div>
                 </div>
+                <Yelp data={this.state} />
             </div>
         );
     }
