@@ -14,7 +14,7 @@ function RegisterForm({ onRegister }) {
 
 	return (
 		<div>
-			<h3 style={{fontFamily: 'Open Sans', color:"whitesmoke", letterSpacing:"3px"}}>Register a New User</h3>
+			<h5 style={{fontFamily: 'Open Sans', color:"whitesmoke", letterSpacing:"3px"}}>Register a New User</h5>
 			<form
 				ref={formRef}
 				onSubmit={(e) => {
@@ -26,13 +26,13 @@ function RegisterForm({ onRegister }) {
 				}}
 			>
 				<div className="field">
-				<div className="control has-icons-left has-icons-right">
+				<div className="control has-icons-left">
 					<input className="input mb-3" ref={userNameRef} type='text' name="username" placeholder='Username' />
 					<span className="icon is-small is-left">
 							{user}
 					</span>
 					<br />
-					<div className="control has-icons-left has-icons-right">
+					<div className="control has-icons-left">
 					<input className="input mb-3" ref={passwordRef} type='password'  name="password" placeholder='Password' />
 					<span className="icon is-small is-left">
 							{lock}
