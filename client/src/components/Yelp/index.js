@@ -79,10 +79,10 @@ class Yelp extends React.Component {
                                 {this.state.businesses.map(place => (
                                     <div className="card__wrapper box pb-0" key={place.id}>
                                         <div className="card__photo">
-                                            {!place.image_url ? (<img style={{ height: "200px", width: "200px" }} src={yelp} alt={place.title} />
+                                            {!place.image_url ? (<img style={{ height: "206px", width: "224px" }} src={yelp} alt={place.title} />
                                             ) :
 
-                                                (<img style={{ height: "200px", width: "200px" }}
+                                                (<img style={{ height: "206px", width: "224px" }}
                                                     src={place.image_url} alt={place.title} />)}
 
                                         </div>
