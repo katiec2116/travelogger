@@ -47,7 +47,7 @@ class Yelp extends React.Component {
 
 
                 {!this.state.businesses.length ? (
-                    <h1 className="subtitle has-text-centered my-4 pb-6">No businesses in the area! <p> &#128546;</p></h1>
+                    <h1 className="subtitle has-text-centered my-4 pb-6">No businesses in the area! <span role="img" aria-label="emoji"> &#128546;</span></h1>
                 ) : (
                         <div>
                             <h1>Suggestions</h1>
@@ -88,7 +88,7 @@ class Yelp extends React.Component {
                                         </div>
                                         <div className="restaurants-container">
                                             <div style={{ width: "200px" }}>
-                                                <span className="restaurants__name"><a href={place.url} target="_blank" className="restaurants__name-link">{place.name}</a></span>
+                                                <span className="restaurants__name"><a href={place.url} target="_blank" rel="noopener noreferrer" className="restaurants__name-link">{place.name}</a></span>
                                             </div>
                                             <span>{place.display_phone}</span>
                                             <div className="restaurants__rating">

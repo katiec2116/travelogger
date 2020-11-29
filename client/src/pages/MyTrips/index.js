@@ -36,6 +36,15 @@ class MyTrips extends React.Component {
             .catch(err => console.log(err))
     }
 
+    // componentDidUpdate(){
+    //     this.setState((prev, props) => {
+    //         console.log(this.state.myTrips)
+    //         const oldTrips = prev.myTrips;
+    //         if(oldTrips != this.state.myTrips){
+    //         return { ...this.state, myTrips: this.state.myTrips};
+    //     }});
+    // }
+
     deleteTrip(tripid) {
         API.deleteTrip(tripid)
             .then(results => console.log(results))

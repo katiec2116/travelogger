@@ -37,7 +37,7 @@ const PopupModal = ({ trip, closeModal, viewModalState }) => {
                     </div>
                 </section>
 
-                <a className="button" onClick={closeModal}>Close</a>
+                <button className="button" onClick={closeModal}>Close</button>
 
             </div>
         </div>

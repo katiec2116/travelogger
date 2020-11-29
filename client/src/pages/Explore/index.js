@@ -11,7 +11,6 @@ class Explore extends React.Component {
 
     }
     componentDidMount() {
-        console.log(process.env.REACT_APP_MAPBOX)
         const user = localStorage.getItem('user')
 
         API.getAllTrips(user).then(results => {
@@ -42,7 +41,6 @@ class Explore extends React.Component {
 
 
     render() {
-        console.log(process.env.REACT_APP_MAPBOX)
         return (
             <div className="container1">
                 <div className="columns">

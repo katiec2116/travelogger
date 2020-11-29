@@ -8,7 +8,7 @@ function inital() {
     <section className="hero">
       <div className="hero-body p-3">
         <div className="columns">
-          <div className="column is-10 is-offset-1 has-text-centered">
+          <div className="column is-10 is-offset-1 has-text-centered" style={{marginTop:"5%"}}>
               <Logo />
               <Initial />
           </div>

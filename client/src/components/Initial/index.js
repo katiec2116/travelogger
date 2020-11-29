@@ -8,12 +8,12 @@ const buttonStyle = {
 function LoginSignupBox() {
     return (
 
-                <div className="content pb-5 px-5">
+                <div className="pb-5 px-5">
                     <div className="logoTitle pb-3">TRAVELOGGER</div>
                     <p className="blurb">
                     Log and share travel memories with friends 
                         </p>
-                        <div >
+                        <div style={{marginTop:"50px"}}>
                         <Link style={buttonStyle} className="button is-kight" to="/register">Signup</Link>
                         <AuthButton />
                     </div>

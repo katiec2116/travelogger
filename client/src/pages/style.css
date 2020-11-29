@@ -22,7 +22,7 @@
     color:whitesmoke;
 }
 
-.welcome{
+.content{
     width:70%;
     margin:auto
 }
@@ -142,7 +142,7 @@ background: linear-gradient(160deg, rgba(19,58,112,1) 24%, rgba(37,72,103,1) 45%
 .mapContainer1 {
     /* margin-left:20px; */
     height:78vh;
-    width: 97%;
+    width: 100%;
     /* position:absolute; */
     box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.12), 0 0 20px 8px rgba(0, 0, 0, 0.19);
 }
@@ -283,7 +283,6 @@ background: linear-gradient(160deg, rgba(19,58,112,1) 24%, rgba(37,72,103,1) 45%
 
 .logoTitle{
     /* font-size:25px; */
-    margin-top: 0px;
     letter-spacing: 5px;
 }
 .logoNav{
