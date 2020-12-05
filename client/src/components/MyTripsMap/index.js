@@ -10,7 +10,8 @@ class Map extends React.Component {
             // trips: [],
             long: 0,
             lat: 0,
-            zoom: 1
+            zoom: 1,
+            currentMarkers:[]
         };
     }
 
@@ -23,7 +24,20 @@ class Map extends React.Component {
         });
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(){
+        this.clearMarkers();
+        this.markers();
+    }
+
+    clearMarkers(){
+        if (this.state.currentMarkers!==null) {
+            for (var i = this.state.currentMarkers.length - 1; i >= 0; i--) {
+              this.state.currentMarkers[i].remove();
+            }
+        }
+    }
+
+    markers() {
         // console.log(this.props.trips)
         // const user = localStorage.getItem('user');
         if (this.props.trips.length) {
@@ -35,12 +49,14 @@ class Map extends React.Component {
                     .addTo(this.map)
                     .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(
                         `<div> <p class=location>Location: ${trip.location}</p><p>Notes: ${trip.notes}</p> </div>`))
+                        this.state.currentMarkers.push(this.marker);
             } else {
                 this.marker = new mapboxgl.Marker({ color: 'rgb(0, 145, 156)' })
                     .setLngLat([trip.long, trip.lat])
                     .addTo(this.map)
                     .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(
                         `<div> <p class=location>Location: ${trip.location}</p><p>Notes: ${trip.notes}</p> </div>`))
+                        this.state.currentMarkers.push(this.marker)
             }
         })
     }

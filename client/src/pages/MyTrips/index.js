@@ -26,7 +26,6 @@ class MyTrips extends React.Component {
     
     toggleModal(trip) {
         this.setState((prev, props) => {
-            console.log(trip)
             const newState = !prev.modalState;
             this.componentDidMount();
             return { ...this.state, modalState: newState, selected: trip };
@@ -57,7 +56,6 @@ class MyTrips extends React.Component {
 
     toggleView(trip) {
         this.setState((prev, props) => {
-            console.log(trip)
             const newState = !prev.viewModalState;
             return { ...this.state, viewModalState: newState, selected: trip };
         });

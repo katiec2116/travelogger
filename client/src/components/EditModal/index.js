@@ -24,10 +24,6 @@ const EditModal = ({ trip, closeModal, modalState, reset}) => {
     const handleInputChange = e => {
         const name = e.target.name;
         const value = e.target.value;
-        console.log('here')
-        console.log(value)
-        console.log(trip)
-        console.log(name)
         setData({
             ...data,
             [name]: value
@@ -35,7 +31,6 @@ const EditModal = ({ trip, closeModal, modalState, reset}) => {
     };
 
     const submitEdit = (tripid) => {
-        console.log("this.state " + data.notes);
         API.updateTrip(tripid, data)
     };
 
