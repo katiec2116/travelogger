@@ -21,6 +21,8 @@ router.route("/logout")
 router.route("/user")
   .get(usersController.getUser);
 
+router.route("/userdata/:user")
+  .get(usersController.getUserData);
 
 
 module.exports = router;

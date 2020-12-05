@@ -76,9 +76,9 @@ function AddForm(props) {
                 </div>
                 <label className="label">Already Been?</label>
                 <div className="select mb-3">
-                    <select name="been" onChange={props.handleInputChange}>
-                        <option value="No" defaultValue>No</option>
-                        <option value='Yes'>Yes</option>
+                    <select name="been" onChange={props.handleInputChange} defaultValue = {props.been}>{props.been}
+                        <option value="No"> No</option>
+                        <option value="Yes">Yes</option>
                     </select>
                 </div>
 
@@ -98,12 +98,12 @@ function AddForm(props) {
                         multiple
                         />
                         <span className="file-cta">
-                            <span className="file-label">
+                            <span className="file-label p-0">
                                 Select Images
                                     </span>
                         </span>
                     </label>
-                    <button type="submit" className="button ml-2" >Upload</button>
+                    <button type="submit" className="button ml-2 is-small" >Upload</button>
                     <span id="uploading"></span>
                 </form>
 

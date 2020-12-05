@@ -194,13 +194,14 @@ background: linear-gradient(160deg, rgba(19,58,112,1) 24%, rgba(37,72,103,1) 45%
 } */
 
 .popupModal{
-    width:60vw;
-    height:40vh;
+    width:70vw;
+    height:80vh;
 }
 
 .popupBackground{
     background-color: rgba(0, 0, 0, 0) !important;
 }
+
 
 .active{
     background-color: #043069; /* Green */
@@ -227,6 +228,24 @@ background: linear-gradient(160deg, rgba(19,58,112,1) 24%, rgba(37,72,103,1) 45%
     margin: 4px 2px;
     cursor: pointer;
   
+}
+
+.suggest{
+    font-weight: bold;
+    font-size: 200%;
+    text-decoration-line: underline;
+}
+
+
+/* PROFILE PAGE */
+.profilePic{
+    border-radius: 50%;
+    width:200px;
+    height: 250px;
+}
+
+.username{
+    font-size: 200% !important;
 }
   
 @media screen and (max-width:1370px) {
@@ -290,6 +309,7 @@ background: linear-gradient(160deg, rgba(19,58,112,1) 24%, rgba(37,72,103,1) 45%
 }
 .navbar-brand img{
     width: 80px;
+    height: 80px;
 }
 
 .blurb{

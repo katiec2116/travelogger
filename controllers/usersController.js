@@ -71,6 +71,11 @@ module.exports = {
 	getUsers: function (req, res) {
 	User.find()
 	.then(results => res.send(results))
+},
+
+getUserData: function (req, res) {
+	User.findOne({ _id: req.params.user })
+	.then(results => res.json(results))
 }
 
 };

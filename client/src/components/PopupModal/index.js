@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AwesomeSlider from 'react-awesome-slider';
-import 'react-awesome-slider/dist/styles.css';
+import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
 
 
 
@@ -16,7 +16,7 @@ const PopupModal = ({ trip, closeModal, viewModalState }) => {
         <div className="modal is-active popupModal">
             <div className="modal-background popupBackground" onClick={closeModal} />
             <div className="modal-card popupCard">
-                <header className="modal-card-head">
+                <header className="modal-card-head" style={{height:"30px"}}>
                     <p className="modal-card-title location" >{trip.location}</p>
                     <button className="delete" onClick={closeModal} />
                 </header>
@@ -26,9 +26,9 @@ const PopupModal = ({ trip, closeModal, viewModalState }) => {
                             {!trip.images.length ? (
                                 <h1 className='columnHeader has-text-centered mt-6'>No Trips to Display</h1>
                             ) : (
-                                    <AwesomeSlider>
+                                    <AwesomeSlider animation="cubeAnimation">
                                         {trip.images.map(image => (
-                                            <div data-src={image} width="300px" height="300px" />
+                                            <div data-src={image}  />
                                         ))}
                                     </AwesomeSlider>
                                 )
@@ -37,7 +37,7 @@ const PopupModal = ({ trip, closeModal, viewModalState }) => {
                     </div>
                 </section>
 
-                <button className="button" onClick={closeModal}>Close</button>
+                <button className="button" onClick={closeModal} style={{height:"30px"}}>Close</button>
 
             </div>
         </div>

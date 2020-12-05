@@ -6,6 +6,10 @@ const User = new Schema(
     {
         username: { type: String,  unique: true },
         password: String,
+        email:String,
+        dob: Date,
+        image: String,
+        places: [String]
     },
     { timestamps: true },
 )

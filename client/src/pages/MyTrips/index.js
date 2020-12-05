@@ -5,7 +5,9 @@ import ViewModal from '../../components/ViewModal';
 import MyTripsMap from '../../components/MyTripsMap';
 // import edit from "./edit.png"
 
+
 class MyTrips extends React.Component {
+    
     constructor(props) {
         super(props);
 
@@ -16,11 +18,12 @@ class MyTrips extends React.Component {
             selected: {},
             activeTab: ""
         };
-
+        this.baseState = this.state 
         this.toggleModal = this.toggleModal.bind(this);
         this.toggleView = this.toggleView.bind(this);
     }
 
+    
     toggleModal(trip) {
         this.setState((prev, props) => {
             console.log(trip)
@@ -36,14 +39,12 @@ class MyTrips extends React.Component {
             .catch(err => console.log(err))
     }
 
-    // componentDidUpdate(){
-    //     this.setState((prev, props) => {
-    //         console.log(this.state.myTrips)
-    //         const oldTrips = prev.myTrips;
-    //         if(oldTrips != this.state.myTrips){
-    //         return { ...this.state, myTrips: this.state.myTrips};
-    //     }});
-    // }
+    componentDidUpdate(){
+        this.setState((prev, props) => {
+            if(prev.myTrips != this.state.myTrips){
+                this.setState({...this.state, myTrips: this.state.myTrips});
+        }});
+    }
 
     deleteTrip(tripid) {
         API.deleteTrip(tripid)
@@ -118,7 +119,8 @@ class MyTrips extends React.Component {
                                 submitEdit={this.submitEdit}
                                 closeModal={this.toggleModal}
                                 modalState={this.state.modalState}
-                                trip={this.state.selected}>
+                                trip={this.state.selected}
+                                reset={this.componentDidMount}>
                             </EditModal>
                             <ViewModal
                                 closeModal={this.toggleView}

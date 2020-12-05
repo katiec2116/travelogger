@@ -4,9 +4,9 @@ import { Link, useHistory } from "react-router-dom";
 import { UserContext } from '../../utils/UserContext';
 import AuthButton from "../AuthButton";
 
-const buttonStyle = {
-    marginRight: 10
-};
+// const buttonStyle = {
+//     marginRight: 10
+// };
 
 function Nav() {
 
@@ -56,7 +56,7 @@ function Nav() {
 
             <nav className="navbar myNav" role="navigation" aria-label="main navigation">
                 <div className="navbar-brand ml-2">
-                    <img src={logo}  alt="logo" />
+                    <img src={logo} alt="logo" />
                     <span className="logoNav navbar-item">TRAVELOGGER</span>
 
                     <a
@@ -76,7 +76,7 @@ function Nav() {
                 </div>
 
 
-                <div className={`navbar-menu navbar-end ${isActive ? "is-active" : ""}`}id="navbarBasicExample">
+                <div className={`navbar-menu navbar-end ${isActive ? "is-active" : ""}`} id="navbarBasicExample">
                     <Link className="navbar-item" to={`/explore/${user}`}>
                         Explore
                         </Link>
@@ -87,6 +87,9 @@ function Nav() {
 
                     <Link className="navbar-item" to={`/addtrip/${user}`} onClick={() => history.push('/addtrip')}>
                         Add a Trip
+                        </Link>
+                    <Link className="navbar-item" to={`/profile/${user}`}>
+                        Profile
                         </Link>
                     <div className="navbar-item">
                         <AuthButton />
