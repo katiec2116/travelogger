@@ -28,7 +28,9 @@ class MyTrips extends React.Component {
         this.setState((prev, props) => {
             console.log(trip)
             const newState = !prev.modalState;
+            this.componentDidMount();
             return { ...this.state, modalState: newState, selected: trip };
+            
         });
     }
 
