@@ -1,6 +1,7 @@
 import React from 'react';
 import API from "../../utils/API"
 import ExploreMap from "../../components/ExploreMap"
+import LiveStream from "../../components/LiveStream"
 
 
 
@@ -40,6 +41,11 @@ class Explore extends React.Component {
         }
 
 
+        
+         
+          
+
+
     render() {
         return (
             <div className="container1">
@@ -48,17 +54,13 @@ class Explore extends React.Component {
                         <ExploreMap long={-81} lat={27} all={this.state.trips} />
                     </div>
                     <div className="column is-3 mt-6">
-                        <aside className="menu" style={{ border: '1px solid black' }}>
+                        <aside>
                             <ul className="menu-list">
-                            <p className="menu-label" style={{borderBottom: "1px solid black", marginBottom: "0px", fontSize: "18px", padding: "5px 10px", color: "black", fontWeight: "500"}}>
+                            <p className="menu-label" style={{color: "whitesmoke", fontFamily: "'Roboto Condensed', sans-serif", fontSize: "150%"}}>
                                 Live Stream
                             </p>
                             {this.state.trips.map(function(trip, i){
-                                 if (trip.been === 'Yes') {
-                                     return <li key={trip._id} style={{padding: "15px 10px", borderBottom: "1px solid #75cff1", color: "#000"}}>{trip.user} added {trip.location} to their trips!</li>
-                                 } else {
-                                     return <li key={trip._id} style={{padding: "15px 10px", borderBottom: "1px solid #75cff1", color: "#000"}}>{trip.user} wants to visit {trip.location}!</li>
-                                 }
+                               return  <LiveStream trip={trip}/>
                              })}
                           </ul>
                       </aside>

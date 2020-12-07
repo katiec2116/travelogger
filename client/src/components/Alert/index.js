@@ -8,8 +8,8 @@ function Alert(props) {
 
     return (
         <div>
-            <div class="notification is-success is-light">
-                <button class="delete"></button>
+            <div className="notification is-success is-light">
+                <button className="delete"></button>
                     Your trip to {props.location} has been added!
             </div>
         </div>

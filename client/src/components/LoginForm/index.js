@@ -26,14 +26,14 @@ function LoginForm({ onLogin }) {
 			>
 				<div className="field" >
 					<div className="control has-icons-left">
-						<input className="input mb-3" ref={userNameRef} type='text' name="username" />
+						<input className="input mb-3" ref={userNameRef} type='text' placeholder='Username' name="username" />
 						<span className="icon is-small is-left">
 							{user}
 						</span>
 						<br />
 					</div>
 					<div className="control has-icons-left">
-						<input className="input mb-3" ref={passwordRef} type='password' name="password" />
+						<input className="input mb-3" ref={passwordRef} type='password' placeholder='Password' name="password" />
 						<span className="icon is-small is-left">
 							{lock}
 						</span><br />

@@ -47,11 +47,11 @@ class Yelp extends React.Component {
 
 
                 {!this.state.businesses.length ? (
-                    <h1 className="subtitle has-text-centered my-4 pb-6">No businesses in the area! <span role="img" aria-label="emoji"> &#128546;</span></h1>
+                    <h1 className="subtitle has-text-centered my-4 pb-6" style={{fontFamily: "'Roboto Condensed', sans-serif"}}>No businesses in the area! <span role="img" aria-label="emoji"> &#128546;</span></h1>
                 ) : (
-                        <div>
-                            <h1>Suggestions</h1>
-                            <div className="tabs is-boxed">
+                        <div className="has-text-centered">
+                            <h1 className = "suggest" >SUGGESTIONS FOR {this.props.data.location}</h1>
+                            <div className="tabs is-boxed is-centered">
                                 <ul>
                                     <li className={this.state.activeTab === "" ? "is-active" : "notActiveTab"} onClick={() => this.componentDidMount("")}>
                                         <a>

@@ -19,9 +19,10 @@ function uploadImages(e){
     for (let i = 0; i < images.length; i++) {
         console.log(images[i]);
         data.append('photos', images[i])
+        console.log(data)
     }
     data.append('user', user)
-
+    console.log(data)
     const options = {
         method: 'POST',
         body: data
@@ -49,8 +50,10 @@ function AddForm(props) {
     return (
         <div className="box mt-6">
             <div className="content">
-
-            <label className="label">Location</label>
+            <p className="menu-label" style={{color: "black", fontFamily: "'Roboto Condensed', sans-serif", fontSize: "150%"}}>
+                                ADD A TRIP
+                            </p>
+            <label className="label" style={{fontFamily: "'Roboto Condensed', sans-serif"}}>LOCATION</label>
                 <div className="field">
                     <div className="control has-icons-left">
                         <input className="input" type="text" placeholder="Find a Location" name="location" style={{textTransform: "capitalize"}} onChange={props.handleLocation}
@@ -63,7 +66,7 @@ function AddForm(props) {
                 </div>
 
                 <div className="field">
-                    <label className="label">When?</label>
+                    <label className="label"style={{fontFamily: "'Roboto Condensed', sans-serif"}}>WHEN?</label>
                     <div className="control has-icons-left">
                         <input className="input" type="date" name="date"
                             onChange={props.handleInputChange}
@@ -74,16 +77,16 @@ function AddForm(props) {
                         </span>
                     </div>
                 </div>
-                <label className="label">Already Been?</label>
+                <label className="label" style={{fontFamily: "'Roboto Condensed', sans-serif"}}>ALREADY BEEN?</label>
                 <div className="select mb-3">
-                    <select name="been" onChange={props.handleInputChange}>
-                        <option value="No" defaultValue>No</option>
-                        <option value='Yes'>Yes</option>
+                    <select name="been" onChange={props.handleInputChange} defaultValue = {props.been}>{props.been}
+                        <option value="No"> No</option>
+                        <option value="Yes">Yes</option>
                     </select>
                 </div>
 
                 <div className="field">
-                    <label className="label">Notes:</label>
+                    <label className="label" style={{fontFamily: "'Roboto Condensed', sans-serif"}}>NOTES:</label>
                     <div className="control">
                         <textarea className="textarea" type="text" name="notes"
                             onChange={props.handleInputChange}
@@ -98,21 +101,18 @@ function AddForm(props) {
                         multiple
                         />
                         <span className="file-cta">
-                            <span className="file-label">
-                                Select Images
+                            <span className="file-label p-0" style={{fontFamily: "'Roboto Condensed', sans-serif"}}>
+                                SELECT IMAGES
                                     </span>
                         </span>
                     </label>
-                    <button type="submit" className="button ml-2" >Upload</button>
+                    <button type="submit" className="button ml-2 is-small" style={{fontFamily: "'Roboto Condensed', sans-serif"}}>UPLOAD</button>
                     <span id="uploading"></span>
                 </form>
 
                 <div className="field is-grouped">
                     <div className="control">
-                        <button className="button" onClick={() =>{props.onSubmit(); alert()}}>Add</button>
-                    </div>
-                    <div className="control">
-                        <button className="button is-light">Cancel</button>
+                        <button className="button" style={{fontFamily: "'Roboto Condensed', sans-serif"}} onClick={() =>{props.onSubmit(); alert()}}>ADD</button>
                     </div>
                 </div>
             </div>

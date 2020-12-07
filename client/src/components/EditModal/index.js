@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import API from "../../utils/API"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlane, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
-
 const plane = <FontAwesomeIcon icon={faPlane} />
 const calendar = <FontAwesomeIcon icon={faCalendarAlt} />
-const EditModal = ({ trip, closeModal, modalState}) => {
+
+
+const EditModal = ({ trip, closeModal, modalState, reset}) => {
     console.log(trip)
 
     const [data, setData] = useState({
@@ -23,10 +24,6 @@ const EditModal = ({ trip, closeModal, modalState}) => {
     const handleInputChange = e => {
         const name = e.target.name;
         const value = e.target.value;
-        console.log('here')
-        console.log(value)
-        console.log(trip)
-        console.log(name)
         setData({
             ...data,
             [name]: value
@@ -34,7 +31,6 @@ const EditModal = ({ trip, closeModal, modalState}) => {
     };
 
     const submitEdit = (tripid) => {
-        console.log("this.state " + data.notes);
         API.updateTrip(tripid, data)
     };
 
@@ -77,8 +73,8 @@ const EditModal = ({ trip, closeModal, modalState}) => {
                         <div className="select mb-3">
                             <select name="been" onChange={handleInputChange}>
                                 <option defaultValue>{trip.been}</option>
-                                <option value='No'>No</option>
-                                <option value='Yes'>Yes</option>
+                                {trip.been === "Yes" ? <option value='No'>No</option>
+                                :<option value='Yes'>Yes</option>}
                             </select>
                         </div>
                         <div className="field">
@@ -92,7 +88,7 @@ const EditModal = ({ trip, closeModal, modalState}) => {
                         </div>
                         {/* <div id="file-js-example" className="file is-info my-4">
                             <label className="file-label">
-                                <input className="file-input" type="file" name="images" onChange={handleInputChange} defaultValue={trip.images}
+                                <input className="file-input" type="file" name="images" onChange={handleInputChange} defaultValue={data.images}
                                 />
                                 <span className="file-cta">
                                     <span className="file-label">
@@ -104,7 +100,7 @@ const EditModal = ({ trip, closeModal, modalState}) => {
                     </div>
                 </section>
                 <footer className="modal-card-foot">
-                    <button className="button" onClick={() => submitEdit(trip._id)} >Submit</button>
+                    <button className="button" onClick={() => {submitEdit(trip._id); reset()}} >Submit</button>
                     <button className="button" onClick={closeModal}>Close</button>
                 </footer>
             </div>

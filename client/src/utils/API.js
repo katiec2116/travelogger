@@ -13,6 +13,14 @@ register: function(username, password) {
   }).then((res) => console.log(res));
 },
 
+getUserData: function(user){
+  return axios({
+      method: "GET",
+      withCredential:true,
+      url:"/api/users/userdata/" + user
+    }).then((res) => {return (res)});
+  },
+
 addTrip: function (trips) {
   console.log(trips)
   return axios({

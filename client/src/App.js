@@ -10,13 +10,14 @@ import Login from "./pages/Login";
 import Initial from "./pages/Initial"
 import Register from "./pages/Register";
 import Explore from "./pages/Explore";
+import Profile from "./pages/Profile";
 import AddTrip from "./pages/AddTrip";
 import MyTrips from "./pages/MyTrips"
 import Nav from "./components/Nav";
 import NoMatch from "./pages/NoMatch"
 import 'bulma/css/bulma.css'
 import ProtectedRoute from "./pages/ProtectedRoute";
-import './App.css';
+import './pages/style.css';
 import { UserProvider } from "./utils/UserContext";
 const dotenv = require('dotenv').config() 
 
@@ -32,6 +33,7 @@ const AuthExample = () => (
 						<Route path="/login" component={Login} />
 						<Route path="/register" component={Register} />
 						<Route exact path ="/explore/:id" component ={Explore} />
+						<Route exact path ="/profile/:id" component ={Profile} />
 						<Route  path ="/mytrips/:id" component ={MyTrips} />
             			<Route  path ="/addtrip/:id" component ={AddTrip} />
 						<PrivateRoute path="/explore" component={ProtectedRoute} />

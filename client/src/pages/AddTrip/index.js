@@ -7,8 +7,10 @@ import Map from "../../components/Map"
 
 class AddTrip extends React.Component {
     
+constructor(props){
+    super(props)
 
-    state = {
+    this.state = {
         user: localStorage.getItem('user'),
         location: "",
         date: "",
@@ -19,45 +21,32 @@ class AddTrip extends React.Component {
         likes:"",
         images: []
     }
+    this.baseState = this.state 
+}
 
-    
-
+    resetForm = () => {
+        this.setState(this.baseState)
+    }
     onSubmit = e => {
         if(this.state.location === "" || !this.state.user){
-            this.setState({
-                user: localStorage.getItem('user'),
-                location: "",
-                date: "",
-                been:"No",
-                notes: "",
-                lat: "",
-                long: "",
-                likes:"",
-                images: []
-            
-        })}
+            this.resetForm()
+        }
         else{
+            if (this.images){
         const span = document.getElementById('uploading');
         let images = span.getAttribute("filepath").split(",");
         console.log(images);
         this.state.images = images;
+            }
 
         API.addTrip(this.state)
         .then(res => console.log(res))
-        // .then(
-        //     setTimeout(() =>{ this.setState({
-        //     user: localStorage.getItem('user'),
-        //     location: "",
-        //     date: "",
-        //     been:"No",
-        //     notes: " ",
-        //     lat: "",
-        //     long: "",
-        //     likes:"",
-        //     images: []
-        // }); 
-        // }, 3000))
+        .then(
+            setTimeout(() =>{
+                this.resetForm()
+        }, 3000))
     }     
+
             
     };
 
@@ -71,6 +60,7 @@ class AddTrip extends React.Component {
     };
 
     handleImages = e => {
+        console.log("HELOOOO")
         const images = this.state.images;
         images.push(e.target.value);
         this.setState({ ...this.state, images: images });
@@ -120,6 +110,10 @@ class AddTrip extends React.Component {
                     <div className="column is-two-fifths">
                     <AddForm
                         location={this.state.location}
+                        date={this.state.date}
+                        notes={this.state.notes}
+                        images={this.state.images}
+                        been = {this.state.been}
                         onSubmit={this.onSubmit}
                         handleInputChange={this.handleInputChange}
                         handleLocation={this.handleLocation}
@@ -127,9 +121,9 @@ class AddTrip extends React.Component {
                     </div>
                     <div className="column scroll is-three-fifths">
                         <Map lat={this.state.lat} long={this.state.long}/>
-                        <Yelp data={this.state} />
                     </div>
                 </div>
+                <Yelp data={this.state} />
             </div>
         );
     }
