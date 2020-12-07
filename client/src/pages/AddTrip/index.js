@@ -24,9 +24,9 @@ constructor(props){
     this.baseState = this.state 
 }
 
-resetForm = () => {
-    this.setState(this.baseState)
-  }
+    resetForm = () => {
+        this.setState(this.baseState)
+    }
     onSubmit = e => {
         if(this.state.location === "" || !this.state.user){
             this.resetForm()
@@ -60,6 +60,7 @@ resetForm = () => {
     };
 
     handleImages = e => {
+        console.log("HELOOOO")
         const images = this.state.images;
         images.push(e.target.value);
         this.setState({ ...this.state, images: images });

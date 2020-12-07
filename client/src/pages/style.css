@@ -1,3 +1,14 @@
+html, body{
+    background-color: rgb(18,58,112);
+    
+}
+body{
+    min-height: 100vh;
+}
+
+.box{
+    box-shadow: 0 0 8px 8px rgba(250, 249, 249, 0.205) !important;
+}
 /* HOME/LOGIN/SIGNUP */
 .hero{
     background-image: url('./background2.jpg');
@@ -54,14 +65,19 @@
 }
 
 .columnHeader{
-    font-size:25px;
+    font-size:28px;
     font-weight:bold;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: whitesmoke;
+    letter-spacing: 5px;
 }
 /* ADD FORM  */
 .mapContainer {
     height:64vh;
     width: 100%;
-    /* box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.1), 0 0 20px 8px rgba(0, 0, 0, 0.19); */
+    /* box-shadow: 0 0 8px 8px rgba(250, 249, 249, 0.205); */
+    border: 10px white solid;
+    border-radius: 7px;
 }
     
 .column {
@@ -116,7 +132,9 @@ background: linear-gradient(160deg, rgba(19,58,112,1) 24%, rgba(37,72,103,1) 45%
     /* margin-left:20px; */
     height:78vh;
     width: 100%;
-    box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.12), 0 0 20px 8px rgba(0, 0, 0, 0.19);
+    /* box-shadow: 0 0 8px 8px rgba(250, 249, 249, 0.205); */
+    border: 10px white solid;
+    border-radius: 7px;
 }
 
 .myTrips {
@@ -144,7 +162,9 @@ background: linear-gradient(160deg, rgba(19,58,112,1) 24%, rgba(37,72,103,1) 45%
     height:78vh;
     width: 100%;
     /* position:absolute; */
-    box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.12), 0 0 20px 8px rgba(0, 0, 0, 0.19);
+    /* box-shadow: 0 0 8px 8px rgba(250, 249, 249, 0.205); */
+    border: 10px white solid;
+    border-radius: 7px;
 }
     
 .legend{
@@ -204,22 +224,23 @@ background: linear-gradient(160deg, rgba(19,58,112,1) 24%, rgba(37,72,103,1) 45%
 
 
 .active{
-    background-color: #043069; /* Green */
-    border: none;
-    color: white;
+    background-color: rgb(255, 251, 251);;
+    border: solid 4px rgb(116,208,240);
+    color: rgb(10, 10, 10);
     padding: 5px 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     margin: 4px 2px;
     cursor: pointer;
+    border-radius: 4px;
   
 }
 
 .notActive{
     background-color: rgb(255, 251, 251);
     border-radius: 4px;
-    border: solid 1px #043069;
+    /* border: solid 4px rgb(116,208,240); */
     color: rgb(12, 12, 12);
     padding: 5px 10px;
     text-align: center;
@@ -233,9 +254,15 @@ background: linear-gradient(160deg, rgba(19,58,112,1) 24%, rgba(37,72,103,1) 45%
 .suggest{
     font-weight: bold;
     font-size: 200%;
+    font-family: 'Roboto Condensed', sans-serif;
     text-decoration-line: underline;
+    color: whitesmoke;
+    text-transform: uppercase;
 }
 
+.subtitle{
+    color: whitesmoke !important;
+}
 
 /* PROFILE PAGE */
 .profilePic{
@@ -246,6 +273,27 @@ background: linear-gradient(160deg, rgba(19,58,112,1) 24%, rgba(37,72,103,1) 45%
 
 .username{
     font-size: 200% !important;
+    font-weight: bold;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.menu{
+    background-color: whitesmoke;
+    height: 90vh;
+    padding:15px;
+    box-shadow: 0 0 8px 8px rgba(250, 249, 249, 0.205);
+    border-radius: 6px;
+}
+
+.profile{
+    height: 100%;
+}
+
+.placeList{
+    color: black;
+    font-weight: bold;
+    font-size: 170%;
+    font-family: 'Roboto Condensed', sans-serif;
 }
   
 @media screen and (max-width:1370px) {

@@ -17,7 +17,7 @@ import Nav from "./components/Nav";
 import NoMatch from "./pages/NoMatch"
 import 'bulma/css/bulma.css'
 import ProtectedRoute from "./pages/ProtectedRoute";
-import './App.css';
+import './pages/style.css';
 import { UserProvider } from "./utils/UserContext";
 const dotenv = require('dotenv').config() 
 

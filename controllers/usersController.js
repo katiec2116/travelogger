@@ -74,8 +74,8 @@ module.exports = {
 },
 
 getUserData: function (req, res) {
-	User.findOne({ _id: req.params.user })
-	.then(results => res.json(results))
+	User.findOne({ username: req.params.user })
+	.then(results => res.send(results))
 }
 
 };

@@ -67,11 +67,8 @@ class ExploreMap extends React.Component {
                         .setLngLat([trip.long, trip.lat])
                         .addTo(this.map)
                         .setPopup(new mapboxgl.Popup({ offset: 25 }).setDOMContent(popup))
-
                 }
             })
-
-        
     }
 
 

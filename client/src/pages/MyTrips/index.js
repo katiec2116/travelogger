@@ -86,7 +86,7 @@ class MyTrips extends React.Component {
                             <h1 className='columnHeader has-text-centered mt-6'>No Trips to Display</h1>
                         ) : ( */}
                         <div>
-                            <h1 className='columnHeader has-text-centered mt-6 mb-3'>My Trips</h1>
+                            <h1 className='columnHeader has-text-centered mt-6 mb-3'>MY TRIPS</h1>
                             <div className="buttons has-addons is-centered">
                                 <button className={this.state.activeTab === "No" ? "active" : "notActive"} onClick={() => this.filter("No")}>Planned</button>
                                 <button className={this.state.activeTab === "Yes" ? "active" : "notActive"} onClick={() => this.filter("Yes")}>Visited</button>
