@@ -2,6 +2,7 @@ import React from 'react';
 import API from "../../utils/API"
 import ExploreMap from "../../components/ExploreMap"
 import LiveStream from "../../components/LiveStream"
+import Details from "../../components/Details"
 
 
 
@@ -9,6 +10,8 @@ class Explore extends React.Component {
 
     state = {
         trips: [],
+        details: false,
+        selectedTrip:{}
 
     }
     componentDidMount() {
@@ -21,37 +24,25 @@ class Explore extends React.Component {
             this.setState({trips:results.data})}).then(() => console.log(this.state.trips)),
             10000,
         );
-
     }
-
-//         componentDidMount() {
-//             const user = localStorage.getItem('user')
-    
-//             API.getAllTrips(user).then(results => {
-//                 this.setState({trips:results.data})}).then(() => (this.state.trips));
-    
-//             this.timer = setInterval(() => API.getAllTrips(user).then(results => {
-//                 this.setState({trips:results.data})}).then(() => console.log(this.state.trips)),
-//                 10000,
-//             );
-//         }
-    
         componentWillUnmount() {
             clearInterval(this.timer);
         }
 
-
-        
-         
-          
-
+        showDetails(selectedTrip){
+            this.setState((prev, props) => {
+                const newState = !prev.details;
+                return { ...this.state, details: newState, selectedTrip: selectedTrip };
+            });
+        }
 
     render() {
         return (
             <div className="container1">
                 <div className="columns">
                     <div className="column is-9 mt-6">
-                        <ExploreMap long={-81} lat={27} all={this.state.trips} />
+                        <ExploreMap long={-81} lat={27} all={this.state.trips} showDetails={this.showDetails.bind(this)} />
+                        <Details show={this.state.details} trip={this.state.selectedTrip}/>
                     </div>
                     <div className="column is-3 mt-6">
                         <aside>
