@@ -32,12 +32,13 @@ constructor(props){
             this.resetForm()
         }
         else{
-            if (this.images){
+        
         const span = document.getElementById('uploading');
+        if (span.getAttribute("filepath") != ""){
         let images = span.getAttribute("filepath").split(",");
         console.log(images);
         this.state.images = images;
-            }
+        }
 
         API.addTrip(this.state)
         .then(res => console.log(res))
@@ -60,7 +61,6 @@ constructor(props){
     };
 
     handleImages = e => {
-        console.log("HELOOOO")
         const images = this.state.images;
         images.push(e.target.value);
         this.setState({ ...this.state, images: images });
