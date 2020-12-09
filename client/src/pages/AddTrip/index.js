@@ -32,11 +32,11 @@ constructor(props){
             this.resetForm()
         }
         else{
-        
+        console.log("I am here")
         const span = document.getElementById('uploading');
         if (span.getAttribute("filepath") != ""){
         let images = span.getAttribute("filepath").split(",");
-        console.log(images);
+        console.log("images ", images);
         this.state.images = images;
         }
 

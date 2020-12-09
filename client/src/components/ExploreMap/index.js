@@ -54,7 +54,7 @@ class ExploreMap extends React.Component {
                     status=true
                 }
                 const popup = document.createElement('div');
-                ReactDOM.render(<Popup trip={trip} status={status}/>, popup);
+                ReactDOM.render(<Popup trip={trip} status={status} showDetails={this.props.showDetails}/>, popup);
                 
 
                 if (trip.user === user) {

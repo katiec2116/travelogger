@@ -9,20 +9,20 @@ class Popup extends React.Component {
         this.state ={
             status: "like",
             like: false,
-            viewModalState: false,
+            // viewModalState: false,
         }
 
-        this.toggleView = this.toggleView.bind(this);
+        // this.toggleView = this.toggleView.bind(this);
     } 
   
 
-    toggleView() {
-        this.setState((prev, props) => {
-            console.log(this.props.trip)
-            const newState = !prev.viewModalState;
-            return { ...this.state, viewModalState: newState, selected: this.props.trip };
-        });
-    }
+    // toggleView() {
+    //     this.setState((prev, props) => {
+    //         console.log(this.props.trip)
+    //         const newState = !prev.viewModalState;
+    //         return { ...this.state, viewModalState: newState, selected: this.props.trip };
+    //     });
+    // }
 
      likeTrip = () => {
          const user = localStorage.getItem("user")
@@ -46,17 +46,17 @@ class Popup extends React.Component {
     if (this.props.trip.been === "Yes") {
         return (
             <div>
-                <bold>{this.props.trip.user} </bold> visited <bold>{this.props.trip.location}</bold>
+                <strong>{this.props.trip.user} </strong> visited <strong>{this.props.trip.location}</strong>
                 {!this.props.trip.likes.includes(user) ? (
                     <div>
                         <p> <small>Liked by {this.props.trip.likes.length} people</small></p >
-                        <button className="button is-small is-rounded" onClick={() => this.likeTrip(!this.state.like)}> like</button><button className="button is-small is-rounded" onClick={() => this.toggleView()}> See More</button>
+                        <button className="button is-small is-rounded" onClick={() => this.likeTrip(!this.state.like)}> like</button><button className="button is-small is-rounded" onClick={() => {this.props.showDetails(this.props.trip)}}> See More</button>
                     </div>
 
                 ) :
                     <div>
                         <p> <small>Liked by You and {this.props.trip.likes.length - 1} other people</small></p >
-                        <button className="button is-small is-rounded" onClick={() => this.likeTrip(!this.props.trip.like)}> like </button><button className="button is-small is-rounded" onClick={() => this.toggleView()}> See More</button>
+                        <button className="button is-small is-rounded" onClick={() => this.likeTrip(!this.props.trip.like)}> like </button><button className="button is-small is-rounded" onClick={() => {this.props.showDetails(this.props.trip)}}> See More</button>
                     </div>
                 }
                 <PopupModal
@@ -70,10 +70,10 @@ class Popup extends React.Component {
     else {
         return (
             <div>
-                <bold>{this.props.trip.user} </bold> wants to vist <bold>{this.props.trip.location}</bold>
+                <strong>{this.props.trip.user} </strong> wants to vist <strong>{this.props.trip.location}</strong>
                 <p> <small>Liked by {this.props.trip.likes.length} people</small></p>
                 <button className="button is-small is-rounded" onClick={() => this.likeTrip(!this.state.like)}> like</button>
-                {/* <button className="button is-small is-rounded" onClick={() => toggleView()}> See More</button> */}
+                <button className="button is-small is-rounded" onClick={() => {this.props.showDetails(this.props.trip)}}> See More</button>
 
             </div>
         )
