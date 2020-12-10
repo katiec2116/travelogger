@@ -1,5 +1,6 @@
 html, body{
     background-color: rgb(18,58,112);
+    color: whitesmoke;
     
 }
 body{
@@ -286,6 +287,13 @@ background: linear-gradient(160deg, rgba(19,58,112,1) 24%, rgba(37,72,103,1) 45%
     text-decoration-line: underline;
     color: whitesmoke;
     text-transform: uppercase;
+}
+.tabs .notActiveTab a{
+    color: whitesmoke !important
+}
+
+.tabs li :hover{
+    color: black !important
 }
 
 .subtitle{

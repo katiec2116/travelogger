@@ -1,11 +1,12 @@
 import React, { useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faUnlock } from '@fortawesome/free-solid-svg-icons'
+import LogAlert from "../LogAlert"
 
 const user = <FontAwesomeIcon icon={faUser} />
 const lock = <FontAwesomeIcon icon={faUnlock} />
 
-function LoginForm({ onLogin }) {
+function LoginForm({ onLogin , alert}) {
 
 	const formRef = useRef();
 	const userNameRef = useRef();
@@ -37,6 +38,7 @@ function LoginForm({ onLogin }) {
 						<span className="icon is-small is-left">
 							{lock}
 						</span><br />
+						<LogAlert alert={alert}/>
 						<button className="button is-dark my-3" type='submit'>
 							Submit
 						</button>

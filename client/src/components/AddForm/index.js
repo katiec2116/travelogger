@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Alert from "../Alert"
+import Alert from "../Alert";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlane, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 
@@ -30,7 +30,7 @@ function uploadImages(e){
 
     fetch('/api/photos/upload', options).then(response => response.json())
     .then(result => {
-      console.log(result.filename);
+      console.log(result);
       imagePath.push(result.filename);
       span.innerText = "Upload Successful!"
       span.setAttribute('filepath', imagePath)

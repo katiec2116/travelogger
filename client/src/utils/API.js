@@ -105,7 +105,7 @@ getAllTrips: function(user){
   },
 
   uploadPhoto: function(photo){
-    console.log(photo);
+    console.log("photo ", photo);
     return axios({
         method: "POST",
         withCredential:true,

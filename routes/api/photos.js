@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const path = require('path');
-const access_id = process.env.ACCESS_ID;
-const access_key = process.env.ACCESS_KEY;
+const access_id = 'AKIAJZOZXZ2JHIJYAH2A';
+const access_key = '+x2gS1aP+01SV1o6Pm3Gv0caMh/KzwNtKyAtxNO5'
 let user;
 
   var aws = require('aws-sdk')

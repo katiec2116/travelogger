@@ -42,7 +42,7 @@ class MyTrips extends React.Component {
 
     componentDidUpdate(){
         this.setState((prev, props) => {
-            if(prev.myTrips != this.state.myTrips){
+            if(prev.myTrips !== this.state.myTrips){
                 this.setState({...this.state, myTrips: this.state.myTrips});
         }});
     }
