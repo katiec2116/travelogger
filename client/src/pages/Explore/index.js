@@ -30,10 +30,12 @@ class Explore extends React.Component {
         }
 
         showDetails(selectedTrip){
-            this.setState((prev, props) => {
-                const newState = !prev.details;
-                return { ...this.state, details: newState, selectedTrip: selectedTrip };
-            });
+            this.setState({ ...this.state, details: true, selectedTrip: selectedTrip }
+            );
+        }
+
+        closeDetails(){
+            this.setState({...this.state, details:false})
         }
 
     render() {
@@ -41,7 +43,7 @@ class Explore extends React.Component {
             <div className="container1">
                 <div className="columns">
                     <div className="column is-9 mt-6">
-                        <ExploreMap long={-81} lat={27} all={this.state.trips} showDetails={this.showDetails.bind(this)} />
+                        <ExploreMap long={-81} lat={27} all={this.state.trips} showDetails={this.showDetails.bind(this)} onClick={this.closeDetails} />
                         <Details show={this.state.details} trip={this.state.selectedTrip}/>
                     </div>
                     <div className="column is-3 mt-6">

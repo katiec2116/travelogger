@@ -35,7 +35,7 @@ constructor(props){
         console.log("I am here")
         const span = document.getElementById('uploading');
         console.log(span.getAttribute("filepath"))
-        if (span.getAttribute("filepath") !== ""){
+        if (span.getAttribute("filepath") !== null){
         let images = span.getAttribute("filepath").split(",");
         console.log("images ", images);
         this.state.images = images;

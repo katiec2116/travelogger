@@ -3,6 +3,10 @@ import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
 
 function Details({ trip, show }) {
+        if (trip.images){
+            console.log(trip.images.length)
+        }
+    
 
     return (
         <div className={!show ? "hide" : "show columns"}>
@@ -17,14 +21,14 @@ function Details({ trip, show }) {
                     <span style={{ color: "black", fontFamily: "'Roboto Condensed', sans-serif", fontSize: "150%" }}>NOTES:</span> {trip.notes}
                     <div >
                         <br />
-                        {!trip.images ? (
-                            <div></div>
+                        {trip.images && trip.images.length > 0 ? (
+                            <AwesomeSlider animation="cubeAnimation">
+                            {trip.images.map(image => ( 
+                                <div key={image} data-src={image} />
+                            ))}
+                        </AwesomeSlider>
                         ) : (
-                                <AwesomeSlider animation="cubeAnimation">
-                                    {trip.images.map(image => (
-                                        <div data-src={image} />
-                                    ))}
-                                </AwesomeSlider>
+                                null
                             )
                         }
                     </div>

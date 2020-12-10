@@ -8,8 +8,6 @@ function LiveStream({ trip }) {
         var newDate = (Date.parse(date))
         var seconds = Math.floor((new Date(Date.now()) - newDate) / 1000);
         var interval = seconds / 31536000;
-        console.log(interval)
-        console.log(seconds)
 
         if (interval > 1) {
             return Math.floor(interval) + " years";
