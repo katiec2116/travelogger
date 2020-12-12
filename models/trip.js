@@ -11,13 +11,7 @@ const tripSchema = new Schema(
       long:  Number,
       notes: String,
       likes: [String],
-      images: [String],
-      comment:[{
-        user: String,
-        commentData: String,
-      }, 
-      {timestamp:true}
-    ]
+      images: [String]
     },
     { timestamps: true }
 

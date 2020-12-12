@@ -1,6 +1,7 @@
 import React from 'react'
 import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
+import Comment from "../Comment"
 
 function Details({ trip, show }) {
         if (trip.images){
@@ -39,6 +40,7 @@ function Details({ trip, show }) {
                     <p style={{ color: "black", fontFamily: "'Roboto Condensed', sans-serif", fontSize: "250%", textTransform: "uppercase" }}>
                         Comments
                             </p>
+                            <Comment trip = {trip}/>
 
                 </div>
             </div>

@@ -1,4 +1,5 @@
 const Trip = require("../models/trip");
+const Comment = require("../models/comment")
 
 
 module.exports = {
@@ -70,6 +71,7 @@ module.exports = {
             .then(results => res.json(results));
     },
 
+    
 
 
 }

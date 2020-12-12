@@ -19,7 +19,8 @@ constructor(props){
         lat: "",
         long: "",
         likes:"",
-        images: []
+        images: [],
+        comments:[]
     }
     this.baseState = this.state 
 }
@@ -39,6 +40,7 @@ constructor(props){
         let images = span.getAttribute("filepath").split(",");
         console.log("images ", images);
         this.state.images = images;
+        span.setAttribute("filepath", null)
         }
 
         API.addTrip(this.state)

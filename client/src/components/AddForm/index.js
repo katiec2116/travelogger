@@ -10,6 +10,7 @@ let imagePath = [];
 
 function uploadImages(e){
     e.preventDefault()
+    console.log(imagePath)
     const span = document.getElementById('uploading');
     span.innerText = "uploading...";
     const data = new FormData();
