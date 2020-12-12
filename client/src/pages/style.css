@@ -1,6 +1,7 @@
 html, body{
     background-color: rgb(18,58,112);
     color: whitesmoke;
+    font-family: 'Open Sans', sans-serif;
     
 }
 body{
@@ -147,6 +148,30 @@ background: linear-gradient(160deg, rgba(19,58,112,1) 24%, rgba(37,72,103,1) 45%
 .detailsContent{
     width:60%;
     margin:auto
+}
+
+.textarea{
+    border-radius: 25px !important;
+    width:80% !important
+}
+
+.time{
+    font-size: 11px;
+}
+
+.commentText {
+padding:5px 20px
+}
+
+.userComment {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.comments{
+    border-radius: 8px;
+    margin-top:10px;
+    background-color: rgb(231, 230, 230);
 }
 
 .aws-btn {

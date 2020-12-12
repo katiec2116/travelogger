@@ -27,15 +27,16 @@ function Comment(props) {
     return (
         <div>
             <div>
-                <p classNane="title" style={{ fontFamily: "'Roboto Condensed', sans-serif" }}> {user} says</p>
+                <p classNane="title" style={{ fontFamily: "'Roboto Condensed', sans-serif" }}> {user} SAYS</p>
                 <div className="field">
-                    <div className="control">
-                        <textarea className="textarea" type="text" name="comment" rows="3"
-                            onChange={handleChange}>
+                    <div className="control level">
+                        <textarea className="textarea level-left" type="text" name="comment" rows="1" cols="5"
+                            onChange={handleChange}> 
                         </textarea>
-                        <button onClick={handleSubmit}>Submit</button>
+                        <button className ="level-right" onClick={handleSubmit}>Submit</button>
                     </div>
                 </div>
+                <br/>
             </div>
             {/* {allComments.map(comment => (
                 <p>{comment.user} said {comment.commentData}</p>
