@@ -11,7 +11,8 @@ class Explore extends React.Component {
     state = {
         trips: [],
         details: false,
-        selectedTrip:{}
+        selectedTrip:{},
+        comments: []
 
     }
     componentDidMount() {
@@ -30,8 +31,8 @@ class Explore extends React.Component {
         }
 
         showDetails(selectedTrip){
-            this.setState({ ...this.state, details: true, selectedTrip: selectedTrip }
-            );
+            API.getComments(selectedTrip._id).then(res => this.setState({ ...this.state, details: true, selectedTrip: selectedTrip, comments:res.data }
+            ));
         }
 
         closeDetails(){
@@ -44,7 +45,7 @@ class Explore extends React.Component {
                 <div className="columns">
                     <div className="column is-9 mt-6">
                         <ExploreMap long={-81} lat={27} all={this.state.trips} showDetails={this.showDetails.bind(this)} onClick={this.closeDetails} />
-                        <Details show={this.state.details} trip={this.state.selectedTrip}/>
+                        <Details show={this.state.details} trip={this.state.selectedTrip} comments={this.state.comments}/>
                     </div>
                     <div className="column is-3 mt-6">
                         <aside>
@@ -53,7 +54,7 @@ class Explore extends React.Component {
                                 Live Stream
                             </p>
                             {this.state.trips.map(function(trip, i){
-                               return  <LiveStream trip={trip}/>
+                               return  <LiveStream key={trip._id} trip={trip}/>
                              })}
                           </ul>
                       </aside>

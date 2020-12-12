@@ -1,24 +1,15 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { UserContext } from "../../utils/UserContext";
 import API from "../../utils/API"
 
 
 function Comment(props) {
-    const [user, setUser] = useContext(UserContext)
 
+    const [user, setUser] = useContext(UserContext)
     console.log(user)
     console.log(props)
     const [comment, newComment] = useState({})
-    const [allComments, updateComments] = useState([])
-
-    const getAllComments = () => {
-        API.getComments(props.trip._id).then(res => console.log(res))
-    }
-
-    if (props.trip.comments){
-        console.log(props.trip.comments.length)
-        getAllComments()
-    }
+    
 
 
     const handleChange = e => {
@@ -36,17 +27,19 @@ function Comment(props) {
     return (
         <div>
             <div>
-                <p classNmae="title" style={{ fontFamily: "'Roboto Condensed', sans-serif" }}> {user} says</p>
+                <p classNane="title" style={{ fontFamily: "'Roboto Condensed', sans-serif" }}> {user} says</p>
                 <div className="field">
                     <div className="control">
-                        <textarea className="textarea" type="text" name="notes"
-                            onChange={handleChange}
-                        >
+                        <textarea className="textarea" type="text" name="comment" rows="3"
+                            onChange={handleChange}>
                         </textarea>
                         <button onClick={handleSubmit}>Submit</button>
                     </div>
                 </div>
             </div>
+            {/* {allComments.map(comment => (
+                <p>{comment.user} said {comment.commentData}</p>
+            ))} */}
             
         </div>
     )

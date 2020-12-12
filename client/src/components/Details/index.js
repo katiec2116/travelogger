@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
-import Comment from "../Comment"
+import Comment from "../Comment";
+import DisplayComments from "../DisplayComments"
+import API from "../../utils/API"
 
-function Details({ trip, show }) {
-        if (trip.images){
-            console.log(trip.images.length)
-        }
+function Details({ trip, show, comments }) {
+    // const [allComments, updateComments] = useState([])
+
+    // const getAllComments = () => {
+    //     API.getComments(trip._id).then(res => updateComments(res.data))
+    // }
+
+
+    if (trip.images) {
+        console.log(trip.images.length)
+        
+    }
+    // useEffect(() => getAllComments(),[])
     
 
     return (
@@ -24,10 +35,10 @@ function Details({ trip, show }) {
                         <br />
                         {trip.images && trip.images.length > 0 ? (
                             <AwesomeSlider animation="cubeAnimation">
-                            {trip.images.map(image => ( 
-                                <div key={image} data-src={image} />
-                            ))}
-                        </AwesomeSlider>
+                                {trip.images.map(image => (
+                                    <div key={image} data-src={image} />
+                                ))}
+                            </AwesomeSlider>
                         ) : (
                                 null
                             )
@@ -40,8 +51,8 @@ function Details({ trip, show }) {
                     <p style={{ color: "black", fontFamily: "'Roboto Condensed', sans-serif", fontSize: "250%", textTransform: "uppercase" }}>
                         Comments
                             </p>
-                            <Comment trip = {trip}/>
-
+                    <Comment trip={trip} />
+                    <DisplayComments comments={comments}/>
                 </div>
             </div>
         </div>
