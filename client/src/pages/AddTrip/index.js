@@ -48,6 +48,7 @@ constructor(props){
         .then(res => console.log(res))
         .then(
             setTimeout(() =>{
+                span.innerText=''
                 this.resetForm()
         }, 3000))
     }     

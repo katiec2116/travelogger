@@ -80,7 +80,7 @@ function AddForm(props) {
                 </div>
                 <label className="label" style={{fontFamily: "'Roboto Condensed', sans-serif"}}>ALREADY BEEN?</label>
                 <div className="select mb-3">
-                    <select name="been" onChange={props.handleInputChange} defaultValue = {props.been}>{props.been}
+                    <select name="been" onChange={props.handleInputChange} defaultValue = "No" >No
                         <option value="No"> No</option>
                         <option value="Yes">Yes</option>
                     </select>
