@@ -1,24 +1,67 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useContext } from 'react';
+import { UserContext } from "../../utils/UserContext";
 import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
 import Comment from "../Comment";
-import DisplayComments from "../DisplayComments"
-import API from "../../utils/API"
+import DisplayComments from "../DisplayComments";
+import Plane from "./icon.jpg";
+import API from "../../utils/API";
 
-function Details({ trip, show, comments }) {
-    // const [allComments, updateComments] = useState([])
+function Details({ trip, show, comments, showDetails }) {
+    const [user, setUser] = useContext(UserContext)
+    const [comment, newComment] = useState({ user: user, tripId: trip._id, commentData: "" })
 
-    // const getAllComments = () => {
-    //     API.getComments(trip._id).then(res => updateComments(res.data))
-    // }
+
+
+    const handleChange = e => {
+        newComment({ user: user, tripId: trip._id, commentData: e.target.value })
+        console.log(comment)
+    }
+
+    const handleSubmit = (e) => {
+        console.log(comment)
+        API.addComment(comment).then(res => console.log(comment)).then(() => {
+            newComment({ ...comment, commentData: "" });
+            showDetails(trip)
+        });
+
+    }
+
+    const timeSince = (date) => {
+        var aDay = 24 * 60 * 60 * 1000;
+        var newDate = (Date.parse(date))
+        var seconds = Math.floor((new Date(Date.now()) - newDate) / 1000);
+        var interval = seconds / 31536000;
+
+        if (interval > 1) {
+            return Math.floor(interval) + " years";
+        }
+        interval = seconds / 2592000;
+        if (interval > 1) {
+            return Math.floor(interval) + " months";
+        }
+        interval = seconds / 86400;
+        if (interval > 1) {
+            return Math.floor(interval) + " days";
+        }
+        interval = seconds / 3600;
+        if (interval > 1) {
+            return Math.floor(interval) + " hours";
+        }
+        interval = seconds / 60;
+        if (interval > 1) {
+            return Math.floor(interval) + " minutes";
+        }
+        return Math.floor(seconds) + " seconds";
+    }
 
 
     if (trip.images) {
         console.log(trip.images.length)
-        
+
     }
     // useEffect(() => getAllComments(),[])
-    
+
 
     return (
         <div className={!show ? "hide" : "show columns"}>
@@ -51,8 +94,25 @@ function Details({ trip, show, comments }) {
                     <p style={{ color: "black", fontFamily: "'Roboto Condensed', sans-serif", fontSize: "250%", textTransform: "uppercase" }}>
                         Comments
                             </p>
-                    <Comment trip={trip} />
-                    <DisplayComments comments={comments}/>
+                    <div>
+                        <p className="title" style={{ fontFamily: "'Roboto Condensed', sans-serif" }}> {user} says</p>
+                        <div className="field">
+                            <div className="control">
+                                <textarea className="textarea" type="text" name="comment" rows="1" defaultValue={comment.commentData}
+                                    onChange={handleChange}>
+                                </textarea>
+                                <a onClick={handleSubmit}><img className="planeBtn" src={Plane} alt="submit" /></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        {comments.map(comment => (
+                            <div key={comment._id} className="comments">
+                                <p className="commentText" > {comment.commentData} <br /> <span className="userComment">{comment.user} </span><small className="time">{timeSince(comment.createdAt)} ago</small></p>
+                            </div>
+                        ))}
+
+                    </div>
                 </div>
             </div>
         </div>

@@ -45,7 +45,7 @@ class Explore extends React.Component {
                 <div className="columns">
                     <div className="column is-9 mt-6">
                         <ExploreMap long={-81} lat={27} all={this.state.trips} showDetails={this.showDetails.bind(this)} onClick={this.closeDetails} />
-                        <Details show={this.state.details} trip={this.state.selectedTrip} comments={this.state.comments}/>
+                        <Details show={this.state.details} trip={this.state.selectedTrip} comments={this.state.comments} showDetails={this.state.showDetails}/>
                     </div>
                     <div className="column is-3 mt-6">
                         <aside>

@@ -1,4 +1,5 @@
 const Comment = require("../models/comment");
+const Trip = require("../models/trip")
 
 
 module.exports = {
@@ -11,7 +12,7 @@ module.exports = {
     },
     getComments: function (req, res) {
         Comment
-        .find({ tripId: req.params.tripId })
+        .find({ tripId: req.params.tripId }).sort({ _id: - 1 })
             .then(results => res.json(results))
             .catch(err => {
                 res.json(err);

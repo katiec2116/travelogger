@@ -1,6 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../utils/UserContext";
-import API from "../../utils/API"
+import API from "../../utils/API";
+// import Plane from "./icon.jpg";
 
 
 function Comment(props) {
@@ -8,8 +9,8 @@ function Comment(props) {
     const [user, setUser] = useContext(UserContext)
     console.log(user)
     console.log(props)
-    const [comment, newComment] = useState({})
-    
+    const [comment, newComment] = useState({ user: user, tripId: props.trip._id, commentData: "" })
+
 
 
     const handleChange = e => {
@@ -19,29 +20,44 @@ function Comment(props) {
 
     const handleSubmit = (e) => {
         console.log(comment)
-        // e.preventDefault
-        API.addComment(comment).then(res => console.log(res));
+        API.addComment(comment).then(res => console.log(comment))
+        
     }
+
+    const reset = () => {
+        newComment({ ...comment, commentData: "" })
+        console.log(comment.commentData)
+    }
+
+
+    useEffect(() => {
+        function reset() {
+            newComment({ ...comment, commentData: "" });
+        }
+
+        reset()
+
+
+    }, [comment.commentData]);
 
 
     return (
         <div>
             <div>
-                <p classNane="title" style={{ fontFamily: "'Roboto Condensed', sans-serif" }}> {user} SAYS</p>
+                <p className="title" style={{ fontFamily: "'Roboto Condensed', sans-serif" }}> {user} says</p>
                 <div className="field">
-                    <div className="control level">
-                        <textarea className="textarea level-left" type="text" name="comment" rows="1" cols="5"
-                            onChange={handleChange}> 
+                    <div className="control">
+                        <textarea className="textarea" type="text" name="comment" rows="1" defaultValue={comment.commentData}
+                            onChange={handleChange}>
                         </textarea>
-                        <button className ="level-right" onClick={handleSubmit}>Submit</button>
+                        <a onClick={handleSubmit}>test </a>
                     </div>
                 </div>
-                <br/>
             </div>
             {/* {allComments.map(comment => (
                 <p>{comment.user} said {comment.commentData}</p>
             ))} */}
-            
+
         </div>
     )
 }

@@ -34,8 +34,8 @@ function DisplayComments({ comments }) {
     return (
         <div>
             {comments.map(comment => (
-                <div className = "comments">
-            <p className="commentText" key={comment._id}> {comment.commentData} <br/> <span className = "userComment">{comment.user} </span><small className ="time">{timeSince(comment.createdAt)} ago</small></p>
+                <div key={comment._id} className = "comments">
+            <p className="commentText" > {comment.commentData} <br/> <span className = "userComment">{comment.user} </span><small className ="time">{timeSince(comment.createdAt)} ago</small></p>
             </div>
             ))}
             

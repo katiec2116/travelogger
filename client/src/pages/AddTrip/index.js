@@ -27,6 +27,7 @@ constructor(props){
 
     resetForm = () => {
         this.setState(this.baseState)
+        console.log(this.state.images)
     }
     onSubmit = e => {
         if(this.state.location === "" || !this.state.user){
@@ -35,7 +36,7 @@ constructor(props){
         else{
         console.log("I am here")
         const span = document.getElementById('uploading');
-        console.log(span.getAttribute("filepath"))
+        console.log("the filepath", (span.getAttribute("filepath")))
         if (span.getAttribute("filepath") !== null){
         let images = span.getAttribute("filepath").split(",");
         console.log("images ", images);

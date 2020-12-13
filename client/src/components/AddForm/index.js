@@ -5,11 +5,11 @@ import { faPlane, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 
 const plane = <FontAwesomeIcon icon={faPlane} />
 const calendar = <FontAwesomeIcon icon={faCalendarAlt} />
-let imagePath = [];
 
 
 function uploadImages(e){
     e.preventDefault()
+    let imagePath = [];
     console.log(imagePath)
     const span = document.getElementById('uploading');
     span.innerText = "uploading...";
