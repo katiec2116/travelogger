@@ -1,5 +1,7 @@
 html, body{
     background-color: rgb(18,58,112);
+    color: whitesmoke;
+    font-family: 'Open Sans', sans-serif;
     
 }
 body{
@@ -148,6 +150,35 @@ background: linear-gradient(160deg, rgba(19,58,112,1) 24%, rgba(37,72,103,1) 45%
     margin:auto
 }
 
+.commentArea{
+    border-radius: 25px !important;
+}
+
+.planeBtn{
+    width: 30px;
+}
+
+.time{
+    font-size: 11px;
+}
+
+.commentText {
+padding:5px 25px
+}
+
+.userComment {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.comments{
+    border-radius: 30px;
+    margin-top:10px;
+    background-color: rgb(231, 230, 230);
+}
+
+
+
 .aws-btn {
 
     --slider-height-percentage: 67%;
@@ -286,6 +317,13 @@ background: linear-gradient(160deg, rgba(19,58,112,1) 24%, rgba(37,72,103,1) 45%
     text-decoration-line: underline;
     color: whitesmoke;
     text-transform: uppercase;
+}
+.tabs .notActiveTab a{
+    color: whitesmoke !important
+}
+
+.tabs li :hover{
+    color: black !important
 }
 
 .subtitle{

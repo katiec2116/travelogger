@@ -105,11 +105,29 @@ getAllTrips: function(user){
   },
 
   uploadPhoto: function(photo){
-    console.log(photo);
+    console.log("photo ", photo);
     return axios({
         method: "POST",
         withCredential:true,
         url:"/api/photos/upload"
+      });
+    },
+
+  addComment: function(data){
+    console.log(data)
+    return axios({
+      method: "POST",
+      data: data,
+      withCredential: true,
+      url:"/api/comments/" + data.tripId
+    }).then((res) => console.log(res));
+  },
+
+  getComments: function(tripId){
+    return axios({
+        method: "GET",
+        withCredential:true,
+        url:"/api/comments/" + tripId
       });
     }
 };

@@ -59,11 +59,11 @@ class Popup extends React.Component {
                         <button className="button is-small is-rounded" onClick={() => this.likeTrip(!this.props.trip.like)}> like </button><button className="button is-small is-rounded" onClick={() => {this.props.showDetails(this.props.trip)}}> See More</button>
                     </div>
                 }
-                <PopupModal
+                {/* <PopupModal
                     closeModal={this.toggleView}
                     viewModalState={this.state.viewModalState}
                     trip={this.props.trip}>
-                </PopupModal>
+                </PopupModal> */}
             </div >
         )
     }

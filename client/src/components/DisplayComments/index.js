@@ -1,8 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-function LiveStream({ trip }) {
-
-
+function DisplayComments({ comments }) {
+    console.log("HERE")
     const timeSince = (date) => {
         var aDay = 24 * 60 * 60 * 1000;
         var newDate = (Date.parse(date))
@@ -30,15 +29,18 @@ function LiveStream({ trip }) {
         }
         return Math.floor(seconds) + " seconds";
     }
-    return (
-        <div className = "box" style={{padding:"10px"}}>
+    
 
-            {trip.been === 'Yes' ? <li key={trip._id}><strong>{trip.user}</strong> added {trip.location} to their trips! <br/><small className ="time">{timeSince(trip.createdAt)} ago</small></li>
-                : <li key={trip._id} ><strong>{trip.user}</strong> wants to visit {trip.location}! 
-                <br/><small className ="time">{timeSince(trip.createdAt)} ago</small></li>
-            }
+    return (
+        <div>
+            {comments.map(comment => (
+                <div key={comment._id} className = "comments">
+            <p className="commentText" > {comment.commentData} <br/> <span className = "userComment">{comment.user} </span><small className ="time">{timeSince(comment.createdAt)} ago</small></p>
+            </div>
+            ))}
+            
         </div>
     )
 }
 
-export default LiveStream
+export default DisplayComments

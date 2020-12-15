@@ -8,6 +8,7 @@ function Login() {
     let location = useLocation();
     let history = useHistory();
     const [redirectToReferrer, setRedirectToReferrer] = useState(false);
+    const [logError, setError] = useState(false)
 
     useEffect(() => {
 
@@ -40,7 +41,7 @@ function Login() {
                     });
                 }
                 else{
-                    alert("Error logging in")
+                    setError(true)
                 }
             })
             .catch((err) => {// No beuno, kick them
@@ -52,7 +53,7 @@ function Login() {
 
         <div>
             <div className="content">
-                <LoginForm onLogin={login} />
+                <LoginForm onLogin={login} alert ={logError}/>
             </div>
         </div>
     )

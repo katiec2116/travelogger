@@ -88,9 +88,9 @@ function Nav() {
                     <Link className="navbar-item" to={`/addtrip/${user}`} onClick={() => history.push('/addtrip')}>
                         Add a Trip
                         </Link>
-                    <Link className="navbar-item" to={`/profile/${user}`}>
+                    {/* <Link className="navbar-item" to={`/profile/${user}`}>
                         Profile
-                        </Link>
+                        </Link> */}
                     <div className="navbar-item">
                         <AuthButton />
                     </div>
