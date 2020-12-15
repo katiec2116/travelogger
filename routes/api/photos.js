@@ -1,7 +1,10 @@
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 const router = require("express").Router();
 const path = require('path');
-const access_id = process.env.ACCESS_ID;
-const access_key = process.env.ACCESS_KEY;
+const access_id = process.env.AWS_ACCESS_ID;
+const access_key = process.env.AWS_ACCESS_KEY;
 let user;
 
   var aws = require('aws-sdk')
