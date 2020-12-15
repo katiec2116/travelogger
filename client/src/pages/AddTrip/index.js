@@ -27,19 +27,15 @@ constructor(props){
 
     resetForm = () => {
         this.setState(this.baseState)
-        console.log(this.state.images)
     }
     onSubmit = e => {
         if(this.state.location === "" || !this.state.user){
             this.resetForm()
         }
         else{
-        console.log("I am here")
         const span = document.getElementById('uploading');
-        console.log("the filepath", (span.getAttribute("filepath")))
         if (span.getAttribute("filepath") !== null){
         let images = span.getAttribute("filepath").split(",");
-        console.log("images ", images);
         this.state.images = images;
         span.setAttribute("filepath", null)
         }
@@ -69,8 +65,6 @@ constructor(props){
         const images = this.state.images;
         images.push(e.target.value);
         this.setState({ ...this.state, images: images });
-        console.log(this.state.images)
-
 
 //     handleImages(event) {
 //         event.preventDefault();

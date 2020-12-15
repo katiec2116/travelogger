@@ -150,9 +150,12 @@ background: linear-gradient(160deg, rgba(19,58,112,1) 24%, rgba(37,72,103,1) 45%
     margin:auto
 }
 
-.textarea{
+.commentArea{
     border-radius: 25px !important;
-    width:80% !important
+}
+
+.planeBtn{
+    width: 30px;
 }
 
 .time{
@@ -160,7 +163,7 @@ background: linear-gradient(160deg, rgba(19,58,112,1) 24%, rgba(37,72,103,1) 45%
 }
 
 .commentText {
-padding:5px 20px
+padding:5px 25px
 }
 
 .userComment {
@@ -169,14 +172,12 @@ padding:5px 20px
 }
 
 .comments{
-    border-radius: 8px;
+    border-radius: 30px;
     margin-top:10px;
     background-color: rgb(231, 230, 230);
 }
 
-.planeBtn{
-    width: 30px;
-}
+
 
 .aws-btn {
 
