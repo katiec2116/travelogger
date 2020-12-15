@@ -1,5 +1,7 @@
 html, body{
     background-color: rgb(18,58,112);
+    color: whitesmoke;
+    font-family: 'Open Sans', sans-serif;
     
 }
 body{
@@ -20,7 +22,7 @@ body{
 .logoTitle{
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 10.5em;
-    color:whitesmoke;
+    color:rgb(255, 255, 255);
     margin-top:-55px;
     letter-spacing: 10px;
 }
@@ -136,6 +138,63 @@ background: linear-gradient(160deg, rgba(19,58,112,1) 24%, rgba(37,72,103,1) 45%
     border: 10px white solid;
     border-radius: 7px;
 }
+.hide{
+    display:none
+}
+
+.show{
+    display:block
+}
+.detailsContent{
+    width:60%;
+    margin:auto
+}
+
+.commentArea{
+    border-radius: 25px !important;
+}
+
+.planeBtn{
+    width: 30px;
+}
+
+.time{
+    font-size: 11px;
+}
+
+.commentText {
+padding:5px 25px
+}
+
+.userComment {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.comments{
+    border-radius: 30px;
+    margin-top:10px;
+    background-color: rgb(231, 230, 230);
+}
+
+
+
+.aws-btn {
+
+    --slider-height-percentage: 67%;
+    --slider-transition-duration: 700ms;
+    --organic-arrow-thickness: 15px;
+    --organic-arrow-border-radius: 3px;
+    --organic-arrow-height: 36px;
+    --organic-arrow-color: #26456f;
+    --control-button-width: 10%;
+    --control-button-height: 25%;
+    --control-button-background: transparent;
+    --control-bullet-color: #2d5182;
+    --control-bullet-active-color: #26456f;
+    --loader-bar-color: #851515;
+    --loader-bar-height: 6px;
+    }
 
 .myTrips {
     height: 13px;
@@ -258,6 +317,13 @@ background: linear-gradient(160deg, rgba(19,58,112,1) 24%, rgba(37,72,103,1) 45%
     text-decoration-line: underline;
     color: whitesmoke;
     text-transform: uppercase;
+}
+.tabs .notActiveTab a{
+    color: whitesmoke !important
+}
+
+.tabs li :hover{
+    color: black !important
 }
 
 .subtitle{

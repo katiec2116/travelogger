@@ -11,7 +11,7 @@ class Yelp extends React.Component {
             long: 1,
             lat: 1,
             businesses: [],
-            activeTab: ""
+            activeTab: " "
         };
     }
 
@@ -53,7 +53,7 @@ class Yelp extends React.Component {
                             <h1 className = "suggest" >SUGGESTIONS FOR {this.props.data.location}</h1>
                             <div className="tabs is-boxed is-centered">
                                 <ul>
-                                    <li className={this.state.activeTab === "" ? "is-active" : "notActiveTab"} onClick={() => this.componentDidMount("")}>
+                                    <li className={this.state.activeTab === " " ? "is-active" : "notActiveTab"} onClick={() => this.componentDidMount("")}>
                                         <a>
                                             <span>All</span>
                                         </a>

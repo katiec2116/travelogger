@@ -1,28 +1,29 @@
 import React, { useState } from "react";
-import Alert from "../Alert"
+import Alert from "../Alert";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlane, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 
 const plane = <FontAwesomeIcon icon={faPlane} />
 const calendar = <FontAwesomeIcon icon={faCalendarAlt} />
-let imagePath = [];
 
 
 function uploadImages(e){
     e.preventDefault()
+    let imagePath = [];
+    // console.log(imagePath)
     const span = document.getElementById('uploading');
     span.innerText = "uploading...";
     const data = new FormData();
     const user = localStorage.getItem('user')
-    console.log(e.target.photo.files);
+    // console.log(e.target.photo.files);
     const images = e.target.photo.files;
     for (let i = 0; i < images.length; i++) {
-        console.log(images[i]);
+        // console.log(images[i]);
         data.append('photos', images[i])
-        console.log(data)
+        // console.log(data)
     }
     data.append('user', user)
-    console.log(data)
+    // console.log(data)
     const options = {
         method: 'POST',
         body: data
@@ -30,7 +31,7 @@ function uploadImages(e){
 
     fetch('/api/photos/upload', options).then(response => response.json())
     .then(result => {
-      console.log(result.filename);
+    //   console.log(result);
       imagePath.push(result.filename);
       span.innerText = "Upload Successful!"
       span.setAttribute('filepath', imagePath)
@@ -42,7 +43,6 @@ function AddForm(props) {
     const [alertBox, setAlert] = useState(false)
 
     const alert =()=>{
-        console.log("hi")
         setAlert(true)
             setTimeout(function() { setAlert(false) }, 3000)
     }
@@ -79,7 +79,7 @@ function AddForm(props) {
                 </div>
                 <label className="label" style={{fontFamily: "'Roboto Condensed', sans-serif"}}>ALREADY BEEN?</label>
                 <div className="select mb-3">
-                    <select name="been" onChange={props.handleInputChange} defaultValue = {props.been}>{props.been}
+                    <select name="been" onChange={props.handleInputChange} defaultValue = "No" >No
                         <option value="No"> No</option>
                         <option value="Yes">Yes</option>
                     </select>
@@ -90,8 +90,7 @@ function AddForm(props) {
                     <div className="control">
                         <textarea className="textarea" type="text" name="notes"
                             onChange={props.handleInputChange}
-                            value={props.notes}
-                        >
+                            value={props.notes}>
                         </textarea>
                     </div>
                 </div>
