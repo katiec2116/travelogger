@@ -1,8 +1,10 @@
-import React from 'react'
-import AddForm from "../../components/AddForm"
-import API from "../../utils/API"
-import Yelp from "../../components/Yelp"
-import Map from "../../components/Map"
+import React from 'react';
+import AddForm from "../../components/AddForm";
+import API from "../../utils/API";
+import Yelp from "../../components/Yelp";
+import Map from "../../components/Map";
+import NoMatch from "../NoMatch";
+import Auth from "../../utils/Auth";
 
 
 class AddTrip extends React.Component {
@@ -102,6 +104,7 @@ constructor(props){
 
 
     render(){
+        if (Auth.isAuthenticated) {
         return (
             <div className = "container1">
                 <div className="columns" style={{ height: "100%" }}>
@@ -124,6 +127,12 @@ constructor(props){
                 <Yelp data={this.state} />
             </div>
         );
+        }
+        else {
+            return (
+                <NoMatch />
+            )
+        }
     }
 }
 

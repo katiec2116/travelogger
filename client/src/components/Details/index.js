@@ -100,7 +100,7 @@ class Details extends Component {
             <div className={!this.props.show ? "hide" : "show columns"}>
                 <div className="column is-7" style={{ color: "black" }}>
                     <div className="box mt-5">
-                        <p style={{ color: "black", fontFamily: "'Roboto Condensed', sans-serif", fontSize: "250%", textTransform: "uppercase" }}>
+                        <p style={{ color: "black", fontFamily: "'Roboto Condensed', sans-serif", fontSize: "200%", textTransform: "uppercase" }}>
                             {this.props.trip.user}'S TRIP TO {this.props.trip.location}
                         </p>
                         <br />
@@ -124,7 +124,7 @@ class Details extends Component {
                 </div>
                 <div className="column mt-5 is-5">
                     <div className="box">
-                        <p style={{ color: "black", fontFamily: "'Roboto Condensed', sans-serif", fontSize: "250%", textTransform: "uppercase" }}>
+                        <p style={{ color: "black", fontFamily: "'Roboto Condensed', sans-serif", fontSize: "200%", textTransform: "uppercase" }}>
                             Comments
                             </p>
                         <div>
