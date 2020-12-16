@@ -10,20 +10,15 @@ const calendar = <FontAwesomeIcon icon={faCalendarAlt} />
 function uploadImages(e){
     e.preventDefault()
     let imagePath = [];
-    // console.log(imagePath)
     const span = document.getElementById('uploading');
     span.innerText = "uploading...";
     const data = new FormData();
     const user = localStorage.getItem('user')
-    // console.log(e.target.photo.files);
     const images = e.target.photo.files;
     for (let i = 0; i < images.length; i++) {
-        // console.log(images[i]);
         data.append('photos', images[i])
-        // console.log(data)
     }
     data.append('user', user)
-    // console.log(data)
     const options = {
         method: 'POST',
         body: data
@@ -31,7 +26,6 @@ function uploadImages(e){
 
     fetch('/api/photos/upload', options).then(response => response.json())
     .then(result => {
-    //   console.log(result);
       imagePath.push(result.filename);
       span.innerText = "Upload Successful!"
       span.setAttribute('filepath', imagePath)

@@ -8,7 +8,6 @@ const calendar = <FontAwesomeIcon icon={faCalendarAlt} />
 
 
 const EditModal = ({ trip, closeModal, modalState, reset}) => {
-    console.log(trip)
 
     const [data, setData] = useState({
         location: trip.location,

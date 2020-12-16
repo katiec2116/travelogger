@@ -59,7 +59,7 @@ module.exports = {
 
     unlikeTrip: function (req, res) {
         Trip
-            .findOneAndUpdate({ _id: req.params.tripid }, {$pull:{likes:req.params.user}}, { new: true }, function (err, data) {
+            .findOneAndUpdate({ _id: req.params.tripid }, {$pull:{likes:req.params.user}}, function (err, data) {
                 console.log(data)
             }
         ).then(results => res.send(results));

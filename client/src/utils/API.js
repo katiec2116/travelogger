@@ -2,64 +2,65 @@ import axios from "axios";
 
 export default {
 
-register: function(username, password) {
-  return axios({
+  register: function (username, password) {
+    return axios({
       method: "POST",
-      data: {username: username,
+      data: {
+        username: username,
         password: password
       },
       withCredential: true,
       url: "/api/users/signup"
-  }).then((res) => console.log(res));
-},
-
-getUserData: function(user){
-  return axios({
-      method: "GET",
-      withCredential:true,
-      url:"/api/users/userdata/" + user
-    }).then((res) => {return (res)});
+    }).then((res) => console.log(res));
   },
 
-addTrip: function (trips) {
-  console.log(trips)
-  return axios({
+  getUserData: function (user) {
+    return axios({
+      method: "GET",
+      withCredential: true,
+      url: "/api/users/userdata/" + user
+    }).then((res) => { return (res) });
+  },
+
+  addTrip: function (trips) {
+    console.log(trips)
+    return axios({
       method: "POST",
       data: trips,
-      url:"/api/trips"
+      url: "/api/trips"
     }).then((res) => console.log(res, "hello'"));
   },
 
-location: function(location){
-  return axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${location}.json?access_token=${process.env.REACT_APP_MAPBOX}`);
+  location: function (location) {
+    return axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${location}.json?access_token=${process.env.REACT_APP_MAPBOX}`);
   },
 
-getMyTrips: function(user){
-  return axios({
+  getMyTrips: function (user) {
+    return axios({
       method: "GET",
-      withCredential:true,
-      url:"/api/trips/" + user
+      withCredential: true,
+      url: "/api/trips/" + user
     });
   },
 
-getMyTripsType: function(user, been){
+  getMyTripsType: function (user, been) {
     return axios({
-        method: "GET",
-        withCredential:true,
-        url:"/api/trips/" + user +"/been/" + been
-      });
-    },
+      method: "GET",
+      withCredential: true,
+      url: "/api/trips/" + user + "/been/" + been
+    });
+  },
 
-  getTrip: function(tripid){
+  getTrip: function (tripid) {
     return axios({
-        method: "GET",
-        withCredential:true,
-        url:"/api/trips/" + tripid
-      }).then((res) => console.log(res));
-    },
+      method: "GET",
+      withCredential: true,
+      url: "/api/trips/" + tripid
+    }).then((res) => console.log(res));
+  },
 
 
-deleteTrip: function (tripid) {
+  deleteTrip: function (tripid) {
     return axios({
       method: "DELETE",
       withCredential: true,
@@ -68,7 +69,7 @@ deleteTrip: function (tripid) {
   },
 
 
-updateTrip: function (tripid, data) {
+  updateTrip: function (tripid, data) {
     return axios({
       method: "PUT",
       data: data,
@@ -77,15 +78,15 @@ updateTrip: function (tripid, data) {
     }).then((res) => console.log(res));
   },
 
-likeTrip: function (tripid, user) {
-  console.log(user)
+  likeTrip: function (tripid, user) {
+    console.log(user)
     return axios({
       method: "PUT",
       withCredential: true,
       url: "/api/trips/likes/" + tripid + "/" + user
     }).then((res) => console.log(res));
   },
-  
+
   unlikeTrip: function (tripid, user) {
     return axios({
       method: "PUT",
@@ -96,38 +97,38 @@ likeTrip: function (tripid, user) {
 
 
 
-getAllTrips: function(user){
-  return axios({
+  getAllTrips: function (user) {
+    return axios({
       method: "GET",
-      withCredential:true,
-      url:"/api/trips/getalltrips/" + user
+      withCredential: true,
+      url: "/api/trips/getalltrips/" + user
     });
   },
 
-  uploadPhoto: function(photo){
+  uploadPhoto: function (photo) {
     console.log("photo ", photo);
     return axios({
-        method: "POST",
-        withCredential:true,
-        url:"/api/photos/upload"
-      });
-    },
+      method: "POST",
+      withCredential: true,
+      url: "/api/photos/upload"
+    });
+  },
 
-  addComment: function(data){
+  addComment: function (data) {
     console.log(data)
     return axios({
       method: "POST",
       data: data,
       withCredential: true,
-      url:"/api/comments/" + data.tripId
+      url: "/api/comments/" + data.tripId
     }).then((res) => console.log(res));
   },
 
-  getComments: function(tripId){
+  getComments: function (tripId) {
     return axios({
-        method: "GET",
-        withCredential:true,
-        url:"/api/comments/" + tripId
-      });
-    }
+      method: "GET",
+      withCredential: true,
+      url: "/api/comments/" + tripId
+    });
+  }
 };

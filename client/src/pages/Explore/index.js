@@ -34,11 +34,16 @@ class Explore extends React.Component {
 
 
     showDetails(selectedTrip) {
-        console.log("i am here")
         API.getComments(selectedTrip._id).then(res => this.setState({ ...this.state, details: true, selectedTrip: selectedTrip, comments: res.data }
         ));
     }
 
+    refreshPopup(){
+        const user = localStorage.getItem('user')
+        API.getAllTrips(user).then(results => {
+            this.setState({ trips: results.data })
+        }).then(() => (this.state.trips));
+    }
 
 
 
@@ -51,8 +56,8 @@ class Explore extends React.Component {
             <div className="container1">
                 <div className="columns">
                     <div className="column is-9 mt-6">
-                        <ExploreMap long={-81} lat={27} all={this.state.trips} showDetails={this.showDetails.bind(this)} onClick={this.closeDetails} />
-                        <Details show={this.state.details} trip={this.state.selectedTrip} comments={this.state.comments} details={this.showDetails.bind(this)} />
+                        <ExploreMap long={-81} lat={27} all={this.state.trips} showDetails={this.showDetails.bind(this)} onClick={this.closeDetails} refreshPopup={this.refreshPopup.bind(this)}/>
+                        <Details show={this.state.details} trip={this.state.selectedTrip} comments={this.state.comments} details={this.showDetails.bind(this)} user={localStorage.getItem('user')} />
                     </div>
                     <div className="column is-3 mt-6">
                         <aside>

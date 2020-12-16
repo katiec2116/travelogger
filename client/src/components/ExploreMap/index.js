@@ -27,23 +27,15 @@ class ExploreMap extends React.Component {
             center: [this.state.long, this.state.lat],
             zoom: 1
         });
-        console.log(this.props.all)
     }
 
-     addLike(){
-        // await this.state.set({...this.state, trip:likedTrip});
-        console.log("hello")
-    }
-    
 
     async componentDidUpdate() {       
         const user = localStorage.getItem('user');
         if (!this.props.all.length) {
-            console.log(this.props.all)
                 await API.getAllTrips(user)
                 .then(results =>
                     this.setState({ ...this.state, trips: results.data }))
-                        // console.log(this.state))
                 .catch(err => console.log(err))
                 .then(console.log(this.props.trips))
             }
@@ -55,7 +47,7 @@ class ExploreMap extends React.Component {
                     status=true
                 }
                 const popup = document.createElement('div');
-                ReactDOM.render(<Popup trip={trip} status={status} showDetails={this.props.showDetails}/>, popup);
+                ReactDOM.render(<Popup trip={trip} status={status} showDetails={this.props.showDetails} refreshPopup={this.props.refreshPopup}/>, popup);
                 
 
                 if (trip.user === user) {
