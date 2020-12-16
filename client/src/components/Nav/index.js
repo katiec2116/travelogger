@@ -3,6 +3,9 @@ import React, { useEffect, useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { UserContext } from '../../utils/UserContext';
 import AuthButton from "../AuthButton";
+import Auth from "../../utils/Auth"
+
+
 
 // const buttonStyle = {
 //     marginRight: 10
@@ -34,7 +37,7 @@ function Nav() {
     }, [])
 
 
-    if (!user) {
+    if (!Auth.isAuthenticated || !user) {
         return (
             <div></div>
             // <nav className="navbar is-dark" role="navigation" aria-label="main navigation">
