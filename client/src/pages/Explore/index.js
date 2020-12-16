@@ -34,6 +34,7 @@ class Explore extends React.Component {
 
 
     showDetails(selectedTrip) {
+        console.log("i am here")
         API.getComments(selectedTrip._id).then(res => this.setState({ ...this.state, details: true, selectedTrip: selectedTrip, comments: res.data }
         ));
     }

@@ -49,6 +49,7 @@ class ExploreMap extends React.Component {
             }
 
             this.props.all.map(trip => {
+                console.log(this.props.all)
                 let status=false;
                 if (trip.likes.includes(user)){
                     status=true

@@ -12,85 +12,93 @@ class Details extends Component {
     constructor(props) {
         super(props);
 
-        this.state ={
+        this.state = {
             user: localStorage.getItem('user'),
-            comment: "",
             tripId: props.trip._id,
-            commentData:"",
-            
+            commentData: ""
         }
-
+        this.baseState = {...this.state, commentData:""}
     }
 
-    componentDidMount(){
-        if(this.props.details === true) {
-        this.getComments();
+    resetForm = () => {
+        this.setState(this.baseState)
+    }
+
+    componentDidMount() {
+        if (this.props.details === true) {
+            this.getComments();
         }
     }
 
-    componentDidUpdate(prev, props){
+    componentDidUpdate(prev, props) {
         // this.getComments()
-        let prevLast = prev.comments[prev.comments.length-1];
-        let currentLast = this.props.comments[this.props.comments.length-1];
-            if(prevLast !== currentLast){
-                this.getComments()
-    //             console.log(prev.comments.length)
+        let prevLast = prev.comments[prev.comments.length - 1];
+        let currentLast = this.props.comments[this.props.comments.length - 1];
+        if (prevLast !== currentLast) {
+            this.getComments()
+            //             console.log(prev.comments.length)
         };
-    } 
-    
-
-    getComments = () =>{
-        API.getComments(this.props.trip._id).then(res => this.setState({...this.state, comments: res.data}))
     }
 
-     handleChange = e => {
+
+    getComments = () => {
+        API.getComments(this.props.trip._id).then(res => this.setState({ ...this.state, comments: res.data }))
+    }
+
+    handleChange = e => {
         this.setState({ user: this.state.user, tripId: this.props.trip._id, commentData: e.target.value })
         console.log(this.state)
     }
 
-     handleSubmit = (e) => {
+    handleSubmit = (e) => {
         console.log(this.state)
-        API.addComment(this.state).then(res => console.log(this.state)).then(() => {
-            this.setState({ ...this.state, commentData: "" });
-            
-        });
-        this.props.details(this.props.trip);
-    }
-    
+        API.addComment(this.state).then(res => console.log(this.state))
+            .then(res => console.log(res))
+            .then(
+                setTimeout(() => {
+                    this.resetForm()
+                }, 100))
+            .then(this.props.details(this.props.trip))
 
-     timeSince = (date) => {
-        var aDay = 24 * 60 * 60 * 1000;
-        var newDate = (Date.parse(date))
-        var seconds = Math.floor((new Date(Date.now()) - newDate) / 1000);
-        var interval = seconds / 31536000;
 
-        if (interval > 1) {
-            return Math.floor(interval) + " years";
-        }
-        interval = seconds / 2592000;
-        if (interval > 1) {
-            return Math.floor(interval) + " months";
-        }
-        interval = seconds / 86400;
-        if (interval > 1) {
-            return Math.floor(interval) + " days";
-        }
-        interval = seconds / 3600;
-        if (interval > 1) {
-            return Math.floor(interval) + " hours";
-        }
-        interval = seconds / 60;
-        if (interval > 1) {
-            return Math.floor(interval) + " minutes";
-        }
-        return Math.floor(seconds) + " seconds";
+        // this.props.details(this.props.trip);
+        console.log(this.props.trip)
     }
 
 
-    
-    // useEffect(() => getAllComments(),[])
+timeSince = (date) => {
+    var aDay = 24 * 60 * 60 * 1000;
+    var newDate = (Date.parse(date))
+    var seconds = Math.floor((new Date(Date.now()) - newDate) / 1000);
+    var interval = seconds / 31536000;
 
-    render(){
+    if (interval > 1) {
+        return Math.floor(interval) + " years";
+    }
+    interval = seconds / 2592000;
+    if (interval > 1) {
+        return Math.floor(interval) + " months";
+    }
+    interval = seconds / 86400;
+    if (interval > 1) {
+        return Math.floor(interval) + " days";
+    }
+    interval = seconds / 3600;
+    if (interval > 1) {
+        return Math.floor(interval) + " hours";
+    }
+    interval = seconds / 60;
+    if (interval > 1) {
+        return Math.floor(interval) + " minutes";
+    }
+    return Math.floor(seconds) + " seconds";
+}
+
+
+
+// useEffect(() => getAllComments(),[])
+
+render(){
     return (
         <div className={!this.props.show ? "hide" : "show columns"}>
             <div className="column is-7" style={{ color: "black" }}>
@@ -125,16 +133,16 @@ class Details extends Component {
                     <div>
                         <p className="title" style={{ fontFamily: "'Roboto Condensed', sans-serif" }}> {this.state.user} says</p>
                         {/* <div className="field"> */}
-                            <div className="columns">
-                                <div className="column is-10">
+                        <div className="columns">
+                            <div className="column is-10">
                                 <textarea className="textarea commentArea" type="text" name="comment" rows="1" value={this.state.commentData}
                                     onChange={this.handleChange}>
                                 </textarea>
-                                </div>
-                                <div className="column pt-4">
-                                <a onClick={() =>{this.handleSubmit();}}><img className="planeBtn"  src={Plane} alt="submit" /></a><br/>
-                                </div>
                             </div>
+                            <div className="column pt-4">
+                                <a onClick={() => { this.handleSubmit(); }}><img className="planeBtn" src={Plane} alt="submit" /></a><br />
+                            </div>
+                        </div>
                         {/* </div> */}
                     </div>
                     <div>
@@ -149,7 +157,7 @@ class Details extends Component {
             </div>
         </div>
     )
-                        }
+}
 }
 
 export default Details
