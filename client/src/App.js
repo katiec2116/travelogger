@@ -62,9 +62,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 							<NoMatch/>
 							<div className="row">
 								<div className="col-sm"></div>
-								<div className="col-sm">
-									<h3>Please Register or Login</h3>
-								</div>
+								
 								<div className="col-sm"></div>
 							</div>
 							<Redirect to={{
