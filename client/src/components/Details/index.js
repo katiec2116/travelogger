@@ -11,54 +11,59 @@ import API from "../../utils/API";
 class Details extends Component {
     constructor(props) {
         super(props);
-
-        this.state ={
-            user: localStorage.getItem('user'),
-            comment: "",
+        const user = localStorage.getItem('user');
+        this.state = {
+            user: user,
             tripId: props.trip._id,
-            commentData:"",
-            
+            commentData: ""
         }
 
+        // this.baseState = {...this.state, commentData:""}
     }
 
-    componentDidMount(){
-        if(this.props.details === true) {
-        this.getComments();
+    resetForm = () => {
+        this.setState({ ...this.state, commentData: "" })
+    }
+
+    componentDidMount() {
+        if (this.props.details === true) {
+            this.getComments();
+
         }
     }
 
-    componentDidUpdate(prev, props){
+    componentDidUpdate(prev, props) {
         // this.getComments()
-        let prevLast = prev.comments[prev.comments.length-1];
-        let currentLast = this.props.comments[this.props.comments.length-1];
-            if(prevLast !== currentLast){
-                this.getComments()
-    //             console.log(prev.comments.length)
+        let prevLast = prev.comments[prev.comments.length - 1];
+        let currentLast = this.props.comments[this.props.comments.length - 1];
+        if (prevLast !== currentLast) {
+            this.getComments()
         };
-    } 
-    
-
-    getComments = () =>{
-        API.getComments(this.props.trip._id).then(res => this.setState({...this.state, comments: res.data}))
     }
 
-     handleChange = e => {
-        this.setState({ user: this.state.user, tripId: this.props.trip._id, commentData: e.target.value })
-        console.log(this.state)
+
+    getComments = () => {
+        API.getComments(this.props.trip._id).then(res => this.setState({ ...this.state, comments: res.data }))
     }
 
-     handleSubmit = (e) => {
-        console.log(this.state)
-        API.addComment(this.state).then(res => console.log(this.state)).then(() => {
-            this.setState({ ...this.state, commentData: "" });
-            
-        });
-        this.props.details(this.props.trip);
+    handleChange = e => {
+        const user = localStorage.getItem('user')
+        this.setState({ user: user, tripId: this.props.trip._id, commentData: e.target.value })
     }
-    
 
-     timeSince = (date) => {
+    handleSubmit = (e) => {
+        API.addComment(this.state).then(res => console.log(this.state))
+            .then(res => console.log(res))
+            .then(
+                setTimeout(() => {
+                    this.resetForm()
+                }, 100))
+            .then(this.props.details(this.props.trip))
+
+    }
+
+
+    timeSince = (date) => {
         var aDay = 24 * 60 * 60 * 1000;
         var newDate = (Date.parse(date))
         var seconds = Math.floor((new Date(Date.now()) - newDate) / 1000);
@@ -87,69 +92,66 @@ class Details extends Component {
     }
 
 
-    
+
     // useEffect(() => getAllComments(),[])
 
-    render(){
-    return (
-        <div className={!this.props.show ? "hide" : "show columns"}>
-            <div className="column is-7" style={{ color: "black" }}>
-                <div className="box mt-5">
-                    <p style={{ color: "black", fontFamily: "'Roboto Condensed', sans-serif", fontSize: "250%", textTransform: "uppercase" }}>
-                        {this.props.trip.user}'S TRIP TO {this.props.trip.location}
-                    </p>
-                    <br />
-                    <span style={{ color: "black", fontFamily: "'Roboto Condensed', sans-serif", fontSize: "150%" }}>WHEN:</span> {this.props.trip.date}
-                    <br />
-                    <span style={{ color: "black", fontFamily: "'Roboto Condensed', sans-serif", fontSize: "150%" }}>NOTES:</span> {this.props.trip.notes}
-                    <div >
+    render() {
+        return (
+            <div className={!this.props.show ? "hide" : "show columns"}>
+                <div className="column is-7" style={{ color: "black" }}>
+                    <div className="box mt-5">
+                        <p style={{ color: "black", fontFamily: "'Roboto Condensed', sans-serif", fontSize: "250%", textTransform: "uppercase" }}>
+                            {this.props.trip.user}'S TRIP TO {this.props.trip.location}
+                        </p>
                         <br />
-                        {this.props.trip.images && this.props.trip.images.length > 0 ? (
-                            <AwesomeSlider animation="cubeAnimation">
-                                {this.props.trip.images.map(image => (
-                                    <div key={image} data-src={image} />
-                                ))}
-                            </AwesomeSlider>
-                        ) : (
-                                null
-                            )
-                        }
+                        <span style={{ color: "black", fontFamily: "'Roboto Condensed', sans-serif", fontSize: "150%" }}>WHEN:</span> {this.props.trip.date}
+                        <br />
+                        <span style={{ color: "black", fontFamily: "'Roboto Condensed', sans-serif", fontSize: "150%" }}>NOTES:</span> {this.props.trip.notes}
+                        <div >
+                            <br />
+                            {this.props.trip.images && this.props.trip.images.length > 0 ? (
+                                <AwesomeSlider animation="cubeAnimation">
+                                    {this.props.trip.images.map(image => (
+                                        <div key={image} data-src={image} />
+                                    ))}
+                                </AwesomeSlider>
+                            ) : (
+                                    null
+                                )
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="column mt-5 is-5">
-                <div className="box">
-                    <p style={{ color: "black", fontFamily: "'Roboto Condensed', sans-serif", fontSize: "250%", textTransform: "uppercase" }}>
-                        Comments
+                <div className="column mt-5 is-5">
+                    <div className="box">
+                        <p style={{ color: "black", fontFamily: "'Roboto Condensed', sans-serif", fontSize: "250%", textTransform: "uppercase" }}>
+                            Comments
                             </p>
-                    <div>
-                        <p className="title" style={{ fontFamily: "'Roboto Condensed', sans-serif" }}> {this.state.user} says</p>
-                        {/* <div className="field"> */}
+                        <div>
                             <div className="columns">
                                 <div className="column is-10">
-                                <textarea className="textarea commentArea" type="text" name="comment" rows="1" value={this.state.commentData}
-                                    onChange={this.handleChange}>
-                                </textarea>
+                                    <textarea className="textarea commentArea" type="text" name="comment" rows="1" value={this.state.commentData}
+                                        onChange={this.handleChange}>
+                                    </textarea>
                                 </div>
                                 <div className="column pt-4">
-                                <a onClick={() =>{this.handleSubmit();}}><img className="planeBtn"  src={Plane} alt="submit" /></a><br/>
+                                    <a onClick={() => { this.handleSubmit(); }}><img className="planeBtn" src={Plane} alt="submit" /></a><br />
                                 </div>
                             </div>
-                        {/* </div> */}
-                    </div>
-                    <div>
-                        {this.props.comments.map(comment => (
-                            <div key={comment._id} className="comments">
-                                <p className="commentText" > {comment.commentData} <br /> <span className="userComment">{comment.user} </span><small className="time">{this.timeSince(comment.createdAt)} ago</small></p>
-                            </div>
-                        ))}
+                        </div>
+                        <div>
+                            {this.props.comments.map(comment => (
+                                <div key={comment._id} className="comments">
+                                    <p className="commentText" > {comment.commentData} <br /> <span className="userComment">{comment.user} </span><small className="time">{this.timeSince(comment.createdAt)} ago</small></p>
+                                </div>
+                            ))}
 
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    )
-                        }
+        )
+    }
 }
 
 export default Details

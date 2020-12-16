@@ -6,80 +6,69 @@ class Popup extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state ={
-            status: "like",
+        this.state = {
+            // status: 'no',
             like: false,
             // viewModalState: false,
         }
+    }
 
-        // this.toggleView = this.toggleView.bind(this);
-    } 
-  
 
-    // toggleView() {
-    //     this.setState((prev, props) => {
-    //         console.log(this.props.trip)
-    //         const newState = !prev.viewModalState;
-    //         return { ...this.state, viewModalState: newState, selected: this.props.trip };
-    //     });
-    // }
 
-     likeTrip = () => {
-         const user = localStorage.getItem("user")
-        if (this.props.trip.likes.includes(user)) {
-            API.unlikeTrip(this.props.trip._id)
-            this.setState({ ...this.state, like: false, status: "like" })
-            console.log(this.state.status)
+    likeTrip = (value) => {
+        const user = localStorage.getItem("user")
+        if (value === false) {
+            API.unlikeTrip(this.props.trip._id, user)
+                .then(this.props.refreshPopup())
 
         }
         else {
             const user = localStorage.getItem("user")
             API.likeTrip(this.props.trip._id, user)
-            this.setState({ ...this.state, like: true, status: "unlike" })
-            console.log(this.state.status)
+                .then(this.props.refreshPopup())
+
         }
     }
 
 
     render() {
         const user = localStorage.getItem("user")
-    if (this.props.trip.been === "Yes") {
-        return (
-            <div>
-                <strong>{this.props.trip.user} </strong> visited <strong>{this.props.trip.location}</strong>
-                {!this.props.trip.likes.includes(user) ? (
-                    <div>
-                        <p> <small>Liked by {this.props.trip.likes.length} people</small></p >
-                        <button className="button is-small is-rounded" onClick={() => this.likeTrip(!this.state.like)}> like</button><button className="button is-small is-rounded" onClick={() => {this.props.showDetails(this.props.trip)}}> See More</button>
+        if (this.props.trip.been === "Yes") {
+            return (
+                <div>
+                    <strong>{this.props.trip.user} </strong> visited <strong>{this.props.trip.location}</strong>
+                    <br/>
+                    <button className="button is-small is-rounded" onClick={() => { this.props.showDetails(this.props.trip) }}> See More</button>
+                    {/* {!this.props.trip.likes.includes(user) ? (
+                        <div>
+                            <p> <small>Liked by {this.props.trip.likes.length} people</small></p >
+                            <button className="button is-small is-rounded" onClick={() => this.likeTrip(true)}>Like</button><button className="button is-small is-rounded" onClick={() => { this.props.showDetails(this.props.trip) }}> See More</button>
+                        </div>
+
+                    ) :
+                        <div>
+                            <p> <small>Liked by You and {this.props.trip.likes.length - 1} other people</small></p >
+                            <button className="button is-small is-rounded" onClick={() => this.likeTrip(false)}>Unlike</button><button className="button is-small is-rounded" onClick={() => { this.props.showDetails(this.props.trip) }}> See More</button>
+                        </div>
+                    } */}
+
+                </div >
+            )
+        }
+        else {
+            return (
+                <div>
+                    <strong>{this.props.trip.user} </strong> wants to vist <strong>{this.props.trip.location}</strong>
+                    <br/>
+                    <button className="button is-small is-rounded" onClick={() => { this.props.showDetails(this.props.trip) }}> See More</button>
                     </div>
 
-                ) :
-                    <div>
-                        <p> <small>Liked by You and {this.props.trip.likes.length - 1} other people</small></p >
-                        <button className="button is-small is-rounded" onClick={() => this.likeTrip(!this.props.trip.like)}> like </button><button className="button is-small is-rounded" onClick={() => {this.props.showDetails(this.props.trip)}}> See More</button>
-                    </div>
-                }
-                {/* <PopupModal
-                    closeModal={this.toggleView}
-                    viewModalState={this.state.viewModalState}
-                    trip={this.props.trip}>
-                </PopupModal> */}
-            </div >
-        )
-    }
-    else {
-        return (
-            <div>
-                <strong>{this.props.trip.user} </strong> wants to vist <strong>{this.props.trip.location}</strong>
-                <p> <small>Liked by {this.props.trip.likes.length} people</small></p>
-                <button className="button is-small is-rounded" onClick={() => this.likeTrip(!this.state.like)}> like</button>
-                <button className="button is-small is-rounded" onClick={() => {this.props.showDetails(this.props.trip)}}> See More</button>
 
-            </div>
-        )
-    }
+                    )
+        }
 
-}
+    }
 }
 
 export default Popup
+                  

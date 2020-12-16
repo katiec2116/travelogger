@@ -7,7 +7,6 @@ import {UserContext} from "../../utils/UserContext"
 function Profile() {
 
     const [user, dispatch] = useContext(UserContext)
-    console.log(user)
 
 
 

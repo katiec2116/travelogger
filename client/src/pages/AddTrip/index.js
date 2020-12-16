@@ -18,7 +18,7 @@ constructor(props){
         notes: "",
         lat: "",
         long: "",
-        likes:"",
+        likes:[],
         images: [],
         comments:[]
     }
@@ -92,7 +92,6 @@ constructor(props){
         }
         else {
         API.location(location)
-        // .then(res => console.log(res))
             .then(res => this.setState(
                 {
                     ...this.state, lat: (res.data.features[0].center[1]),

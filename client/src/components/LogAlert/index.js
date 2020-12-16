@@ -1,7 +1,6 @@
 import React from 'react'
 
 function LogAlert(props) {
-    console.log(props.alert)
     if (!props.alert) {
         return null;
     }

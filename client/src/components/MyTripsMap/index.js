@@ -38,11 +38,8 @@ class Map extends React.Component {
     }
 
     markers() {
-        // console.log(this.props.trips)
-        // const user = localStorage.getItem('user');
         if (this.props.trips.length) {
         this.props.trips.map(trip => {
-            console.log(trip)
             if (trip.been === "Yes") {
                 this.marker = new mapboxgl.Marker({ color: 'rgb(232, 117, 51)'})
                     .setLngLat([trip.long, trip.lat])
