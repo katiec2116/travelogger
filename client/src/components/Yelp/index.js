@@ -46,9 +46,9 @@ class Yelp extends React.Component {
             <div style={{ marginLeft: "auto", marginRight: "auto", marginTop: "20px" }}>
 
 
-                {!this.state.businesses.length ? (
+                {/* {!this.state.businesses.length ? (
                     <h1 className="subtitle has-text-centered my-4 pb-6" style={{fontFamily: "'Roboto Condensed', sans-serif"}}>No businesses in the area! <span role="img" aria-label="emoji"> &#128546;</span></h1>
-                ) : (
+                ) : ( */}
                         <div className="has-text-centered">
                             <h1 className = "suggest" >SUGGESTIONS FOR {this.props.data.location}</h1>
                             <div className="tabs is-boxed is-centered">
@@ -104,7 +104,7 @@ class Yelp extends React.Component {
                                 ))}
                             </div>
                         </div>
-                    )}
+                    {/* )} */}
             </div>
         )
     }

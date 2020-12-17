@@ -18,8 +18,8 @@ constructor(props){
         date: "",
         been:"No",
         notes: "",
-        lat: "",
-        long: "",
+        lat: 0,
+        long: 0,
         likes:[],
         images: [],
         comments:[]
@@ -124,9 +124,11 @@ constructor(props){
                         <Map lat={this.state.lat} long={this.state.long}/>
                     </div>
                 </div>
+                {this.state.location !== "" ? (
                 <Yelp data={this.state} />
+                ):(<div> </div>)}
             </div>
-        );
+        )
         }
         else {
             return (
