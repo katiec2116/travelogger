@@ -45,7 +45,7 @@ table {
 html, body{
     background-color: rgb(18,58,112);
     /* color: whitesmoke; */
-    /* font-family: 'Open Sans', sans-serif; */
+    font-family: sans-serif;
     
 }
 body{
@@ -75,7 +75,7 @@ body{
     font-family: 'Open Sans', sans-serif;
     font-size:1.4em;
     letter-spacing: 3px;
-    margin-top:-35px;
+    /* margin-top:-35px; */
     color:whitesmoke;
 }
 
