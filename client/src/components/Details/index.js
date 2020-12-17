@@ -1,9 +1,9 @@
 import React, { useState, useContext, Component } from 'react';
-import { UserContext } from "../../utils/UserContext";
+// import { UserContext } from "../../utils/UserContext";
 import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
-import Comment from "../Comment";
-import DisplayComments from "../DisplayComments";
+// import Comment from "../Comment";
+// import DisplayComments from "../DisplayComments";
 import Plane from "./icon.jpg";
 import API from "../../utils/API";
 
