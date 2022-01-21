@@ -124,9 +124,9 @@ constructor(props){
                         <Map lat={this.state.lat} long={this.state.long}/>
                     </div>
                 </div>
-                {this.state.location !== "" ? (
+                {/* {this.state.location !== "" ? (
                 <Yelp data={this.state} />
-                ):(<div> </div>)}
+                ):(<div> </div>)} */}
             </div>
         )
         }
